@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>703株式會社</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,"Microsoft JhengHei",sans-serif;
+
+background:
+linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+url("22/download.gif");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+text-align:center;
+color:white;
+}
+
+/* 主容器 */
+
+.wrapper{
+max-width:1200px;
+margin:auto;
+padding:30px 20px 60px;
+}
+
+/* 標題 */
+
+.title{
+font-size:56px;
+font-weight:bold;
+margin:25px 0 10px;
+
+color:#ffffff;
+
+text-shadow:
+0 0 15px #22d3ee,
+0 0 35px #a855f7;
+}
+
+/* 蝦趴跑馬燈 */
+
+.marquee-box{
+
+width:100%;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+90deg,
+#38bdf8,
+#a855f7,
+#f472b6,
+#22d3ee
+);
+
+box-shadow:
+0 0 25px rgba(244,114,182,0.9);
+
+padding:14px 0;
+
+border-radius:18px;
+
+margin:20px auto 35px;
+
+}
+
+.marquee-text{
+
+display:inline-block;
+
+white-space:nowrap;
+
+font-size:24px;
+
+font-weight:bold;
+
+color:white;
+
+text-shadow:
+0 0 10px #000,
+0 0 18px #fff;
+
+animation:marqueeMove 22s linear infinite;
+
+}
+
+/* 跑馬燈動畫 */
+
+@keyframes marqueeMove{
+
+0%{
+transform:translateX(100%);
+}
+
+100%{
+transform:translateX(-100%);
+}
+
+}
+
+/* 副標 */
+
+.subtitle{
+font-size:22px;
+margin-bottom:40px;
+color:#dbeafe;
+}
+
+/* 按鈕區 */
+
+.menu-area{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+margin-bottom:45px;
+}
+
+/* 按鈕 */
+
+.menu-btn{
+
+display:inline-block;
+
+padding:18px 36px;
+
+border-radius:22px;
+
+background:
+linear-gradient(
+45deg,
+#38bdf8,
+#a855f7,
+#f472b6
+);
+
+color:white;
+
+font-size:28px;
+font-weight:bold;
+
+text-decoration:none;
+
+box-shadow:
+0 0 18px rgba(56,189,248,0.6);
+
+transition:0.3s;
+}
+
+.menu-btn:hover{
+
+transform:
+translateY(-6px)
+scale(1.05);
+
+box-shadow:
+0 0 35px rgba(244,114,182,0.9);
+
+}
+
+/* 課表區 */
+
+.section{
+
+margin-top:40px;
+
+background:
+rgba(255,255,255,0.15);
+
+border-radius:30px;
+
+padding:35px;
+
+backdrop-filter:blur(8px);
+
+box-shadow:
+0 0 30px rgba(255,255,255,0.25);
+
+}
+
+/* 區塊標題 */
+
+.section h2{
+
+font-size:44px;
+
+margin:0 0 25px;
+
+color:white;
+
+text-shadow:
+0 0 15px #f472b6;
+
+}
+
+/* 課表 */
+
+.course-img{
+
+max-width:95%;
+
+width:812px;
+
+border-radius:22px;
+
+box-shadow:
+0 0 28px rgba(56,189,248,0.7);
+
+}
+
+/* 班級圖 */
+
+.class-img{
+
+margin-top:35px;
+
+max-width:90%;
+
+width:406px;
+
+border-radius:22px;
+
+box-shadow:
+0 0 28px rgba(244,114,182,0.8);
+
+}
+
+/* 頁尾 */
+
+footer{
+
+margin-top:60px;
+
+font-size:16px;
+
+color:#e0f2fe;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- 標題 -->
+
+<div class="title">
+703株式會社
+</div>
+
+<!-- 蝦趴跑馬燈 -->
+
+<div class="marquee-box">
+
+<div class="marquee-text">
+
+🏆 賀 703班 拿下 基隆市銘傳國中 英語歌唱錦標賽 特優第三 ✨
+🎉 全班超強發揮 🎤 青春最熱血的一刻 🔥
+703 No.1 ✨
+
+</div>
+
+</div>
+
+<!-- 副標 -->
+
+<div class="subtitle">
+歡迎來到703班級網站
+</div>
+
+<!-- 功能按鈕 -->
+
+<div class="menu-area">
+
+<a href="boy.html" class="menu-btn">
+👦 男生版
+</a>
+
+<a href="girl.html" class="menu-btn">
+👧 女生版
+</a>
+
+<a href="teacher.html" class="menu-btn">
+👨‍🏫 導師介紹
+</a>
+
+<a href="place.html" class="menu-btn">
+🏫 校園景點
+</a>
+
+</div>
+
+<!-- 課表區 -->
+
+<div class="section">
+
+<h2>
+課表
+</h2>
+
+<img
+class="course-img"
+src="course.png"
+alt="課表">
+
+<br>
+
+<img
+class="class-img"
+src="22/g/1%20%284%29.jpg"
+alt="班級照片">
+
+</div>
+
+<!-- 頁尾 -->
+
+<footer>
+
+703班級網站 © 首頁
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
