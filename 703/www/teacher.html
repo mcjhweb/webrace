@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>703導師介紹</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#020617,#0f172a,#1e293b);
+color:white;
+text-align:center;
+overflow-x:hidden;
+position:relative;
+}
+
+/* 網頁發光外框 */
+
+body:before{
+content:"";
+position:fixed;
+inset:0;
+padding:6px;
+background:linear-gradient(90deg,#38bdf8,#a855f7,#22d3ee,#f472b6,#38bdf8);
+background-size:400% 400%;
+animation:pageGlow 5s linear infinite;
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+pointer-events:none;
+z-index:9999;
+}
+
+/* 動態背景光球 */
+
+body:after{
+content:"";
+position:fixed;
+width:450px;
+height:450px;
+border-radius:50%;
+background:radial-gradient(circle,#38bdf8,transparent 70%);
+top:80px;
+left:80px;
+filter:blur(90px);
+opacity:0.35;
+animation:bgMove 8s ease-in-out infinite alternate;
+z-index:-1;
+}
+
+/* 動畫 */
+
+@keyframes pageGlow{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes bgMove{
+0%{
+transform:translate(0,0) scale(1);
+}
+
+50%{
+transform:translate(350px,120px) scale(1.25);
+}
+
+100%{
+transform:translate(120px,420px) scale(1);
+}
+}
+
+/* 上方按鈕 */
+
+.top-menu{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.menu-btn{
+text-decoration:none;
+background:linear-gradient(45deg,#38bdf8,#a855f7,#22d3ee);
+color:white;
+padding:12px 22px;
+border-radius:14px;
+font-weight:bold;
+font-size:16px;
+box-shadow:0 0 12px rgba(56,189,248,0.5);
+transition:0.3s;
+}
+
+.menu-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 25px rgba(168,85,247,0.8);
+}
+
+/* 標題 */
+
+header{
+padding:30px 20px 20px;
+}
+
+header h1{
+font-size:55px;
+margin:0;
+color:#7dd3fc;
+
+text-shadow:
+0 0 15px #38bdf8,
+0 0 35px #38bdf8,
+0 0 70px #0ea5e9;
+
+animation:titleGlow 1.8s infinite alternate;
+}
+
+@keyframes titleGlow{
+
+0%{
+text-shadow:
+0 0 15px #38bdf8,
+0 0 30px #38bdf8;
+}
+
+100%{
+text-shadow:
+0 0 30px #7dd3fc,
+0 0 70px #38bdf8,
+0 0 110px #a855f7;
+}
+
+}
+
+header p{
+margin-top:15px;
+font-size:20px;
+color:#cbd5e1;
+}
+
+/* 卡片區 */
+
+.container{
+display:flex;
+justify-content:center;
+padding:30px;
+}
+
+/* 卡片 */
+
+.card{
+width:380px;
+background:rgba(15,23,42,0.86);
+border-radius:35px;
+padding:38px 30px;
+position:relative;
+overflow:hidden;
+
+box-shadow:
+0 0 30px rgba(56,189,248,0.55),
+0 0 80px rgba(168,85,247,0.45);
+}
+
+/* 卡片炫光 */
+
+.card:before{
+content:"";
+position:absolute;
+inset:-6px;
+border-radius:42px;
+padding:6px;
+
+background:
+linear-gradient(
+90deg,
+#38bdf8,
+#a855f7,
+#22d3ee,
+#f472b6,
+#38bdf8
+);
+
+background-size:400% 400%;
+animation:cardGlow 4s linear infinite;
+
+-webkit-mask:
+linear-gradient(#fff 0 0) content-box,
+linear-gradient(#fff 0 0);
+
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+
+z-index:-1;
+}
+
+@keyframes cardGlow{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* 卡片掃光 */
+
+.card:after{
+content:"";
+position:absolute;
+top:-50%;
+left:-120%;
+width:80%;
+height:200%;
+
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.22),
+transparent
+);
+
+transform:rotate(25deg);
+
+animation:shine 4s infinite;
+
+z-index:1;
+}
+
+@keyframes shine{
+
+0%{
+left:-120%;
+}
+
+55%{
+left:130%;
+}
+
+100%{
+left:130%;
+}
+
+}
+
+/* 照片 */
+
+.photo{
+width:190px;
+height:190px;
+margin:auto;
+border-radius:50%;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:2;
+}
+
+/* 照片炫光 */
+
+.photo:before{
+content:"";
+position:absolute;
+width:260px;
+height:260px;
+border-radius:50%;
+
+background:
+conic-gradient(
+#38bdf8,
+#a855f7,
+#22d3ee,
+#f472b6,
+#38bdf8
+);
+
+animation:photoSpin 3s linear infinite;
+
+filter:blur(18px);
+
+opacity:0.95;
+}
+
+@keyframes photoSpin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/* 圖片 */
+
+.photo img{
+width:190px;
+height:190px;
+border-radius:50%;
+object-fit:cover;
+position:relative;
+z-index:3;
+border:6px solid white;
+background:black;
+}
+
+/* 名字 */
+
+.name{
+margin-top:30px;
+font-size:38px;
+font-weight:bold;
+color:#7dd3fc;
+position:relative;
+z-index:2;
+}
+
+/* 副標 */
+
+.title{
+margin-top:10px;
+font-size:20px;
+color:#cbd5e1;
+position:relative;
+z-index:2;
+}
+
+/* 內容 */
+
+.info{
+margin-top:28px;
+text-align:left;
+line-height:2;
+font-size:17px;
+color:#e2e8f0;
+position:relative;
+z-index:2;
+}
+
+/* 名言 */
+
+.quote{
+margin-top:28px;
+padding:20px;
+border-radius:22px;
+background:rgba(255,255,255,0.08);
+font-style:italic;
+color:#bae6fd;
+position:relative;
+z-index:2;
+
+box-shadow:
+0 0 25px rgba(56,189,248,0.45),
+0 0 55px rgba(168,85,247,0.35);
+
+animation:quoteGlow 2s infinite alternate;
+}
+
+@keyframes quoteGlow{
+
+0%{
+box-shadow:0 0 18px rgba(56,189,248,0.35);
+}
+
+100%{
+box-shadow:0 0 40px rgba(168,85,247,0.65);
+}
+
+}
+
+/* 頁尾 */
+
+footer{
+margin-top:50px;
+padding:20px;
+background:#020617;
+color:#94a3b8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 上方按鈕 -->
+
+<div class="top-menu">
+
+<a href="index.html" class="menu-btn">
+🏠 回首頁
+</a>
+
+<a href="boy.html" class="menu-btn">
+👦 男生介紹
+</a>
+
+<a href="girl.html" class="menu-btn">
+👧 女生介紹
+</a>
+
+</div>
+
+<!-- 標題 -->
+
+<header>
+
+<h1>703導師介紹</h1>
+
+<p>
+陪伴我們成長的重要人物
+</p>
+
+</header>
+
+<!-- 卡片 -->
+
+<div class="container">
+
+<div class="card">
+
+<div class="photo">
+<img src="teacher.jpg">
+</div>
+
+<div class="name">
+703導師
+</div>
+
+<div class="title">
+基隆市銘傳國中
+</div>
+
+<div class="info">
+
+在課堂上或處理班級事務時，
+老師擁有不容挑戰的威嚴。
+
+只要班級紀律出現鬆動，
+或是我們態度開始散漫，
+他那嚴厲的神情與字字珠璣的斥責，
+往往能瞬間讓全場屏息。
+
+這種「兇」，
+並非無端宣洩情緒，
+而是一種對於原則的堅持，
+像是一道堅固的圍欄，
+讓班級始終運行在正確的軌道上。
+
+然而，
+只有真正相處過的人才會發現，
+那層嚴肅的外殼下，
+其實包裹著一顆細膩且溫暖的心。
+
+老師的「好」，
+是那種即便嘴上不輕易誇獎，
+卻會在背後為我們遮風擋雨的可靠。
+
+他就像是一位嚴格的掌舵手，
+在波濤洶湧的校園生活中，
+用那份外剛內柔的特質，
+帶領著全班同學穩定前行。
+
+大家對他既敬畏又依賴，
+因為大家都知道，
+那份嚴厲的背後，
+始終是為了成就更好的我們。
+
+</div>
+
+<div class="quote">
+
+「努力不一定馬上成功，
+但放棄一定不會成功。」
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 頁尾 -->
+
+<footer>
+
+703班級網站 © 導師介紹頁面
+
+</footer>
+
+</body>
+
+</html>

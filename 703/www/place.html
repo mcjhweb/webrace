@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>703校園景點</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial,"Microsoft JhengHei",sans-serif;
+
+background:
+linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+url("22/download.gif");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+text-align:center;
+color:white;
+}
+
+/* 主容器 */
+
+.wrapper{
+max-width:1300px;
+margin:auto;
+padding:30px 20px 60px;
+}
+
+/* 標題 */
+
+.title{
+font-size:56px;
+font-weight:bold;
+margin:20px 0 10px;
+
+color:#ffffff;
+
+text-shadow:
+0 0 15px #22d3ee,
+0 0 35px #a855f7;
+}
+
+.subtitle{
+font-size:22px;
+margin-bottom:35px;
+color:#dbeafe;
+}
+
+/* 上方按鈕 */
+
+.top-menu{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+margin-bottom:35px;
+}
+
+.menu-btn{
+display:inline-block;
+
+padding:14px 28px;
+
+border-radius:18px;
+
+background:
+linear-gradient(
+45deg,
+#38bdf8,
+#a855f7,
+#f472b6
+);
+
+color:white;
+
+font-size:22px;
+font-weight:bold;
+
+text-decoration:none;
+
+box-shadow:
+0 0 18px rgba(56,189,248,0.6);
+
+transition:0.3s;
+}
+
+.menu-btn:hover{
+transform:scale(1.08);
+
+box-shadow:
+0 0 28px rgba(244,114,182,0.9);
+}
+
+/* 景點區 */
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:35px;
+}
+
+/* 卡片 */
+
+.card{
+
+width:320px;
+
+background:rgba(255,255,255,0.15);
+
+border-radius:25px;
+
+padding:20px;
+
+backdrop-filter:blur(8px);
+
+box-shadow:
+0 0 25px rgba(255,255,255,0.25);
+
+transition:0.3s;
+}
+
+.card:hover{
+
+transform:translateY(-10px) scale(1.03);
+
+box-shadow:
+0 0 35px rgba(56,189,248,0.8);
+
+}
+
+/* 圖片 */
+
+.card img{
+
+width:100%;
+height:220px;
+
+object-fit:cover;
+
+border-radius:18px;
+
+box-shadow:
+0 0 18px rgba(0,0,0,0.4);
+
+}
+
+/* 景點標題 */
+
+.place-title{
+
+margin-top:18px;
+
+font-size:30px;
+
+font-weight:bold;
+
+color:#ffffff;
+
+text-shadow:
+0 0 10px #38bdf8;
+
+}
+
+/* 景點介紹 */
+
+.place-info{
+
+margin-top:14px;
+
+font-size:17px;
+
+line-height:1.8;
+
+color:#f8fafc;
+
+text-align:left;
+
+}
+
+/* 頁尾 */
+
+footer{
+
+margin-top:60px;
+
+font-size:16px;
+
+color:#e0f2fe;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<!-- 標題 -->
+
+<div class="title">
+703校園景點
+</div>
+
+<div class="subtitle">
+一起探索銘傳國中的校園角落
+</div>
+
+<!-- 上方按鈕 -->
+
+<div class="top-menu">
+
+<a href="index.html" class="menu-btn">
+🏠 回首頁
+</a>
+
+<a href="teacher.html" class="menu-btn">
+👨‍🏫 導師介紹
+</a>
+
+<a href="boy.html" class="menu-btn">
+👦 男生版
+</a>
+
+<a href="girl.html" class="menu-btn">
+👧 女生版
+</a>
+
+</div>
+
+<!-- 景點卡片 -->
+
+<div class="container">
+
+<!-- 景點1 -->
+
+<div class="card">
+
+<img src="place1.jpg" alt="景點1">
+
+<div class="place-title">
+校門口
+</div>
+
+<div class="place-info">
+
+每天進入學校的第一站，
+也是許多同學放學集合聊天的地方。
+
+</div>
+
+</div>
+
+<!-- 景點2 -->
+
+<div class="card">
+
+<img src="place2.jpg" alt="景點2">
+
+<div class="place-title">
+操場
+</div>
+
+<div class="place-info">
+
+體育課、運動會、
+跑步與打球的重要場所，
+充滿青春與熱血。
+
+</div>
+
+</div>
+
+<!-- 景點3 -->
+
+<div class="card">
+
+<img src="place3.jpg" alt="景點3">
+
+<div class="place-title">
+圖書館
+</div>
+
+<div class="place-info">
+
+安靜舒適的閱讀空間，
+也是許多人最喜歡的休息地點。
+
+</div>
+
+</div>
+
+<!-- 景點4 -->
+
+<div class="card">
+
+<img src="place4.jpg" alt="景點4">
+
+<div class="place-title">
+教學大樓
+</div>
+
+<div class="place-info">
+
+每天上課的重要地方，
+記錄著703班的學習與回憶。
+
+</div>
+
+</div>
+
+<!-- 景點5 -->
+
+<div class="card">
+
+<img src="place5.jpg" alt="景點5">
+
+<div class="place-title">
+福利社
+</div>
+
+<div class="place-info">
+
+下課最熱門的地方之一，
+許多同學都會來買飲料和點心。
+
+</div>
+
+</div>
+
+<!-- 景點6 -->
+
+<div class="card">
+
+<img src="place6.jpg" alt="景點6">
+
+<div class="place-title">
+中庭花園
+</div>
+
+<div class="place-info">
+
+適合休息與拍照的地方，
+也是校園裡最悠閒的角落之一。
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 頁尾 -->
+
+<footer>
+
+703班級網站 © 校園景點頁面
+
+</footer>
+
+</div>
+
+</body>
+
+</html>
