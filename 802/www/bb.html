@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>802男生介紹</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      font-family: Arial, "Microsoft JhengHei", sans-serif;
+      background: #ffffff;
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      color: rgb(102, 204, 204);
+      text-align: center;
+      font-size: 48px;
+      font-weight: normal;
+    }
+
+    .student-table {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    td {
+      border: 1px solid #ccc;
+      padding: 15px;
+      vertical-align: top;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .col-name {
+      width: 120px;
+      font-weight: bold;
+      background: #f9f9f9;
+    }
+
+    .col-photo {
+      width: 28%;
+    }
+
+    .intro-script {
+      background-color: #0f0f0f;
+      vertical-align: top;
+    }
+
+    .photo-mask {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-mask::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 3px;
+      border-radius: inherit;
+      background: conic-gradient(from 0deg, #66cccc, #ffffff, #8fd3ff, #66cccc);
+      opacity: 0;
+      pointer-events: none;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      transition: opacity 0.3s ease;
+      z-index: 3;
+    }
+
+    .photo-mask::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 5px;
+      background: rgba(0, 0, 0, 0.36);
+      opacity: 1;
+      pointer-events: none;
+      transition: background 0.3s ease;
+      z-index: 2;
+    }
+
+    .photo-mask img {
+      width: 100%;
+      border-radius: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo-mask:hover {
+      transform: translateY(-2px);
+    }
+
+    .photo-mask:hover::before {
+      animation: shine-border 1.8s linear infinite;
+      opacity: 1;
+    }
+
+    .photo-mask:hover::after {
+      background:
+        radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.58), rgba(255, 255, 255, 0) 44%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.28), rgba(102, 204, 204, 0.16));
+    }
+
+    @keyframes shine-border {
+      to { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 36px;
+      }
+
+      .col-name {
+        width: 88px;
+      }
+
+      .col-photo {
+        width: 34%;
+      }
+
+      td {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>802男生介紹</h1>
+
+  <table class="student-table">
+    <tbody>
+      <tr>
+        <td class="col-name">劉子新</td>
+        <td class="col-photo">
+          <div class="photo-mask">
+            <img src="80201.png" alt="劉子新">
+          </div>
+        </td>
+        <td id="liuzixin-intro" class="intro-script">
+          <script src="ltz.js"></script>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="col-name">簡詣珅</td>
+        <td class="col-photo"></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="col-name">尤昍禹</td>
+        <td class="col-photo"></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="col-name">王新倫</td>
+        <td class="col-photo"><img src="image1.png" alt="王新倫"></td>
+        <td>大家好我名字叫王新倫，今年讀國二，十三歲，我喜歡打籃球和羽毛球，喜歡吃咖哩飯，不喜歡吃茄子和絲瓜，我覺得我自己活潑開朗、樂於助人。</td>
+      </tr>
+
+      <tr>
+        <td class="col-name">余泓佑</td>
+        <td class="col-photo"><img src="images/image1.jpg" alt="余泓佑"></td>
+        <td>我是一個開朗的國中生，平時喜歡運動和打籃球 (雖然打得很爛) ，也喜歡組鋼彈模型。個性有點害羞，但會努力和同學相處，希望能不斷進步。</td>
+      </tr>
+
+      <tr>
+        <td class="col-name">李思賢</td>
+        <td class="col-photo"></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="col-name">李浩綸</td>
+        <td class="col-photo"></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="col-name">李浩滕</td>
+        <td class="col-photo"></td>
+        <td>我就讀銘傳國中,我喜歡做一些有的沒的東西,也喜歡騎腳踏車,和養昆蟲觀察大自然,不喜歡別仍多管閒事和大聲責罵我.</td>
+      </tr>
+
+      <tr>
+        <td class="col-name">林佑穎</td>
+        <td class="col-photo"></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="col-name">張宸恩</td>
+        <td class="col-photo"></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td class="col-name">張凱政</td>
+        <td class="col-photo"></td>
+        <td>我14歲 男的 西元2011年民國100年出生 我生日11月1號 農曆10月6號 我喜歡打球 我不會吹直笛 !!!</td>
+      </tr>
+
+      <tr>
+        <td class="col-name">蕭賢銳</td>
+        <td class="col-photo"></td>
+        <td>我是蕭賢銳，我就讀銘傳國中，我喜歡看有趣的書，也喜歡聽音樂，尤其是周杰倫。我最喜歡的科目是國文和歷史還有體育。我覺得國文很奧妙，成語字詞的典故也很有趣，歷史可以了解稻古人的生活和一些趣事。我會彈鋼琴和打桌球。</td>
+      </tr>
+
+      <tr>
+        <td class="col-name">蘇贊允</td>
+        <td class="col-photo"><img src="IMG_1905.JPG" alt="蘇贊允"></td>
+        <td>我是蘇贊允，我是一個國中生，我喜歡運動，我最喜歡的歌手是周杰倫，希望在他退休之前，還能再出一張完美的專輯</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

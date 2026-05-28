@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>801 美術館</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== 全域 ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Noto Sans TC',sans-serif;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+    url('pic/bg.jpg');
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* ===== 公告條 ===== */
+
+.notice-bar{
+
+    width:100%;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+        90deg,
+        #3e2723,
+        #8d6e63,
+        #3e2723
+    );
+
+    border-bottom:3px solid #d7ccc8;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.4);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+}
+
+.notice-track{
+
+    white-space:nowrap;
+
+    display:inline-block;
+
+    padding:15px 0;
+
+    padding-left:100%;
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+
+    letter-spacing:4px;
+
+    animation:scrollText 18s linear infinite;
+}
+
+@keyframes scrollText{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-100%);
+    }
+
+}
+
+/* ===== 主內容 ===== */
+
+.container{
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px 20px;
+}
+
+/* ===== 標題 ===== */
+
+.title{
+
+    font-size:4rem;
+
+    margin-bottom:50px;
+
+    text-shadow:
+    0 0 15px rgba(255,255,255,0.4);
+
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ===== 輪播區 ===== */
+
+.carousel{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1200px;
+
+    height:550px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+/* ===== 圖片 ===== */
+
+.slide{
+
+    position:absolute;
+
+    transition:0.8s ease;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.6);
+}
+
+.slide img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* ===== 中間主圖 ===== */
+
+.center{
+
+    width:650px;
+
+    height:430px;
+
+    z-index:3;
+
+    transform:translateX(0) scale(1);
+}
+
+/* ===== 左邊圖 ===== */
+
+.left{
+
+    width:300px;
+
+    height:200px;
+
+    transform:
+    translateX(-360px)
+    scale(0.8);
+
+    opacity:0.6;
+
+    z-index:2;
+}
+
+/* ===== 右邊圖 ===== */
+
+.right{
+
+    width:300px;
+
+    height:200px;
+
+    transform:
+    translateX(360px)
+    scale(0.8);
+
+    opacity:0.6;
+
+    z-index:2;
+}
+
+/* ===== Hover ===== */
+
+.slide:hover{
+
+    transform:scale(1.03);
+}
+
+/* ===== Footer ===== */
+
+.footer{
+
+    margin-top:60px;
+
+    padding:25px;
+
+    width:100%;
+
+    text-align:center;
+
+    background:rgba(0,0,0,0.4);
+
+    letter-spacing:2px;
+}
+
+/* ===== 手機版 ===== */
+
+@media(max-width:900px){
+
+    .carousel{
+
+        height:400px;
+    }
+
+    .center{
+
+        width:90%;
+
+        height:260px;
+    }
+
+    .left,
+    .right{
+
+        display:none;
+    }
+
+    .title{
+
+        font-size:2.5rem;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- 公告 -->
+
+<div class="notice-bar">
+
+    <div class="notice-track">
+
+         WELCOME TO CLASS 801's WEBSITE 
+
+    </div>
+
+</div>
+
+<!-- 主內容 -->
+
+<div class="container">
+
+    <h1 class="title">
+
+        歡迎光臨 801 的美術館
+
+    </h1>
+
+    <!-- 輪播 -->
+
+    <div class="carousel">
+
+        <!-- 左圖 -->
+
+        <div class="slide left">
+
+            <img id="leftImg" src="pic/event14.jpg">
+
+        </div>
+
+        <!-- 中間大圖 -->
+
+        <div class="slide center">
+
+            <img id="centerImg" src="pic/IMG_9393.jpg">
+
+        </div>
+
+        <!-- 右圖 -->
+
+        <div class="slide right">
+
+            <img id="rightImg" src="pic/event15.jpg">
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+
+<div class="footer">
+
+    c 2026 CLASS 801 
+
+</div>
+
+<!-- JavaScript 輪播 -->
+
+<script>
+
+const images = [
+
+    "pic/event14.jpg",
+    "pic/IMG_9393.jpg",
+    "pic/event15.jpg",
+    "pic/bg.jpg"
+
+];
+
+let index = 0;
+
+const leftImg = document.getElementById("leftImg");
+const centerImg = document.getElementById("centerImg");
+const rightImg = document.getElementById("rightImg");
+
+function updateCarousel(){
+
+    leftImg.src =
+        images[index % images.length];
+
+    centerImg.src =
+        images[(index + 1) % images.length];
+
+    rightImg.src =
+        images[(index + 2) % images.length];
+
+    index++;
+
+}
+
+
+
+</body>
+</html>

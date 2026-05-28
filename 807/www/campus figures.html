@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>校園大人物</title>
+
+
+  <style>
+:root{
+--main:#5b3a1b;
+--accent:#f59e0b;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+font-family:"Microsoft JhengHei",sans-serif;
+background:linear-gradient(-45deg,#fff7cc,#fde68a,#fff1b8,#fef3c7);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+overflow-x:hidden;
+}
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+/* 漂浮光點 */
+.spark{
+position:fixed;
+pointer-events:none;
+animation:float linear forwards;
+opacity:.7;
+z-index:1;
+}
+@keyframes float{
+from{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+to{
+transform:translateY(-120vh) scale(.5);
+opacity:0;
+}
+}
+/* 返回鍵 */
+.back{
+position:fixed;
+top:20px;
+left:20px;
+border:none;
+background:white;
+padding:12px 18px;
+border-radius:14px;
+font-size:15px;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+z-index:999;
+transition:.3s;
+}
+.back:hover{
+transform:translateY(-3px);
+}
+/* 主畫面 */
+.hero{
+padding:120px 40px 60px;
+display:flex;
+justify-content:center;
+position:relative;
+z-index:2;
+}
+.hero-box{
+background:rgba(255,255,255,.82);
+backdrop-filter:blur(18px);
+border-radius:30px;
+overflow:hidden;
+max-width:1100px;
+width:100%;
+box-shadow:0 25px 60px rgba(0,0,0,.15);
+animation:fadeUp 1s ease;
+}
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.hero-img{
+width:100%;
+height:500px;
+object-fit:cover;
+display:block;
+}
+.hero-content{
+padding:40px;
+text-align:center;
+}
+.hero h1{
+font-size:4rem;
+color:var(--main);
+margin-bottom:20px;
+}
+.hero p{
+font-size:1.2rem;
+line-height:1.9;
+color:#555;
+max-width:800px;
+margin:auto;
+}
+.badge{
+display:inline-block;
+margin-top:25px;
+padding:12px 22px;
+border-radius:999px;
+background:linear-gradient(135deg,#f59e0b,#fbbf24);
+color:white;
+font-weight:bold;
+box-shadow:0 10px 20px rgba(245,158,11,.3);
+}
+/* 名言 */
+.quote{
+margin:40px auto 80px;
+max-width:1000px;
+background:linear-gradient(135deg,#5b3a1b,#8b5e34);
+color:white;
+padding:60px 40px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+.quote h2{
+font-size:2.3rem;
+margin-bottom:20px;
+}
+.quote p{
+font-size:1.2rem;
+line-height:1.9;
+opacity:.95;
+}
+/* footer */
+.footer{
+text-align:center;
+padding:40px;
+color:#666;
+}
+/* 手機 */
+@media(max-width:768px){
+.hero{
+padding:100px 20px 40px;
+}
+.hero-img{
+height:300px;
+}
+.hero h1{
+font-size:2.5rem;
+}
+.hero p{
+font-size:1rem;
+}
+.quote{
+margin:30px 20px 60px;
+padding:40px 25px;
+}
+.quote h2{
+font-size:1.6rem;
+}
+}
+  </style>
+</head>
+
+
+<body>
+
+<button class="back" onclick="goBack()">&larr;
+返回動物園</button>
+<!-- 主畫面 --><section class="hero">
+</section>
+<div class="hero-box"><img class="hero-img" src="teacher/IMG20260506073046.jpg">
+<div class="hero-content">
+<h1>&#128110; 校園大人物</h1>
+
+<p>
+每天最早到校、最晚離開的人之一。<br>
+
+不管是上下學安全、校門管理，還是幫助同學處理事情，<br>
+
+總是默默守護著整個校園。<br>
+
+<br>
+
+雖然平常低調，
+但其實是大家最熟悉、最安心的重要存在 &#10024;
+</p>
+
+<div class="badge">
+&#128737; 校園守護者
+</div>
+
+</div>
+
+</div>
+
+<!-- 名言 -->
+<section class="quote"></section>
+<h2>&#10024; 真正厲害的人，不一定站在舞台中央 &#10024;</h2>
+
+<p>
+有些人不常被注意，卻每天默默守護著大家。<br>
+
+因為有他們，校園才會如此安心與溫暖。
+</p>
+
+<script>
+function goBack(){
+window.location.href='index.html';
+}
+// 漂浮光點
+function createSpark(){
+const spark=document.createElement('div');
+spark.className='spark';
+spark.innerHTML='&#10024;';
+spark.style.left=Math.random()*window.innerWidth+'px';
+spark.style.top=window.innerHeight+'px';
+spark.style.fontSize=(10+Math.random()*20)+'px';
+spark.style.animationDuration=(4+Math.random()*6)+'s';
+document.body.appendChild(spark);
+setTimeout(()=>{
+spark.remove();
+},10000);
+}
+setInterval(createSpark,250);
+</script>
+</body>
+</html>

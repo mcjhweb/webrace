@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>活動照片</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #f5f5f5;
+    }
+
+    /* Loading 畫面 */
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      z-index: 9999;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="loading">網頁載入中...</div>
+
+<header>活動照片</header>
+
+<div class="gallery">
+  <img src="pic/event1.jpg" alt="">
+  <img src="pic/event5.jpg" alt="">
+  <img src="pic/event10.jpg" alt="">
+  <img src="pic/event8.jpg" alt="">
+  <img src="pic/event7.jpg" alt="">
+  <img src="pic/event16.jpg" alt="">
+</div>
+
+<script>
+  window.addEventListener("load", () => {
+    document.getElementById("loading").style.display = "none";
+  });
+</script>
+
+</body>
+</html>

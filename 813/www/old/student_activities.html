@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Activities</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      background-color: #CCCCFF; 
+    }
+
+    header {
+      background-color: #CCCCFF; 
+      color: black;
+      padding: 1em;
+      text-align: center;
+    }
+
+    .gallery {
+      max-width: 1200px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+
+    /* 每一組圖片放置區域 */
+    .gallery-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2em;
+    }
+
+    /* 文字區塊 */
+    .description {
+      color: #555;
+      font-size: 1em;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+
+    /* 用來將照片水平排列 */
+    .photos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5em;  /* 設定圖片間隔 */
+      justify-content: center; /* 讓照片水平置中 */
+    }
+
+    .photo-card {
+      width: 200px; /* 設定每張圖片的寬度 */
+      height: 200px; /* 設定圖片的高度 */
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>活動照片</h1>
+  </header>
+
+  <div class="gallery">
+
+    <!-- 第一組照片 -->
+    <div class="gallery-item">
+      <div class="description">
+        <p>參加園遊會讓我感受到熱鬧又歡樂的氣氛，品嚐美食、參加遊戲，不僅增進同學間的感情，也留下美好回憶。</p>
+      </div>
+      <div class="photos">
+        <div class="photo-card">
+          <img src="class02.jpg" alt="活動照片1">
+        </div>
+        <div class="photo-card">
+          <img src="class03.jpg" alt="活動照片2">
+        </div>
+      </div>
+    </div>
+
+    <!-- 第二組照片 -->
+    <div class="gallery-item">
+      <div class="description">
+        <p>參與募捐發票活動讓我感受到小小善舉也能帶來大大改變，積少成多，幫助有需要的人，非常有意義。</p>
+      </div>
+      <div class="photos">
+        <div class="photo-card">
+          <img src="class04.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class05.jpg" alt="活動照片4">
+        </div>
+        <div class="photo-card">
+          <img src="class06.jpg" alt="活動照片5">
+        </div>
+        <div class="photo-card">
+          <img src="class07.jpg" alt="活動照片6">
+        </div>
+        <div class="photo-card">
+          <img src="class08.jpg" alt="活動照片7">
+        </div>
+      </div>
+    </div>
+
+    <!-- 第三組照片 -->
+    <div class="gallery-item">
+      <div class="description">
+        <p>參加聖誕節英文活動讓我在歡樂的氣氛中學習英文，透過遊戲與表演提升了口說能力，也更加了解西方文化，收穫滿滿。</p>
+      </div>
+      <div class="photos">
+        <div class="photo-card">
+          <img src="class09.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class10.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class11.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class12.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class13.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class14.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class15.jpg" alt="活動照片3">
+        </div>
+        <div class="photo-card">
+          <img src="class16.jpg" alt="活動照片3">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

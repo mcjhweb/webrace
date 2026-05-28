@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+
+
+
+    
+  
+  
+  <meta charset="UTF-8">
+
+
+
+    
+  
+  
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+
+
+    
+    
+  
+  
+  
+  
+  <title>班級課表</title>
+  <link rel="stylesheet" href="styles.css">
+
+
+
+    
+  
+  
+  <style>
+        /* 整體頁面設置 */
+        body {
+            font-family: "Microsoft JhengHei", sans-serif;
+            background-color: #CCCCFF; /* 淺藍色背景 */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 標題樣式 */
+        h1 {
+            font-size: 2em;
+            color: #2e4a7e; /* 深藍色 */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* 用來包裹表格的容器，確保表格不會被切掉 */
+        .table-container {
+            width: 100%;
+            overflow-x: auto; /* 添加水平滾動條 */
+            padding: 0 10px; /* 避免表格與邊緣緊貼 */
+        }
+
+        /* 表格樣式 */
+        table {
+            width: 100%;
+            max-width: 100%; /* 保證表格不會超過容器 */
+            margin: 20px 0;
+            border-collapse: collapse;
+            background-color: #ffffff; /* 白色背景 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 表格邊框設置 */
+        table, th, td {
+            border: 1px solid #d1e7ff; /* 淺藍色邊框 */
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        /* "節/星期" 這一行的樣式 */
+        th:first-child {
+            background-color: #d1d1d1; /* 灰色背景 */
+            color: #333; /* 深色文字 */
+        }
+
+        /* 其他表格標題的顏色 */
+        th {
+            background-color: #4fa3d1; /* 清新藍色 */
+            color: white;
+        }
+
+        /* 每天的顏色 */
+        td:nth-child(2) {
+            background-color: #ffeb99; /* 星期一 - 淺黃色 */
+        }
+        
+        td:nth-child(3) {
+            background-color: #ffccff; /* 星期二 - 淺粉紅 */
+        }
+        
+        td:nth-child(4) {
+            background-color: #d1f0d1; /* 星期三 - 淺綠色 */
+        }
+        
+        td:nth-child(5) {
+            background-color: #e0f7fa; /* 星期四 - 淺藍色 */
+        }
+        
+        td:nth-child(6) {
+            background-color: #fff2e6; /* 星期五 - 淺橙色 */
+        }
+
+        td {
+            background-color: #CCCCFF; 
+        }
+
+        td a {
+            text-decoration: none;
+            color: #2e4a7e; /* 深藍色文字 */
+            font-weight: bold;
+        }
+
+        td a:hover {
+            color: #4fa3d1; /* 當懸停時顯示藍色 */
+        }
+
+        /* 合併單元格樣式 */
+        td[colspan], td[rowspan] {
+            background-color: #d8f1fe; /* 淺藍色背景 */
+            font-weight: normal;
+        }
+
+        /* 響應式設計 */
+        @media screen and (max-width: 768px) {
+            th, td {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+
+
+
+<div>
+    
+<h1>班級課表</h1>
+
+
+
+
+    
+<div class="table-container">
+        
+<table>
+
+
+
+            <thead>
+                <tr>
+
+
+
+                    <th>節/星期</th>
+
+
+
+                    <th>一</th>
+
+
+
+                    <th>二</th>
+
+
+
+                    <th>三</th>
+
+
+
+                    <th>四</th>
+
+
+
+                    <th>五</th>
+
+
+
+                </tr>
+
+
+
+            </thead>
+            <tbody>
+
+
+
+                <tr>
+
+
+
+                    <td>一</td>
+
+
+
+                    <td><a href="englishteacher.html">英文</a></td>
+
+
+
+                    <td rowspan="2"><a href="Shanhai%20Viewteacher.html">山海觀</a></td>
+
+
+
+                    <td><a href="math%20teacher.html">數學</a></td>
+
+
+
+                    <td><a href="chineseteacher.html">國文</a></td>
+
+
+
+                    <td><a href="math%20teacher.html">數學</a></td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>二</td>
+
+
+
+                    <td><a href="math%20teacher.html">數學</a></td>
+
+
+
+                    <td><a href="TaiwaneseMinnanteacher.html">本土語</a></td>
+
+
+
+                    <td><a href="scienceteacher.html">自然</a></td>
+
+
+
+                    <td><a href="chineseteacher.html">國文</a></td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>三</td>
+
+
+
+                    <td><a href="Theater%20Teacher.html">表藝</a></td>
+
+
+
+                    <td><a href="scienceteacher.html">自然</a></td>
+
+
+
+                    <td><a href="chineseteacher.html">國文</a></td>
+
+
+
+                    <td><a href="history%20teacher.html">歷史</a></td>
+
+
+
+                    <td><a href="Information%20Technology%20Teacher.html">資訊科技</a></td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>四</td>
+
+
+
+                    <td><a href="chineseteacher.html">國文</a></td>
+
+
+
+                    <td><a href="englishteacher.html">英文</a></td>
+
+
+
+                    <td><a href="artteacher.html">視藝</a></td>
+
+
+
+                    <td><a href="Geography%20teacher.html">地理</a></td>
+
+
+
+                    <td><a href="PEteacher.html">體育</a></td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td colspan="6">午休時間</td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>五</td>
+
+
+
+                    <td rowspan="2"><a href="general studies teacher.html">綜合</td>
+
+
+
+                    <td><a href="musicteacher.html">音樂</a></td>
+
+
+
+                    <td><a href="englishteacher.html">英文</a></td>
+
+
+
+                    <td><a href="PEteacher.html">體育</a></td>
+
+
+
+                    <td rowspan="2"><a href="englishteacher.html">班會</td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>六</td>
+
+
+
+                    <td><a href="health%20teacher.html">健教</a></td>
+
+
+
+                    <td><a href="chineseteacher.html">星閱讀</a></td>
+
+
+
+                    <td><a href="englishteacher.html">綜合</td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>七</td>
+
+
+
+                    <td><a href="scienceteacher.html">自然</a></td>
+
+
+
+                    <td><a href="chineseteacher.html">國文</a></td>
+
+
+
+                    <td><a href="Everyday Technology teacher.html">生活科技</a></td>
+
+
+
+                    <td><a href="math%20teacher.html">數學</a></td>
+
+
+
+                    <td><a href="civics%20teacher.html">公民</a></td>
+
+
+
+                </tr>
+
+
+
+                <tr>
+
+
+
+                    <td>八</td>
+
+
+
+                    <td><a href="math%20teacher.html">數學</a></td>
+
+
+
+                    <td><a href="englishteacher.html">學業輔導</td>
+
+
+
+                    <td><a href="chineseteacher.html">國文</a></td>
+
+
+
+                    <td><a href="englishteacher.html">英文</a></td>
+
+
+
+                    <td><a href="scienceteacher.html">自然</a></td>
+
+
+
+                </tr>
+
+
+
+            
+  
+  
+  </tbody>
+        
+</table>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+/* 保留 body 背景顏色 */
+<!--
+
+a:hover{position:relative;top:0.9px;left:0.9px;}
+
+-->
+body {
+    background-color: #CCCCFF;
+    font-family: "微軟正黑體", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 讓容器和按鈕垂直排列 */
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+/* 導航列 */
+nav {
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: block;
+    margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    padding: 10px 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    display: block;
+}
+
+nav ul li a:hover {
+    opacity: 0.8;
+}
+
+nav ul li:nth-child(1) a { background-color: #408080; }
+nav ul li:nth-child(2) a { background-color: #4F9D9D; }
+nav ul li:nth-child(3) a { background-color: #5CADAD; }
+nav ul li:nth-child(4) a { background-color: #6FB7B7; }
+nav ul li:nth-child(5) a { background-color: #81C0C0; }
+nav ul li:nth-child(6) a { background-color: #95CACA; }
+nav ul li:nth-child(7) a { background-color: #A3D1D1; }
+nav ul li:nth-child(8) a { background-color: #B3D9D9; }
+nav ul li:nth-child(9) a { background-color: #C4E1E1; }
+nav ul li:nth-child(10) a { background-color: #D1E9E9; }
+
+/* 標題設置 */
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* 按鈕設置 */
+.link-button {
+    display: block; /* 改為塊級元素，垂直排列 */
+    padding: 15px 30px;
+    font-size: 20px;
+    color: #333;
+    background-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #333;
+    margin: 10px 0; /* 垂直方向的間隔 */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 文字居中 */
+}
+
+/* 按鈕懸浮效果 */
+.link-button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 按鈕點擊效果 */
+.link-button:active {
+    background-color: #ccc;
+    transform: translateY(2px);
+}
+
+/* 容器設置 */
+.container {
+    text-align: center;
+    padding: 30px;
+    background: white;
+    border: 2px solid #333;  /* 直角邊框 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* 讓按鈕垂直排列 */
+    align-items: center;
+}
+
+/* 響應式設置 */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    .link-button {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+}
+
+/* 主體內容區域 */
+main {
+    width: 75%;
+    float: right;
+}
+
+/* 表格背景顏色設置 */
+table tbody tr:nth-child(1) td:nth-child(1) { background-color: #F3F3FA; }
+table tbody tr:nth-child(2) td:nth-child(1) { background-color: #E6E6F2; }
+table tbody tr:nth-child(3) td:nth-child(1) { background-color: #D8D8EB; }
+table tbody tr:nth-child(4) td:nth-child(1) { background-color: #C7C7E2; }
+table tbody tr:nth-child(5) td:nth-child(1) { background-color: #B8B8DC; }
+table tbody tr:nth-child(6) td:nth-child(1) { background-color: #ffffff; }
+table tbody tr:nth-child(7) td:nth-child(1) { background-color: #D2A2CC; }
+table tbody tr:nth-child(8) td:nth-child(1) { background-color: #DAB1D5; }
+table tbody tr:nth-child(9) td:nth-child(1) { background-color: #E2C2DE; }
+table tbody tr:nth-child(10) td:nth-child(1) { background-color: #EBD3E8; }
+
+/* 表格其他列背景顏色 */
+table tbody tr:nth-child(1) td:nth-child(2) { background-color: #ECF5FF; }
+table tbody tr:nth-child(2) td:nth-child(2) { background-color: #D2E9FF; }
+table tbody tr:nth-child(3) td:nth-child(2) { background-color: #C4E1FF; }
+table tbody tr:nth-child(4) td:nth-child(2) { background-color: #ACD6FF; }
+table tbody tr:nth-child(5) td:nth-child(2) { background-color: #84C1FF; }
+table tbody tr:nth-child(6) td:nth-child(2) { background-color: #FFFFFF; }
+table tbody tr:nth-child(7) td:nth-child(2) { background-color: #E6CAFF; }
+table tbody tr:nth-child(8) td:nth-child(2) { background-color: #FFD0FF; }
+table tbody tr:nth-child(9) td:nth-child(2) { background-color: #F1E1FF; }
+table tbody tr:nth-child(10) td:nth-child(2) { background-color: #FAF4FF; }
+
+/* 更多表格顏色 */
+table tbody tr:nth-child(1) td:nth-child(3) { background-color: #FBFBFF; }
+table tbody tr:nth-child(2) td:nth-child(3) { background-color: #ECECFF; }
+table tbody tr:nth-child(3) td:nth-child(3) { background-color: #DDDDFF; }
+table tbody tr:nth-child(4) td:nth-child(3) { background-color: #CECEFF; }
+table tbody tr:nth-child(5) td:nth-child(3) { background-color: #CEFFCE; }
+table tbody tr:nth-child(6) td:nth-child(3) { background-color: #FFF7FF; }
+table tbody tr:nth-child(7) td:nth-child(3) { background-color: #FFBFFF; }
+table tbody tr:nth-child(8) td:nth-child(3) { background-color: #FFD9EC; }
+table tbody tr:nth-child(9) td:nth-child(3) { background-color: #FFE6FF; }
+table tbody tr:nth-child(10) td:nth-child(3) { background-color: #FFF7FF; }
+
+/* 更多表格顏色 */
+table tbody tr:nth-child(1) td:nth-child(4) { background-color: #FDFFFF; }
+table tbody tr:nth-child(2) td:nth-child(4) { background-color: #ECFFFF; }
+table tbody tr:nth-child(3) td:nth-child(4) { background-color: #D9FFFF; }
+table tbody tr:nth-child(4) td:nth-child(4) { background-color: #CAFFFF; }
+table tbody tr:nth-child(5) td:nth-child(4) { background-color: #BBFFFF; }
+table tbody tr:nth-child(6) td:nth-child(4) { background-color: #D9FFFF; }
+table tbody tr:nth-child(7) td:nth-child(4) { background-color: #FFC1E0; }
+table tbody tr:nth-child(8) td:nth-child(4) { background-color: #FFB5B5; }
+table tbody tr:nth-child(9) td:nth-child(4) { background-color: #FFECF5; }
+table tbody tr:nth-child(10) td:nth-child(4) { background-color: #FFF7FB; }
+
+/* 更多表格顏色 */
+table tbody tr:nth-child(1) td:nth-child(5) { background-color: #FBFFFD; }
+table tbody tr:nth-child(2) td:nth-child(5) { background-color: #E8FFF5; }
+table tbody tr:nth-child(3) td:nth-child(5) { background-color: #D7FFEE; }
+table tbody tr:nth-child(4) td:nth-child(5) { background-color: #C1FFE4; }
+table tbody tr:nth-child(5) td:nth-child(5) { background-color: #ADFEDC; }
+table tbody tr:nth-child(6) td:nth-child(5) { background-color: #A6FFA6; }
+
+/* 更多表格顏色 */
+table tbody tr:nth-child(7) td:nth-child(5) { background-color: #FF9797; }
+table tbody tr:nth-child(8) td:nth-child(5) { background-color: #FFD2D2; }
+table tbody tr:nth-child(9) td:nth-child(5) { background-color: #FFE6D9; }
+table tbody tr:nth-child(10) td:nth-child(5) { background-color: #FFECEC; }
+
+/* 更多表格顏色 */
+table tbody tr:nth-child(6) td:nth-child(6) { background-color: #DFFFDF; }
+table tbody tr:nth-child(7) td:nth-child(6) { background-color: #FFCBB3; }
+table tbody tr:nth-child(8) td:nth-child(6) { background-color: #FFDAC8; }
+table tbody tr:nth-child(9) td:nth-child(6) { background-color: #FFE6D9; }
+table tbody tr:nth-child(10) td:nth-child(6) { background-color: #FFF3EE; }

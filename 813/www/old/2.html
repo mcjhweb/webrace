@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>813 班級導航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+            background-color: #CCCCFF;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav {
+            width: 100%;
+            max-width: 500px; /* 稍微放寬一點點讓並排更美觀 */
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap; /* 讓按鈕換行 */
+            gap: 12px;
+            justify-content: center;
+        }
+
+        li {
+            flex: 1 1 calc(50% - 12px); /* 兩欄佈局並扣除間距 */
+            min-width: 140px; 
+        }
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff; /* 改成純白背景更顯眼 */
+            color: #4a4a8a;
+            text-decoration: none;
+            height: 55px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #f0f0ff;
+            color: #0056b3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* 手機版改為單欄 */
+        @media (max-width: 480px) {
+            li {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="3.html" target="3.html">首頁</a></li>
+        <li><a href="teacher.html?v=1.0" target="3.html">介紹老師</a></li>
+        <li><a href="girl.html" target="3.html">女生介紹</a></li>
+        <li><a href="boy.html" target="3.html">男生介紹</a></li>
+        <li><a href="student_activities.html" target="3.html">活動影音</a></li>
+        <li><a href="school.html?v=1.0" target="3.html">校園景點探索</a></li>
+        <li><a href="contact.html" target="3.html">班級特色</a></li>
+        <li><a href="curriculum.html" target="3.html">班級課表</a></li>
+        <li><a href="experience.html" target="3.html">回憶與心得</a></li>
+        <li><a href="link.html" target="3.html">教育網站介紹</a></li>
+        <li><a href="copyright.html" target="3.html">版權頁</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>

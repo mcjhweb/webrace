@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銘傳國中 808 動物園 | 演出時程</title>
+    <style>
+        :root {
+            --zoo-green: #2d5a27;
+            --zoo-brown: #8b4513;
+            --zoo-light: #f0f4f0;
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            background-color: var(--zoo-light);
+            background-image: radial-gradient(#d1dbd1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        body { margin: 0; padding: 0; font-family: "Microsoft JhengHei", sans-serif; }
+
+        /* 調整 1：縮小 header 底部間距 */
+        header { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding: 40px 20px 10px 20px; /* 底部縮小到 10px */
+            gap: 15px; 
+        }
+        @media (min-width: 768px) { 
+            header { flex-direction: row; justify-content: flex-start; padding-left: 60px; } 
+        }
+
+        /* 懸掛招牌 */
+        .hanging-sign {
+            background: #fff; border: 5px solid var(--zoo-brown);
+            border-radius: 15px; padding: 10px 20px;
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative; transform-origin: top center;
+            animation: swing 3.5s ease-in-out infinite;
+        }
+        .hanging-sign::before, .hanging-sign::after { content: ""; position: absolute; top: -60px; width: 4px; height: 60px; background: #333; z-index: -1; }
+        .hanging-sign::before { left: 20px; } .hanging-sign::after { right: 20px; }
+
+        /* 導覽列 */
+        .nav-btn {
+            padding: 8px 16px; background: var(--zoo-green); color: white;
+            text-decoration: none; border-radius: 20px; font-weight: bold;
+            box-shadow: 0 4px 0px #1a3517; transition: 0.2s; border: none; cursor: pointer;
+            display: inline-block;
+        }
+        .nav-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0px #1a3517; }
+
+        .nav-item { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0;
+            width: 100%; min-width: 120px; background-color: var(--zoo-green);
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 100;
+            border-radius: 0 0 10px 10px; overflow: hidden;
+        }
+        .dropdown-content a {
+            color: white; padding: 10px 12px; text-decoration: none;
+            display: block; font-size: 0.9rem; transition: 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;
+        }
+        .dropdown-content a:hover { background-color: #3e7a36; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .nav-item.has-submenu:hover .nav-btn { border-radius: 20px 20px 0 0; }
+
+        /* 調整 2：消除 main 容器頂部間距 */
+        .main-container { padding: 0 20px 20px 20px; max-width: 1000px; margin: 0 auto; }
+        
+        /* 調整 3：消除標題頂部邊距 */
+        .main-title { 
+            text-align: center; 
+            color: var(--zoo-green); 
+            margin: 0 0 20px 0; /* 只有下方有間距 */
+            padding-top: 10px;
+        }
+
+        .schedule-card {
+            background: white; border-radius: 20px; border: 5px solid var(--zoo-brown);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .sched-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        .sched-table th { background: var(--zoo-green); color: white; padding: 15px; }
+        .sched-table td { border: 1px solid #eee; padding: 12px; text-align: center; transition: background 0.2s; }
+        .sched-table tr:hover td:not(.time-slot):not(.break-slot) { background: #f0f7ef; }
+        
+        .time-slot { background: #fdf5e6; font-weight: bold; color: var(--zoo-brown); width: 110px; }
+        .break-slot { background: #fff9c4; font-size: 0.9rem; color: #8b4513; font-weight: bold; }
+
+        @keyframes swing { 
+            0%, 100% { transform: rotate(3deg); } 
+            50% { transform: rotate(-3deg); } 
+        }
+        
+        @media (max-width: 768px) {
+            header { padding: 20px 20px 5px 20px; }
+            .sched-table { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hanging-sign">
+        <img src="logo_black.png" alt="Logo" style="width:50px;">
+        <div style="font-size: 1.5rem; color: #8b4513; font-weight: bold;">808<br>動物園</div>
+    </div>
+    
+    <nav style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div class="nav-item"><a href="index.html" class="nav-btn">🏠 回首頁</a></div>
+        <div class="nav-item has-submenu">
+            <a href="#" class="nav-btn">📖 動物圖鑑</a>
+            <div class="dropdown-content">
+                <a href="boys.html">男生們</a>
+                <a href="girls.html">女生們</a>
+            </div>
+        </div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn" >🐱 訓獸師們</a>
+            <div class="dropdown-content">
+                <a href="teachers.html">訓獸師簡介</a>
+                <a href="9m.html">園區大人物</a>
+            </div>
+        </div>
+        <div class="nav-item"><a href="schedule.html" class="nav-btn" >📅 演出時程</a></div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn" style="background: var(--zoo-brown);">🦁 園區介紹</a>
+            <div class="dropdown-content">
+                <a href="map.html">園區地圖</a>
+                <a href="goout.html">外出探索</a>
+                <a href="life.html">動物日常</a>
+            </div>
+        </div>
+        <div class="nav-item"><a href="we.html" class="nav-btn">🐯 關於我們</a></div>
+    </nav>
+</header>

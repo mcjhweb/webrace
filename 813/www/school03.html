@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>尚志樓 - 銘傳國中</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* 改為從頂部開始排版 */
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      padding-top: 60px; /* 留位置給左上角的返回鍵 */
+    }
+
+    /* 返回連結：已移除 target 屬性 */
+    .back-link {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-weight: bold;
+    }
+
+    header {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* 圖片容器 */
+    .border-container {
+      border: 5px solid #333;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      background-color: #ddd;
+    }
+
+    /* 輪播動畫：平滑淡入淡出 */
+    .image-slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: fade-animation 8s infinite;
+    }
+
+    .image1 {
+      background-image: url('school01.jpg');
+    }
+
+    .image2 {
+      background-image: url('school02.jpg');
+      animation-delay: 4s; /* 延遲一半的時間 */
+    }
+
+    @keyframes fade-animation {
+      0%, 45%, 100% { opacity: 1; z-index: 1; }
+      50%, 95% { opacity: 0; z-index: 0; }
+    }
+
+    /* 文字內容區 */
+    .content-section {
+      width: 90%;
+      max-width: 800px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      margin-bottom: 40px;
+    }
+
+    td {
+      padding: 15px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="back-link" href="school02.html">← 返回地圖</a>
+
+  <header>尚志樓</header>
+
+  <div class="border-container">
+    <div class="image-slider image1"></div>
+    <div class="image-slider image2"></div>
+  </div>
+
+  <div class="content-section">
+    <ul>
+      <li>簡介</li>
+    </ul>
+
+    <table border="1">
+      <tbody>
+        <tr>
+          <td>最近新建的樓層，這裡的 2 樓是桌球教室，3、4 和 5 樓則是 7 和 8 年級的教室。環境新穎，設施完備。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

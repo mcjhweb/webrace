@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銘傳國中</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        #map-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 20px;
+        }
+        #map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .marker {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            /* 讓文字標籤顯示在紅點旁邊 */
+            white-space: nowrap;
+            font-weight: bold;
+            color: blue;
+        }
+        .marker a {
+            text-decoration: none;
+            color: inherit;
+            margin-left: 25px; /* 避開紅點中心 */
+            display: inline-block;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px 15px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            text-decoration: none;
+            color: #333;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="school.html" class="back-btn">← 返回</a>
+
+    <h1>銘傳導覽圖</h1>
+
+    <div id="map-container">
+        <img id="map-image" src="school.png" alt="地圖圖片">
+        
+        <div class="marker" style="top: 60%; left: 68%;">
+            <a href="school03.html">尚志樓</a>
+        </div>
+        
+        <div class="marker" style="top: 65%; left: 10%;">
+            <a href="school04.html">日新樓</a>
+        </div>
+        
+        <div class="marker" style="top: 40%; left: 35%;">
+            <a href="school05.html">行政大樓</a>
+        </div>
+    </div>
+
+</body>
+</html>

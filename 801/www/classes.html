@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+
+  <meta charset="utf-8">
+
+
+
+  <title>課表</title>
+  <style>
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    background-color: #f4f6f9;
+    text-align: center;
+}
+
+/* 標題 */
+h1 {
+    font-size: 40px;
+    color: #e53935;
+    margin: 20px;
+}
+
+/* 表格容器（手機可滑） */
+.table-box {
+    overflow-x: auto;
+    margin: 20px;
+}
+
+/* 表格 */
+table {
+    border-collapse: collapse;
+    margin: auto;
+    min-width: 800px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 表頭 */
+th {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    font-size: 20px;
+}
+
+/* 格子 */
+td {
+    padding: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+}
+
+/* 不同科目顏色 */
+.math { color: #fbc02d; }
+.chinese { color: #1976d2; }
+.english { color: #9c27b0; }
+.science { color: #4caf50; }
+.history { color: #e53935; }
+.art { color: #ff9800; }
+.pe { color: #00acc1; }
+
+/* hover 效果 */
+td:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+/* home 按鈕 */
+.home {
+    margin: 10px;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<a href="index.html" class="home">
+    <br>
+
+</a>
+
+<h1>課表</h1>
+
+
+<div class="table-box">
+<table>
+
+    <tbody>
+    <tr>
+
+        <th>星期一</th>
+
+        <th>星期二</th>
+
+        <th>星期三</th>
+
+        <th>星期四</th>
+
+        <th>星期五</th>
+
+    </tr>
+
+
+    <tr>
+
+        <td class="science">生科</td>
+
+        <td class="art">銘心繪</td>
+
+        <td>本土</td>
+
+        <td class="history">公民</td>
+
+        <td>資訊</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td class="math">數學</td>
+
+        <td class="science">自然</td>
+
+        <td class="math">數學</td>
+
+        <td class="chinese">國文</td>
+
+        <td class="chinese">國文</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td class="history">歷史</td>
+
+        <td>綜合一</td>
+
+        <td class="art">美術</td>
+
+        <td class="science">科藝遊</td>
+
+        <td class="math">數學</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td class="pe">體育</td>
+
+        <td class="english">英文</td>
+
+        <td class="english">英文</td>
+
+        <td class="science">科藝遊</td>
+
+        <td class="chinese">國文</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td class="chinese">國文</td>
+
+        <td class="chinese">國文</td>
+
+        <td class="science">自然</td>
+
+        <td class="english">英文</td>
+
+        <td>班會/社團</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td class="art">表藝</td>
+
+        <td>綜合二</td>
+
+        <td class="pe">體育</td>
+
+        <td class="math">數學</td>
+
+        <td>聯課/社團</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>健教</td>
+
+        <td>綜合三</td>
+
+        <td class="history">地理</td>
+
+        <td class="art">音樂</td>
+
+        <td class="science">自然</td>
+
+    </tr>
+
+
+    <tr>
+
+        <td>輔導</td>
+
+        <td class="math">數學</td>
+
+        <td class="science">自然</td>
+
+        <td class="english">英文</td>
+
+        <td class="chinese">國文</td>
+
+    </tr>
+
+
+  </tbody>
+</table>
+
+</div>
+
+
+</body>
+</html>

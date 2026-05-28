@@ -1,0 +1,318 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+<!-- saved from url=(0045)https://f9pl4fjcsb3oxa4kwpznuw.on.drv.tw/www/ -->
+
+
+
+  
+  
+  <script language="JavaScript">
+/////////////
+//
+// Cookie Functions - Bill Dortch (21-Jan-96)
+// The following functions are released to the
+// public domain.
+//
+function GookieVal(offset) {
+var endstr = document.cookie.indexOf (";", offset);
+if (endstr == -1)
+endstr = document.cookie.length;
+return unescape(document.cookie.substring(offset, endstr));
+}
+function Gookie(name) {
+var arg = name + "=";
+var alen = arg.length;
+var clen = document.cookie.length;
+var i = 0;
+while (i < clen) {
+var j = i + alen;
+if (document.cookie.substring(i, j) == arg)
+return GookieVal (j);
+i = document.cookie.indexOf(" ", i) + 1;
+if (i == 0) break;
+}
+return null;
+}
+function Sookie(name, value) {
+var argv = Sookie.arguments;
+var argc = Sookie.arguments.length;
+var expires = (argc > 2) ? argv[2] : null;
+var path = (argc > 3) ? argv[3] : null;
+var domain = (argc > 4) ? argv[4] : null;
+var secure = (argc > 5) ? argv[5] : false;
+document.cookie = name + "=" + escape (value) +
+((expires == null) ? "" : ("; expires="
++ expires.toGMTString())) +
+((path == null) ? "" : ("; path=" + path)) +
+((domain == null) ? "" : ("; domain=" + domain)) +
+((secure == true) ? "; secure" : "");
+}
+function Dookie(name) {
+var exp = new Date();
+exp.setTime (exp.getTime() - 1);
+var cval = Gookie (name);
+document.cookie = name + "=" + cval + "; expires="
++ exp.toGMTString();
+}
+//
+// End of cookie functions
+//////////
+  </script>
+  
+  
+  <script>
+var expdate = new Date();
+// 設定期限為一百年後
+expdate.setTime(expdate.getTime() + (24 * 60 * 60 * 1000 * 365));
+if(!(visits = Gookie("3wave"))) {visits = 1;
+Sookie("3wave", visits, expdate, "/", null, false);
+document.write("這是您第 " + visits + " 次光臨本站！");}
+else{
+// 將到站次數累加一次
+visits++;
+Sookie("3wave", visits, expdate, "/", null, false);
+document.write("這是您第 " + visits + " 次光臨本站！");
+}
+  </script>
+  
+  
+  <title>810網頁</title>
+</head>
+
+
+<body style="background-image: url(p_new0617_l_new06173.jpg);">
+
+
+
+<center><font size="2"> </font>
+<marquee scrollamount="25" scrolldelay="25" bgcolor="#FFFFFF" behavior="alternate" direction=""><font size="2"><font color="#000000" face="標楷體" size="6">歡迎光臨810班網
+</font></font></marquee>
+
+
+
+<div style="text-align: center;"><font size="2"><big><big><big><big><small><big><big>
+810班網</big></big></small></big></big></big></big><br>
+
+
+
+<big><big><big><big><small><big><big>
+</big></big></small></big></big></big></big></font></div>
+
+
+
+<p class="zfr3Q CDt4Ke" style="border-style: none; margin: 0pt 0px; padding: 0pt; position: relative; color: rgb(255, 255, 255); font-size: 11pt; font-style: normal; font-weight: 400; font-family: Bitter; line-height: 1.2; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; white-space: normal; background-color: transparent;" dir="ltr"><span class="C9DxTc" style="color: rgb(255, 255, 0); font-family: DFKai-SB,Arial; font-size: 14pt; font-weight: 400; vertical-align: baseline;"></span></p>
+
+
+
+<font size="2"><big><big><big><big><small>
+</small></big></big></big></big></font>
+<div style="text-align: center;">
+<table style="width: 70%; text-align: left; margin-left: auto; margin-right: auto;" border="0" cellpadding="0" cellspacing="0">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td style="text-align: center;"><a href="teacher/teacher.html" onmouseout="document.img1.src='1-1.png'" onmouseover="document.img1.src='11.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="1-1.png" name="img1"></a></td>
+
+
+
+      <td style="text-align: center;"><a href="boys/810boys.html" onmouseout="document.img2.src='2-2.png'" onmouseover="document.img2.src='22.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="2-2.png" name="img2"></a></td>
+
+
+
+      <td style="text-align: center;"><a href="girls/810girls.html" onmouseout="document.img3.src='3-3.png'" onmouseover="document.img3.src='33.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="3-3.png" name="img3"></a></td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td style="text-align: center;"><a href="activitypicture/picture.html" onmouseout="document.img4.src='4-4.png'" onmouseover="document.img4.src='44.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="4-4.png" name="img4"></a></td>
+
+
+
+      <td style="text-align: center;"><a href="school/school.html" onmouseout="document.img5.src='5-5.png'" onmouseover="document.img5.src='55.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="5-5.png" name="img5"></a></td>
+
+
+
+      <td style="text-align: center;"><a href="parent/parent.html" onmouseout="document.img6.src='6-6.png'" onmouseover="document.img6.src='66.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="6-6.png" name="img6"></a></td>
+
+
+
+    </tr>
+
+
+
+    <tr>
+
+
+
+      <td style="text-align: center;"><a href="routine/routine.html" onmouseout="document.img7.src='7-7.png'" onmouseover="document.img7.src='77.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="7-7.png" name="img7"></a></td>
+
+
+
+      <td style="text-align: center;"><a href="work/810work.html" onmouseout="document.img8.src='8-8.png'" onmouseover="document.img8.src='88.gif'"> <img style="border: 0px solid ; width: 100%; height: 200px;" alt="" src="8-8.png" name="img8"></a></td>
+
+
+
+      <td style="text-align: center;"><a href="table/810table.html" onmouseout="document.img9.src='9-9.png'" onmouseover="document.img9.src='99.gif'"> <img name="img9" src="9-9.png" alt="" style="border: 0px solid ; width: 100%; height: 200px;"></a></td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<font size="2"><br>
+
+
+
+<br>
+
+
+
+</font></div>
+
+
+
+<div style="text-align: center;">
+<div align="center">
+<div align="center">
+      </div>
+
+
+
+    
+<table border="1">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+<table style="width: 226px; height: 30px;" border="1">
+
+
+
+  <tbody>
+
+
+
+    <tr>
+
+
+
+      <td border="0" style="text-align: center; background-color: rgb(255, 255, 255);"><font size="5">
+      
+      
+      <script language="JavaScript">
+<!-- Hide this script from old browsers --
+/*
+This script came from the 24 hour JavaScripts Site
+located at http://www.javascripts.com. It is brought to
+you by Eric Jarvies, Lewis Sellers, Giuseppe Lombardo,
+Kurt Anderson, and David Medinets.
+*/
+Stamp = new Date();
+document.write('<font size="2" face="Arial,Geneva,Sans Serif"><B>' + (Stamp.getMonth() + 1) +"/"+Stamp.getDate()+ "/"+Stamp.getYear() + '</B></font><BR>');
+var Hours;
+var Mins;
+var Time;
+Hours = Stamp.getHours();
+if (Hours >= 12) {
+Time = " P.M.";
+}
+else {
+Time = " A.M.";
+}
+if (Hours > 12) {
+Hours -= 12;
+}
+if (Hours == 0) {
+Hours = 12;
+}
+Mins = Stamp.getMinutes();
+if (Mins < 10) {
+Mins = "0" + Mins;
+}
+document.write('<font size="2" face="Arial,Geneva,Sans Serif"><B>' + Hours + ":" + Mins + Time + '</B></font>');
+// -- End Hiding Here -->
+      </script></font></td>
+
+
+
+    </tr>
+
+
+
+  
+  
+  </tbody>
+</table>
+
+
+
+</div>
+
+
+
+<font size="2"><br>
+
+
+
+<br>
+
+
+
+<br>
+
+
+
+</font></div>
+
+
+
+<font size="2">
+<script>
+</script></font></center>
+
+
+
+</body>
+</html>

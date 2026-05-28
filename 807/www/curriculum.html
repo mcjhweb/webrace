@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班級課表</title>
+
+
+  <style>
+:root{
+--main:#5b3a1b;
+--accent:#f59e0b;
+--glass:rgba(255,255,255,0.75);
+}
+body{
+margin:0;
+font-family:"Microsoft JhengHei", sans-serif;
+background:linear-gradient(-45deg,#fff7cc,#fde68a,#fff1b8,#fef3c7);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+}
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+.container{
+padding:40px;
+}
+.title{
+text-align:center;
+font-size:2.5rem;
+color:var(--main);
+margin-bottom:20px;
+}
+/* 卡片 */
+.card{
+background:var(--glass);
+backdrop-filter:blur(15px);
+border-radius:20px;
+padding:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.1);
+overflow:auto;
+}
+/* 表格 */
+table{
+width:100%;
+border-collapse:collapse;
+min-width:800px;
+}
+th, td{
+padding:14px;
+text-align:center;
+border-radius:10px;
+}
+th{
+background:var(--main);
+color:white;
+}
+td{
+background:white;
+transition:.2s;
+}
+td:hover{
+background:#fff7d6;
+transform:scale(1.05);
+}
+/* 返回鍵 */
+.back{
+position:fixed;
+top:20px;
+left:20px;
+background:white;
+border:none;
+padding:10px 16px;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+  </style>
+</head>
+
+
+<body>
+
+<button class="back" onclick="goBack()">&larr;
+返回動物園</button>
+<div class="container">
+<div class="title">&#128218; 我們的課表</div>
+
+<div class="card">
+<table>
+
+  <tbody>
+
+    <tr>
+
+      <th>節次</th>
+
+      <th>一</th>
+
+      <th>二</th>
+
+      <th>三</th>
+
+      <th>四</th>
+
+      <th>五</th>
+
+    </tr>
+
+    <tr>
+
+      <th>第一節</th>
+
+      <td>綜合一</td>
+
+      <td>生科</td>
+
+      <td>閩南語</td>
+
+      <td>科藝遊</td>
+
+      <td>國文</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第二節</th>
+
+      <td>數學</td>
+
+      <td>公民</td>
+
+      <td>自然</td>
+
+      <td>科藝遊</td>
+
+      <td>體育</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第三節</th>
+
+      <td>國文</td>
+
+      <td>音樂</td>
+
+      <td>數學</td>
+
+      <td>英文</td>
+
+      <td>綜合</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第四節</th>
+
+      <td>英文</td>
+
+      <td>資訊</td>
+
+      <td>英文</td>
+
+      <td>國文</td>
+
+      <td>綜合</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第五節</th>
+
+      <td>地理</td>
+
+      <td>數學</td>
+
+      <td>健康</td>
+
+      <td>自然</td>
+
+      <td>班會</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第六節</th>
+
+      <td>自然</td>
+
+      <td>國文</td>
+
+      <td>銘心繪</td>
+
+      <td>數學</td>
+
+      <td>班會</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第七節</th>
+
+      <td>國文</td>
+
+      <td>表藝</td>
+
+      <td>歷史</td>
+
+      <td>體育</td>
+
+      <td>美術</td>
+
+    </tr>
+
+    <tr>
+
+      <th>第八節</th>
+
+      <td>社會</td>
+
+      <td>英文</td>
+
+      <td>國文</td>
+
+      <td>自然</td>
+
+      <td>數學</td>
+
+    </tr>
+
+  </tbody>
+</table>
+
+</div>
+
+</div>
+
+<script>
+function goBack(){
+window.location.href="index.html";
+}
+</script>
+</body>
+</html>

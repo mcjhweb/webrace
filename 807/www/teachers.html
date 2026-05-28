@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+
+
+  
+  <meta charset="UTF-8">
+
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+
+
+  
+  <title>動物飼養員</title>
+  <style>
+:root{
+--main:#5b3a1b;
+--accent:#f59e0b;
+}
+body{
+margin:0;
+font-family:"Microsoft JhengHei", sans-serif;
+background:#fffaf0;
+}
+/* 標題區 */
+.header{
+background:linear-gradient(135deg,#fbbf24,#f59e0b);
+color:white;
+padding:50px 20px;
+text-align:center;
+}
+.header h1{
+font-size:2.5rem;
+}
+/* 返回鍵 */
+.back{
+position:fixed;
+top:20px;
+left:20px;
+background:white;
+border:none;
+padding:10px 16px;
+border-radius:12px;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+/* 區塊 */
+.section{
+padding:30px 60px;
+}
+.section h2{
+margin-bottom:20px;
+color:var(--main);
+border-left:6px solid var(--accent);
+padding-left:10px;
+}
+/* 老師卡 */
+.teacher{
+display:flex;
+gap:20px;
+background:white;
+border-radius:16px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+.teacher:hover{
+transform:scale(1.02);
+}
+.teacher img{
+width:140px;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+}
+.info{
+flex:1;
+}
+.name{
+font-size:1.3rem;
+font-weight:bold;
+color:var(--main);
+margin-bottom:8px;
+}
+.subject{
+color:#f59e0b;
+margin-bottom:10px;
+}
+.desc{
+color:#555;
+line-height:1.6;
+}
+  </style>
+</head>
+
+
+<body>
+
+
+<button class="back" onclick="goBack()">&larr;
+返回動物園</button>
+<div class="header">
+<h1>🎯 動物飼養員介紹</h1>
+
+
+<p>最強管理團隊 ✨</p>
+
+
+</div>
+
+
+<div class="section">
+<h2>📚 主要科目老師</h2>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 128px;" alt="" src="teacher/chinesetc.jpg">
+<div class="info">
+<div class="name">張曰瑯老師</div>
+
+
+<div class="subject">國文</div>
+
+
+<div class="desc">
+教學認真又要求細節，會提供很多練習與補充教材，
+幫助大家慢慢提升閱讀與寫作能力 📖
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 267px;" alt="" src="teacher/IMG20250424165136.jpg">
+<div class="info">
+<div class="name">英文老師</div>
+
+
+<div class="subject">English</div>
+
+
+<div class="desc">溫柔有耐心，會補充很多知識，幫助大家穩定進步。</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 267px;" alt="" src="teacher/1745656054985.jpg">
+<div class="info">
+<div class="name">呂紀韋老師</div>
+
+
+<div class="subject">數學</div>
+
+
+<div class="desc">大聲教學＋自創記憶歌曲，是最有特色的老師之一 🎤</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 267px;" alt="" src="teacher/IMG20260421080141.jpg">
+<div class="info">
+<div class="name">賴彥書老師</div>
+
+
+<div class="subject">自然</div>
+
+
+<div class="desc">會抽問與筆記教學，課堂節奏很有趣。</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="section">
+<h2>🌏 社會科老師</h2>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 241px;" alt="" src="teacher/teacher.jpg">
+<div class="info">
+<div class="name">洪敏純老師</div>
+
+
+<div class="subject">公民</div>
+
+
+<div class="desc">活潑開朗，是大家最喜歡的老師之一。</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 160px;" alt="" src="teacher/IMG_0795.jpeg">
+<div class="info">
+<div class="name">地理老師</div>
+
+
+<div class="subject">地理</div>
+
+
+<div class="desc">上課像聽故事，氣氛輕鬆。</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="section">
+<h2>🌏 人文與藝術</h2>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 200px;" alt="" src="teacher/1745802894473.jpg">
+<div class="info">
+<div class="name">音樂老師</div>
+
+
+<div class="subject">音樂</div>
+
+
+<div class="desc">唱歌與直笛課程非常有趣 🎵</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 267px;" alt="" src="teacher/IMG20250430120814.jpg">
+<div class="info">
+<div class="name">佑霖老師</div>
+
+
+<div class="subject">表演藝術</div>
+
+
+<div class="desc">能文能武，很會帶動氣氛 🎭</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="section">
+<h2>🏫 其他老師</h2>
+
+
+<div class="teacher"><img style="width: 200px; height: 267px;" alt="" src="teacher/1776909510830.jpg">
+<div class="info">
+<div class="name">謝勝豐老師</div>
+
+
+<div class="subject">體育</div>
+
+
+<div class="desc">
+樂觀又關心學生，課堂氣氛很好 🏃
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 150px; height: 248px;" alt="" src="teacher/IMG_3084.jpeg">
+<div class="info">
+<div class="name">健康老師</div>
+
+
+<div class="subject">健康教育</div>
+
+
+<div class="desc">
+上課會分享許多生活知識與健康觀念，
+讓大家更了解身體與日常安全，是很實用的課程 🌱
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="teacher">
+<img style="width: 200px; height: 267px;" alt="" src="teacher/S__19734998.jpg">
+<div class="info">
+<div class="name">吳慶鴻老師</div>
+
+
+<div class="subject">資訊</div>
+
+
+<div class="desc">
+帶我們學各種電腦技能 💻
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<script>
+function goBack(){
+window.location.href="index.html";
+}
+</script>
+</div>
+
+</body>
+</html>

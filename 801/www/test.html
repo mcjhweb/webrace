@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>首頁框架</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+/* ===== 左側選單 ===== */
+.sidebar {
+    width: 220px;
+    background: linear-gradient(to bottom, #d8c7b9, #c5b09b); /* 淡棕色背景 */
+    color: #3e2723; /* 深棕色文字 */
+    padding: 20px;
+    box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2); /* 加上陰影 */
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 24px; /* 放大字體 */
+    text-align: center; /* 文字水平置中 */
+    color: #3e2723; /* 深棕色文字 */
+}
+
+/* 選單項目 */
+.sidebar a {
+    display: block;
+    color: #3e2723; /* 深棕色文字 */
+    text-decoration: none;
+    margin: 12px 0;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 18px; /* 放大字體 */
+    position: relative;
+    overflow: hidden;
+    font-weight: bold; /* 加粗字體 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* 文字陰影 */
+    transition: all 0.3s ease;
+}
+
+/* Hover效果 */
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(6px);
+    color: #ffb74d; /* 改變顏色為亮色 */
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4); /* 增加陰影強度 */
+}
+
+/* 點擊效果 */
+.sidebar a:active {
+    transform: translateX(2px) scale(0.98);
+    color: #ff7043; /* 點擊時顏色變為橙紅色 */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5); /* 增加陰影強度 */
+}
+
+/* 左側光條動畫 */
+.sidebar a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: white;
+
+    opacity: 0;
+    transform: scaleY(0);
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+/* ===== 右側內容 ===== */
+.main {
+    flex: 1;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 左側 -->
+<div class="sidebar">
+    <h2>選單</h2>
+
+    <a href="main.html" target="contentFrame">首頁</a>
+    <a href="boys.html" target="contentFrame">女生自我介紹</a>
+    <a href="girls.html" target="contentFrame">男生自我介紹</a>
+    <a href="leader.html" target="contentFrame">班導</a>
+    <a href="teachers.html" target="contentFrame">各科老師介紹</a>
+</div>
+
+<!-- 右側 -->
+<div class="main">
+    <iframe name="contentFrame" src="main.html"></iframe>
+</div>
+
+</body>
+</html>

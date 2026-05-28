@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>班級動物園</title>
+
+
+  <style>
+:root{
+--main:#5b3a1b;
+--accent:#f59e0b;
+--light:#fff8e7;
+--glass:rgba(255,255,255,0.72);
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+font-family:"Microsoft JhengHei", sans-serif;
+min-height:100vh;
+display:flex;
+background:linear-gradient(-45deg,#fff7cc,#fde68a,#fff1b8,#fef3c7);
+background-size:400% 400%;
+animation:bgFlow 15s ease infinite;
+overflow:hidden;
+}
+@keyframes bgFlow{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+#intro{
+position:fixed;
+inset:0;
+background:white;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+gap:15px;
+z-index:9999;
+font-size:2rem;
+font-weight:bold;
+animation:fadeOut 2s 2.2s forwards;
+}
+#intro small{
+font-size:1rem;
+color:#666;
+}
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
+.sidebar{
+width:280px;
+background:var(--glass);
+backdrop-filter:blur(18px);
+padding:25px;
+border-right:1px solid rgba(255,255,255,0.4);
+box-shadow:10px 0 30px rgba(0,0,0,0.06);
+z-index:2;
+}
+.logo{
+text-align:center;
+font-size:1.8rem;
+font-weight:800;
+margin-bottom:25px;
+color:var(--main);
+}
+.subtitle{
+text-align:center;
+font-size:.95rem;
+margin-bottom:20px;
+color:#6b7280;
+}
+.menu button{
+width:100%;
+border:none;
+padding:14px;
+border-radius:14px;
+margin-bottom:10px;
+cursor:pointer;
+background:white;
+font-size:15px;
+transition:.35s;
+}
+.menu button:hover,
+.menu button.active{
+background:var(--main);
+color:white;
+transform:translateX(5px);
+box-shadow:0 10px 20px rgba(245,158,11,.25);
+}
+.content{
+flex:1;
+padding:40px;
+overflow:auto;
+}
+.page{display:none;}
+.page.active{
+display:block;
+animation:fade .5s ease;
+}
+@keyframes fade{
+from{opacity:0;transform:translateY(25px)}
+to{opacity:1;transform:translateY(0)}
+}
+.card{
+background:rgba(255,255,255,0.88);
+border-radius:24px;
+padding:32px;
+box-shadow:0 20px 40px rgba(0,0,0,.08);
+margin-bottom:20px;
+}
+.hero{
+text-align:center;
+padding:60px 30px;
+}
+.hero h1{
+font-size:2.4rem;
+margin-bottom:12px;
+color:var(--main);
+}
+.hero p{
+font-size:1.1rem;
+color:#555;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:18px;
+margin-top:20px;
+}
+.person{
+background:white;
+border-radius:18px;
+padding:20px;
+text-align:center;
+transition:.35s;
+box-shadow:0 10px 20px rgba(0,0,0,.05);
+}
+.person:hover{
+transform:translateY(-8px) scale(1.03);
+}
+.person .emoji{
+font-size:2rem;
+margin-bottom:10px;
+}
+.person h3{
+margin-bottom:8px;
+color:var(--main);
+}
+.badge{
+display:inline-block;
+margin-top:10px;
+padding:6px 12px;
+border-radius:999px;
+background:#fff7d6;
+font-size:.9rem;
+}
+#pet{
+position:fixed;
+pointer-events:none;
+font-size:28px;
+z-index:999;
+transition:.08s linear;
+}
+.music-btn{
+position:fixed;
+right:20px;
+bottom:20px;
+border:none;
+border-radius:50%;
+width:60px;
+height:60px;
+font-size:1.4rem;
+cursor:pointer;
+background:white;
+box-shadow:0 10px 20px rgba(0,0,0,.12);
+}
+/* 櫻花飄落 */
+.sakura{
+position:fixed;
+top:-10px;
+font-size:20px;
+color:#f9a8d4;
+pointer-events:none;
+animation:fall linear forwards;
+z-index:1;
+}
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0;
+}
+}
+  </style>
+</head>
+
+
+<body>
+
+<div id="intro">
+<br>
+
+&#129409; 班級動物園
+<small>正在開館中...</small>
+</div>
+
+<div class="sidebar">
+<div class="logo">&#128062; 動物園導覽</div>
+
+<div class="subtitle">歡迎來到最可愛的班級世界</div>
+
+<div class="menu">
+<button onclick="show('home',this)" class="active">&#127968;
+首頁</button>
+<button onclick="window.location.href='girl.html'">&#129437; 小浣熊們</button>
+<button onclick="window.location.href='boy.html'">&#128060; 小貓熊們</button>
+<button onclick="window.location.href='teachers.html'">&#129489;&zwj;&#127979;
+訓練師們</button>
+<button onclick="window.location.href='leader.html'">&#128081;園長</button>
+<button onclick="window.location.href='campus figures.html'">&#128110;
+校園大人物</button>
+<button onclick="show('env',this)">&#128214; 活動日記</button>
+<button onclick="window.location.href='curriculum.html'">&#128218;
+課表</button>
+<button onclick="window.location.href='copyright.html'">&#128220; 版
+權頁
+</button></div>
+
+</div>
+
+<div class="content">
+<div id="home" class="page active">
+<div class="card hero">
+<h1>歡迎來到班級動物園 &#10024;</h1>
+
+<p>每位同學，都是獨一無二的小動物。<img style="width: 1000px; height: 750px;" alt="" src="team/2026%A6%7E3%A4%EB26%A4%E9%AA%BA%20%A4W%A4%C811_37%281%29%20%281%29.jpg"></p>
+
+</div>
+
+</div>
+
+<div id="girls" class="page">
+<div class="card">
+<h1>&#129437; 小浣熊們（女生）</h1>
+
+<div class="grid">
+<div class="person">
+<div class="emoji">&#129437;</div>
+
+<h3>小美</h3>
+
+<p>活潑開朗</p>
+
+<div class="badge">氣氛組</div>
+
+</div>
+
+<div class="person">
+<div class="emoji">&#129437;</div>
+
+<h3>小芳</h3>
+
+<p>文靜溫柔</p>
+
+<div class="badge">治癒系</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="boys" class="page">
+<div class="card">
+<h1>&#128060; 小貓熊們（男生）</h1>
+
+<div class="grid">
+<div class="person">
+<div class="emoji">&#128060;</div>
+
+<h3>小明</h3>
+
+<p>熱愛運動</p>
+
+<div class="badge">行動派</div>
+
+</div>
+
+<div class="person">
+<div class="emoji">&#128060;</div>
+
+<h3>小華</h3>
+
+<p>搞笑擔當</p>
+
+<div class="badge">快樂來源</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="teacher" class="page">
+<div class="card">
+<h1>&#127919; 特殊訓練師</h1>
+
+<p>班導老師：動物園最強管理者 &#128081;</p>
+
+</div>
+
+</div>
+
+<div id="env" class="page">
+<div class="card">
+<h1>&#127795; 校園環境</h1>
+
+<p>這裡有操場、教室、福利社，還有每天的青春故事。</p>
+
+</div>
+
+</div>
+
+<div id="copyright" class="page">
+<div class="card">
+<h1>&#128220; 版權頁</h1>
+
+<p>本作品僅供學習與班級展示使用。</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="pet">&#128062;</div>
+
+<button class="music-btn" onclick="toggleMusic()">&#127925;</button>
+<audio id="bgm" loop=""><source src="" type="audio/mpeg"></source>
+<script>
+function show(id, el){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.menu button').forEach(b=>b.classList.remove('active'));
+el.classList.add('active');
+}
+document.addEventListener('mousemove', e=>{
+const pet=document.getElementById('pet');
+pet.style.left=e.pageX+12+'px';
+pet.style.top=e.pageY+12+'px';
+});
+function toggleMusic(){
+alert('可自行加入背景音樂 mp3 檔案 &#127925;');
+}
+// 櫻花飄落效果
+function createSakura(){
+const sakura=document.createElement('div');
+sakura.classList.add('sakura');
+sakura.innerHTML='&#127800;';
+sakura.style.left=Math.random()*window.innerWidth+'px';
+sakura.style.animationDuration=(5+Math.random()*5)+'s';
+sakura.style.fontSize=(16+Math.random()*14)+'px';
+document.body.appendChild(sakura);
+setTimeout(()=>{
+sakura.remove();
+},10000);
+}
+setInterval(createSakura,500);
+</script></audio>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教師介紹</title>
+    <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: "微軟正黑體", sans-serif;
+      background-image: url('../icon/bg%20autumn.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+    }
+    header {
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    footer {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin: 50px 0 100px 0;
+    }
+    .card {
+      width: 40vw;
+      height: 80vh;
+      perspective: 1200px;
+    }
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .card-front {
+      background: linear-gradient(45deg, #444, #222);
+      font-size: 20px;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      background: #000;
+    }
+    .card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+      filter: brightness(0.7);
+    }
+  </style>
+  </head>
+  <body>
+    <header>教師介紹</header>
+    <div class="card-container">
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">英文老師
+            <p>學習語言不僅是技能的培養，更是打開世界的一扇窗。我的教學風格溫和有耐心，善於傾聽學生的需求，並用清晰且有邏輯的方式引導學生一步步建
+              立自信與能力。</p>
+          </div>
+          <div class="card-back"> <img src="../pic/cyw.jpg" alt="英文老師"> </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">健教老師
+            <p>健康教育不只是課本上的知識，更是生活中的智慧。我的教學重視實用性，也鼓勵學生勇於發問、自由討論，讓每一堂課都像是一場有趣又有收穫的
+              對話。</p>
+          </div>
+          <div class="card-back"> <img src="../pic/lyf.jpg" alt="健教老師"> </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">電腦老師
+            <p>我的教學風格講求條理與效率，重視基礎，也鼓勵學生動手實作、自己探索。我相信學電腦最重要的不是死記，而是「會想、敢錯、能改」。只要掌
+              握方法，每個人都有可能成為創造者，而不是只會操作的人。</p>
+          </div>
+          <div class="card-back"> <img src="../pic/ylz.jpg" alt="電腦老師"> </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">歷史老師
+            <p>我的教學風格一向嚴謹，重視細節、論據與邏輯思辨。我要求學生不只是記住答案，而是學會「為什麼這樣說」、「證據在哪裡」。歷史值得我們謹
+              慎對待，因為其中藏著太多當代的答案與未來的警訊。</p>
+          </div>
+          <div class="card-back"> <img src="../pic/zgy.jpg" alt="歷史老師"> </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">國文老師
+            <p>天地無涯何其寬廣，歲月不居何其匆忙 切莫虛度，不要等待 許自己一個壯遊世界的未來 人生夢夢成真 生命如此精彩</p>
+          </div>
+          <div class="card-back"> <img src="../pic/zyl.jpg" alt="國文老師"> </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">數學老師
+            <p>我的教學風格講究清楚的邏輯與穩健的步驟，我會耐心解釋每一個概念，也會在你鬆懈時提醒你、在你退縮時推你一把。數學沒有捷徑，但有方法；
+              我希望你不是被動地接受，而是能主動去思考、去突破。</p>
+          </div>
+          <div class="card-back"> <img src="../pic/zyt.jpg" alt="數學老師"> </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">自然老師
+            <p>我的課堂上常常有笑聲，但背後是嚴謹的科學邏輯。我鼓勵學生提問、討論，甚至「唱反調」，因為每一個有趣的問題背後，都是一扇通往知識的大
+              門</p>
+          </div>
+          <div class="card-back"> <img src="../pic/zyf.jpg" alt="自然老師"> </div>
+        </div>
+      </div>
+    </div>
+    <footer> 2025.5.2 | 製作：702網頁製作團隊<br>
+      <a title="首頁" href="../../../index.html"><img style="width: 294px; height: 121px;"
+          alt="回首頁" src="../icon/back%20home%20Autumn.png"></a><br>
+      <a href="file:///F:/www/deputy/Autumn/teacher/teacher.html"><img style="width: 195px; height: 195px;"
+          alt="上一頁" src="../icon/lasr%20page%20autumn.png"><img style="width: 195px; height: 195px;"
+          alt="下一頁" src="../icon/next%20page%20Autumn.png"></a><br>
+      <a href="../../summer/school%20life/school%20life.html"><img style="width: 173px; height: 158px;"
+          alt="上一季" src="../icon/last%20season%20autumn%20.png"></a><a href="../../winter/activity/activity.html"><img
+          style="width: 185px; height: 168px;" alt="下一季" src="../icon/next%20season%20autumn.png"></a>
+    </footer>
+  </body>
+</html>

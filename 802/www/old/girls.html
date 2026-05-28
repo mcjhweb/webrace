@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-Hant-TW">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>女生自我介紹</title>
+    <style>
+      /* 通用樣式 */
+      html, body {
+        height: 100%;  /* 確保 html 和 body 的高度是 100% */
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "微軟正黑體", sans-serif;
+        display: flex;
+        flex-direction: column;
+        background-image: url('../picture/bg%20spring.jpg'); /* 確保路徑一致 */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      /* 頁首樣式 */
+      header {
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      /* 頁尾樣式 */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+
+        width: 100%;
+        bottom: 0;
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      /* 卡片容器 */
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        max-width: 100%;
+        margin-top: 50px;
+        margin-bottom: 80px; /* 頁尾距離內容的空間 */
+      }
+
+      .card-column {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* 直立的撲克牌樣式 */
+      .card {
+        width: 40vw;  /* 調整卡片寬度為較小的值，使其直立 */
+        height: 80vh;  /* 調整卡片高度為較大的值，使其符合直立撲克牌形狀 */
+        perspective: 1200px;
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .card-inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.8s;
+        cursor: pointer;
+        border-radius: 20px; /* 圓角效果 */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* 陰影效果 */
+      }
+
+      .card:hover .card-inner {
+        transform: rotateY(180deg); /* 翻轉效果 */
+      }
+
+      .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: white;
+        box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.2); /* 內部陰影效果 */
+      }
+
+      .card-front {
+        background: #1e1e1e;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        background-image: linear-gradient(45deg, #444, #222); /* 背景漸變 */
+      }
+
+      .card-back {
+        transform: rotateY(180deg);
+        background: #000;
+        padding: 0;
+      }
+
+      .card-back img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        filter: brightness(0.7); /* 讓圖片稍微變暗 */
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center;">
+      <header>花苞</header>
+    </div>
+    <div style="text-align: center;" class="card-container">
+      <div class="card-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <div>70231&nbsp; <br>
+                李珮瑜</div>
+              <br>
+              <br>
+              <p>我叫Penny，畢業於碇內國小，現在就讀銘傳國中7年級，我覺得我們班很活潑，我最喜歡上英文課、最喜歡打羽球和排球、最懷念我的國
+                小同學，也曾參加過許多客家語比賽及表演，長大後我想環遊世界，增廣見聞 </p>
+            </div>
+            <div class="card-back"><img src="../picture/31.jpg" alt="李珮瑜"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">&nbsp;70233&nbsp; <br>
+              李芸?<br>
+              <p>我是一位女國中生，喜歡打羽球、做甜點還有看小說，每周日都會和家人一起去台北打羽球，每天都過得很充實快樂 </p>
+            </div>
+            <div class="card-back"><img src="../picture/33.jpg" alt="李芸?"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70235&nbsp;&nbsp;<br>
+              林語恩<br>
+              <p>我叫林語恩，今年要14歲啦！生日是7月1日，星座是巨蟹座，是女的，興趣是烏克麗麗and打遊戲，最愛的遊戲是麥塊 </p>
+            </div>
+            <div class="card-back"><img src="../picture/35.jpg" alt="林語恩"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70237&nbsp;&nbsp;<br>
+              郭瑀棠<br>
+              <p>我讀銘傳國中，七年二班我們導師是蔡淳昱，我們都叫他蔡蔡，我們班的人都怪怪的。我的專長是跑步，興趣是打羽毛球</p>
+            </div>
+            <div class="card-back"><img src="../picture/37.jpg" alt="郭瑀棠"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70239&nbsp;&nbsp;<br>
+              陳嬿汝<br>
+              <p>大家好!我叫陳嬿汝，很喜歡蠟筆小新、也喜歡blackpink，愛好是畫畫和聽音樂，希望可以跟大家一起努力學習，交到更多的朋友，
+                謝謝大家</p>
+            </div>
+            <div class="card-back"><img src="../picture/39.jpg" alt="陳嬿汝"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70241&nbsp;&nbsp;<br>
+              黃郁琁<br>
+              <p>我的名字叫黃郁琁，我是一個女生，我很高，我喜歡吃吃冰、睡覺、打羽毛球、還有在上課的時候突然一直笑 </p>
+            </div>
+            <div class="card-back"><img src="../picture/41.jpg" alt="黃郁琁"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70243&nbsp;&nbsp;<br>
+              葉安賢<br>
+              <p>我是一個喜歡看獵奇漫畫的正常人類，我常常會介紹百合或是獵奇漫畫給同學看，同時我也喜歡看小說，但有時會被哥哥嘲諷飽讀屍書，不過我
+                還是非常喜歡我的哥哥</p>
+            </div>
+            <div class="card-back"><img src="../picture/43.jpg" alt="葉安賢"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-column">
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70232<br>
+              呂緹嫣<br>
+              <p>我的學校是銘傳國中，我的興趣是烘焙，最喜愛的體育球類是羽球 </p>
+            </div>
+            <div class="card-back"><img src="../picture/32.jpg" alt="呂緹嫣"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70234&nbsp;&nbsp;<br>
+              李琦今<br>
+              <p>我是李琦今，我沒有興趣我也沒有愛好，在702班我學到了很多東西，希望我跟702可以一直和平的相處下去</p>
+            </div>
+            <div class="card-back"><img src="../picture/34.jpg" alt="李琦今"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70236&nbsp;&nbsp;<br>
+              張羽彤<br>
+              <p>我是一個愛看課外讀物的人類，時常被朋友陰陽博學多聞。我還喜歡在課餘時間玩遊戲，並且和別人探討遊戲技巧 </p>
+            </div>
+            <div class="card-back"><img src="../picture/36.jpg" alt="張羽彤"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70238&nbsp;&nbsp;<br>
+              陳楷甯<br>
+              <p>我就讀銘傳國我喜歡跳舞跟打羽毛球還有溜直排輪我喜歡吃蛋糕喜歡上音樂課擅長跳舞</p>
+            </div>
+            <div class="card-back"><img src="../picture/38.jpg" alt="陳楷甯"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70240&nbsp;&nbsp;<br>
+              曾禹琁<br>
+              <p>我叫曾禹琁，是銘傳國中702班的學生，擅長打北管，跳k-pop、Girl’s style、Girl’s
+                hiphop舞，我很喜歡聽音樂，假日的時候很喜歡跑跑逛逛，看一些新奇的事物，看看時下流星的趨勢</p>
+            </div>
+            <div class="card-back"><img src="../picture/40.jpg" alt="曾禹琁"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">70242&nbsp;&nbsp;<br>
+              黃紫琦<br>
+              <p>我也很喜歡認識新朋友，覺得每一個人都有自己特別的光，很想一點一點了解大家，然後一起變得更好
+                雖然話很多（笑），但我更希望自己是個能讓人感到舒服、可以放心說話的人 </p>
+            </div>
+            <div class="card-back"><img src="../picture/42.jpg" alt="黃紫琦"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <footer> 2025.5.2 | 製作：702班網編輯小組<br>
+        <a href="../../../index.html"><img style="width: 160px; height: 71px;" src="../icon/back%20home%20spring.png"></a><br>
+        <a href="../boys/boys.html"><img style="width: 121px; height: 76px;" src="../icon/last%20page%20spring.png"></a>
+        <a href="../../summer/school%20life/school%20life.html"><img style="width: 124px; height: 77px;"
+
+            src="../icon/next%20page%20spring.png"></a><br>
+        <a href="../../winter/activity/activity.html"><img style="width: 115px; height: 69px;"
+
+            src="../icon/last%20season%20spring.png"></a> <a href="../../summer/school%20life/school%20life.html"><img
+
+            style="width: 116px; height: 66px;" src="../icon/next%20season%20spring.png"></a>
+      </footer>
+    </div>
+  </body>
+</html>

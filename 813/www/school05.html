@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>行政大樓 - 銘傳國中</title>
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      padding-top: 60px;
+    }
+
+    /* 返回連結：已移除 target 屬性 */
+    .back-link {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-weight: bold;
+    }
+
+    header {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* 圖片容器 */
+    .border-container {
+      border: 5px solid #333;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      background-color: #ddd;
+    }
+
+    /* 輪播動畫 */
+    .image-slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: fade-animation 8s infinite;
+    }
+
+    .image1 {
+      background-image: url('school04.jpg');
+    }
+
+    .image2 {
+      background-image: url('school05.jpg');
+      animation-delay: 4s; /* 讓第二張圖在半程時淡入 */
+    }
+
+    @keyframes fade-animation {
+      0%, 45%, 100% { opacity: 1; z-index: 1; }
+      50%, 95% { opacity: 0; z-index: 0; }
+    }
+
+    /* 內容區塊 */
+    .content-section {
+      width: 90%;
+      max-width: 800px;
+      margin-top: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      margin-bottom: 40px;
+      border: 1px solid #ccc;
+    }
+
+    td {
+      padding: 20px;
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="back-link" href="school02.html">← 返回地圖</a>
+
+  <header>行政大樓</header>
+
+  <div class="border-container">
+    <div class="image-slider image1"></div>
+    <div class="image-slider image2"></div>
+  </div>
+
+  <div class="content-section">
+    <ul>
+      <li>簡介</li>
+    </ul>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>這棟樓主要是九年級學長姐的教室所在地，因為面臨升學大考，經過那裡時氣氛通常都很安靜專注。</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

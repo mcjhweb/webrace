@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=big5">
+    <title>班級首頁 - 813</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: #CCCCFF; 
+            font-family: "微軟正黑體", "Microsoft JhengHei", sans-serif;
+            overflow: hidden; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 讓內部的絕對定位參考 body */
+        }
+
+        /* 標題 */
+        .welcome-title {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333366;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 1px 1px 2px white;
+        }
+
+        /* --- 時間與語句：調整至右上方 --- */
+        .time-box {
+            position: absolute;
+            top: 20px;   /* 距離上方 20 像素 */
+            right: 20px;  /* 距離右方 20 像素 */
+            text-align: right; /* 文字靠右對齊 */
+            background: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(5px); /* 背景模糊，增加質感 */
+            padding: 10px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 100; /* 確保在最上層 */
+        }
+
+        #current-time {
+            font-weight: bold;
+            color: #333366;
+            font-size: 22px;
+            display: block;
+        }
+
+        #warm-text {
+            color: #555588;
+            font-size: 14px;
+            margin-top: 3px;
+            font-weight: bold;
+        }
+
+        /* 照片區域 */
+        .photo-area {
+            position: relative;
+            width: 400px;
+            height: 450px;
+        }
+
+        .photo-item {
+            position: absolute;
+            width: 182px; 
+            height: 221px; 
+            background-color: white;
+            padding: 6px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            animation: moveAround 12s infinite ease-in-out;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover; 
+            border-radius: 6px;
+            display: block;
+        }
+
+        .photo-caption {
+            text-align: center;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #444;
+            font-weight: bold;
+        }
+
+        /* 動態設定 */
+        .item1 { animation-delay: 0s; }
+        .item2 { animation-delay: -3s; }
+        .item3 { animation-delay: -6s; }
+        .item4 { animation-delay: -9s; }
+
+        @keyframes moveAround {
+            0%, 20% { top: 0; left: 0; z-index: 1; transform: scale(1); }
+            25%, 45% { top: 0; left: 220px; z-index: 2; transform: scale(1.05); }
+            50%, 70% { top: 240px; left: 220px; z-index: 1; transform: scale(1); }
+            75%, 95% { top: 240px; left: 0; z-index: 0; transform: scale(0.95); }
+            100% { top: 0; left: 0; z-index: 1; transform: scale(1); }
+        }
+
+        .motto {
+            margin-top: 40px;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px 25px;
+            border-radius: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+    <div class="photo-area">
+        <div class="photo-item item1"><img src="p1.jpg"><div class="photo-caption">7年級校慶</div></div>
+        <div class="photo-item item2"><img src="p2.jpg"><div class="photo-caption">7年級趣味競賽</div></div>
+        <div class="photo-item item3"><img src="p3.jpg"><div class="photo-caption">學習時光</div></div>
+        <div class="photo-item item4"><img src="p4.jpg"><div class="photo-caption">歡笑日常</div></div>
+    </div>
+
+
+</body>
+</html>

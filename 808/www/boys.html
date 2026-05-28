@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銘傳國中 808 動物大圖鑑</title>
+    <style>
+        :root {
+            --zoo-green: #2d5a27;
+            --zoo-brown: #8b4513;
+            --zoo-light: #f0f4f0;
+            --boy-blue: #2196f3;
+            --girl-pink: #e91e63;
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            background-color: var(--zoo-light);
+            background-image: radial-gradient(#d1dbd1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        body { margin: 0; padding: 0; font-family: "Microsoft JhengHei", sans-serif; }
+
+        header { display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 20px; }
+        @media (min-width: 768px) { header { flex-direction: row; justify-content: flex-start; padding-left: 60px; } }
+
+        .hanging-sign {
+            background: #fff; border: 5px solid var(--zoo-brown);
+            border-radius: 15px; padding: 10px 20px;
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative; transform-origin: top center;
+            animation: swing 3.5s ease-in-out infinite;
+        }
+        .hanging-sign::before, .hanging-sign::after { content: ""; position: absolute; top: -60px; width: 4px; height: 60px; background: #333; z-index: -1; }
+        .hanging-sign::before { left: 20px; } .hanging-sign::after { right: 20px; }
+
+        .nav-btn {
+            padding: 8px 16px; background: var(--zoo-green); color: white;
+            text-decoration: none; border-radius: 20px; font-weight: bold;
+            box-shadow: 0 4px 0px #1a3517; transition: 0.2s; border: none; cursor: pointer;
+        }
+        .nav-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0px #1a3517; }
+
+        .page-banner {
+            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.8)), url('101.jpg');
+            background-size: cover; background-position: center;
+            height: 200px; display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center;
+        }
+
+        /* 性別中斷標題 */
+        .gender-divider {
+            width: 100%; margin: 40px 0 20px 0; padding: 15px;
+            border-radius: 10px; font-size: 1.6rem; font-weight: bold;
+            display: flex; align-items: center; gap: 15px;
+        }
+        .divider-boy { background: rgba(33, 150, 243, 0.1); border-left: 10px solid var(--boy-blue); color: var(--boy-blue); }
+        .divider-girl { background: rgba(233, 30, 153, 0.1); border-left: 10px solid var(--girl-pink); color: var(--girl-pink); }
+
+        .image-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 0 40px; }
+        .grid-item {
+            flex: 1; min-width: 180px; max-width: 220px;
+            background: white; padding: 15px; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            cursor: pointer; transition: 0.3s; text-align: center;
+        }
+        .grid-item:hover { transform: translateY(-10px); }
+        .grid-item img { width: 100%; height: 140px; object-fit: contain; background: #f9f9f9; border-radius: 10px; margin-bottom: 10px; }
+        .grid-item p { margin: 5px 0; font-weight: bold; font-size: 1.1rem; }
+
+        /* 彈窗樣式 */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            z-index: 9999; justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 850px;
+            display: flex; border-radius: 25px; overflow: hidden; position: relative; max-height: 90vh;
+        }
+        #mImg { width: 45%; object-fit: contain; background: #f7f7f7; }
+        .modal-info { flex: 1; padding: 30px; overflow-y: auto; text-align: left; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #888; }
+        .tag { display: inline-block; background: #eee; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin: 5px 5px 5px 0; }
+
+        @keyframes swing { 0%, 100% { transform: rotate(3deg); } 50% { transform: rotate(-3deg); } }
+        @media (max-width: 700px) { .modal-content { flex-direction: column; } #mImg { width: 100%; max-height: 35vh; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hanging-sign">
+            <img src="logo_black.png" alt="Logo" style="width:50px;">
+            <div style="font-size: 1.5rem; color: #8b4513; font-weight: bold;">808<br>動物園</div>
+    </div>
+    
+<nav style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <style>
+        /* 下拉選單基礎樣式 */
+        /* --- 導覽列 (精準圓角修正) --- */
+        nav { display: flex; gap: 10px; flex-wrap: wrap; }
+        .nav-item { position: relative; display: inline-block; }
+        .nav-btn {
+            padding: 8px 16px; background: var(--zoo-green); color: white;
+            text-decoration: none; border-radius: 20px; font-weight: bold;
+            box-shadow: 0 4px 0px #1a3517; transition: 0.2s; border: none; cursor: pointer; display: block;
+        }
+        .nav-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0px #1a3517; }
+        
+        /* 只有在有下拉選單且 hover 時，下方才變直角 */
+        .nav-item.has-submenu:hover .nav-btn { border-radius: 20px 20px 0 0; }
+
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+            background-color: var(--zoo-green); z-index: 100; border-radius: 0 0 10px 10px; overflow: hidden;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        }
+        .dropdown-content a {
+            color: white; padding: 10px 12px; text-decoration: none; display: block;
+            font-size: 0.9rem; transition: 0.3s; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;
+        }
+        .dropdown-content a:hover { background-color: #3e7a36; }
+        .nav-item:hover .dropdown-content { display: block; }
+    </style>
+    
+	<!-- 1. 最新消息 -->
+    <div class="nav-item">
+        <a href="index.html" class="nav-btn">🏠 回首頁</a>
+    </div>
+
+    <!-- 2. 動物圖鑑 -->
+    <div class="nav-item has-submenu">
+        <a class="nav-btn" style="background: var(--zoo-brown);">📖 動物圖鑑</a>
+        <div class="dropdown-content">
+            <a href="boys.html">男生們</a>
+            <a href="girls.html">女生們</a>
+        </div>
+    </div>
+
+    <!-- 3. 訓獸師們 -->
+    <div class="nav-item has-submenu">
+        <a class="nav-btn">🐱 訓獸師們</a>
+        <div class="dropdown-content">
+            <a href="teachers.html">訓獸師簡介</a>
+            <a href="9m.html">園區大人物</a>
+        </div>
+    </div>
+
+    <!-- 4. 演出時程 (課表) -->
+    <div class="nav-item">
+        <a href="schedule.html" class="nav-btn">📅 演出時程</a>
+    </div>
+
+    <!-- 5. 園區介紹 -->
+    <div class="nav-item has-submenu">
+        <a class="nav-btn">🦁 園區介紹</a>
+        <div class="dropdown-content">
+            <a href="map.html">園區地圖</a>
+            <a href="goout.html">外出探索</a>
+            <a href="life.html">動物日常</a>
+        </div>
+    </div>
+
+    <!-- 6. 關於我們 -->
+    <div class="nav-item">
+        <a href="we.html" class="nav-btn">🐯關於我們</a>
+    </div>
+</nav>
+
+
+</header>
+
+<div class="page-banner">
+    <h1>📖 808 男生動物大圖鑑</h1>
+</div>
+
+<main style="padding-bottom: 60px;">
+    <div class="image-grid">
+	    <div class="gender-divider divider-boy">🦁 男生們 (座號 01 - 14)</div>
+        <!-- 這裡重複 14 個 -->
+        <div class="grid-item" onclick="openModal('無尾熊', '座號 01', '全班最帥控球後衛', '在教室裡是個高冷帥哥 但在球場上...', 'owl.png')"><img src="owl.png"><p>01 林易承</p></div>
+        <div class="grid-item" onclick="openModal('燕子', '座號 02', '體育生', '燕子西一去不復返，曾經的二號，永遠的二號，我們懷念他', 'owl.png')"><img src="owl.png"><p>02 ???(已轉走)</p></div>
+        <div class="grid-item" onclick="openModal('猴子', '座號 03', '充滿活力的猴子', '', 'owl.png')"><img src="owl.png"><p>03 邵尚澄</p></div>
+        <div class="grid-item" onclick="openModal('寶鴿', '座號 04', '最可愛的保包鴿', '描述', 'people/004.jpg')"><img src="people/004.jpg"><p>04 張俊逸</p></div>
+        <div class="grid-item" onclick="openModal('N雞', '座號 05', '文靜乖巧的吉祥物', '內容', 'people/005.jpg')"><img src="people/005.jpg"><p>05 張恩齊</p></div>
+        <div class="grid-item" onclick="openModal('雞翔', '座號 06', '全班最帥得分後衛', '', 'people/006.jpg')"><img src="people/006.jpg"><p>06 張鈞翔</p></div>
+        <div class="grid-item" onclick="openModal('曹鴿', '座號 07', 'aka羽毛球天才', '', 'people/007.jpg')"><img src="people/007.jpg"><p>07 曹立憬</p></div>
+        <div class="grid-item" onclick="openModal('雞米', '座號 08', '字體飄灑奔放豪邁的陽光開朗大男孩', '描述', 'owl.png')"><img src="owl.png"><p>08 陳均碩</p></div>
+        <div class="grid-item" onclick="openModal('鳥巢', '座號 09', '捲毛大帥哥', '顏值與智商同時在線的超級天才', 'people/009.jpg')"><img src="people/009.jpg"><p>09 陳冠宇</p></div>
+        <div class="grid-item" onclick="openModal('魷魚', '座號 10', '唯一沒被奇怪知識汙染的文靜男生', '', 'people/010.jpg')"><img src="people/010.jpg"><p>10 游程翔</p></div>
+        <div class="grid-item" onclick="openModal('黑貓', '座號 11', '最可愛的小捧油', '描述', 'owl.png')"><img src="owl.png"><p>11 湯于翔</p></div>
+        <div class="grid-item" onclick="openModal('鳥顏', '座號 12', '銘傳好聲音', '', 'owl.png')"><img src="owl.png"><p>12 顏維澄</p></div>
+        <div class="grid-item" onclick="openModal('鳥魏', '座號 13', '奇怪的瘋狂發明家', '描述', 'owl.png')"><img src="owl.png"><p>13 魏士翔</p></div>
+        <div class="grid-item" onclick="openModal('獨角獸', '座號 14', '全班最耀眼的一束光', '最美麗溫柔親切可愛貌美如花的大主包(我沒有被強迫，全部都是我自願打的)', 'people/014.jpg')"><img src="people/014.jpg"><p>14 許喆豪</p></div>
+    </div>
+</main>
+
+<div id="zooModal" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="mImg" src="">
+        <div class="modal-info">
+            <h2 id="mTitle" style="margin: 0; color: var(--zoo-brown);">名稱</h2>
+            <div style="margin: 15px 0;"><span id="mType" class="tag"></span><span id="mHabit" class="tag"></span></div>
+            <hr style="border: 0.5px solid #eee; margin: 20px 0;">
+            <div id="mDescArea" style="color:#555; line-height:1.8;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(name, type, habit, desc, img) {
+        document.getElementById('mTitle').innerText = name;
+        document.getElementById('mType').innerText = type;
+        document.getElementById('mHabit').innerText = habit;
+        document.getElementById('mImg').src = img;
+        document.getElementById('mDescArea').innerText = desc;
+        document.getElementById('zooModal').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('zooModal').style.display = 'none'; }
+    function closeModalOutside(event) { if (event.target.id === "zooModal") closeModal(); }
+</script>
+</body>
+</html>

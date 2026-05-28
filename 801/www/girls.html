@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Girls 班級介紹</title>
+
+<style>
+/* 全站 */
+body {
+    font-family: "Microsoft JhengHei", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffd6e7, #fff5fa);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+
+}
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #ffd6e7;
+    border-top: 6px solid #ff4f93;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* 標題 */
+h1 {
+    font-size: 42px;
+    margin: 25px 0;
+    color: #ff4f93;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* HOME */
+.home img {
+    width: 140px;
+    margin-top: 15px;
+    transition: 0.3s;
+}
+
+.home img:hover {
+    transform: scale(1.08);
+}
+
+/* 卡片容器 */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+}
+
+/* 卡片 */
+.card {
+    width: 280px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.35s;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+}
+
+/* 圖片 */
+.card img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+}
+
+/* 名字 */
+.name {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0 10px;
+    color: #ff4f93;
+}
+
+/* 介紹 */
+.desc {
+    padding: 0 18px 20px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+    white-space: pre-line;
+}
+
+/* 響應式 */
+@media screen and (max-width: 768px) {
+    .card {
+        width: 90%;
+    }
+
+    .card img {
+        height: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+
+
+<!-- Home -->
+<a href="index.html" class="home">
+    <img src="pic/home.png" alt="home">
+</a>
+
+<h1>女生介紹</h1>
+
+<div class="container">
+
+    <!-- 31 -->
+    <div class="card">
+        <img src="pic/31.jpg" alt="">
+        <div class="name">31 王宸翎</div>
+        <div class="desc">
+我是王宸翎，喜歡用鋼琴的旋律表達心情，
+是個沉浸在音樂世界的人。
+        </div>
+    </div>
+
+    <!-- 32 -->
+    <div class="card">
+        <img src="pic/32.jpg" alt="">
+        <div class="name">32 朱泳澐</div>
+        <div class="desc">
+我是朱泳澐，我喜歡唱歌和跳舞，
+享受在舞台上表現自己。
+        </div>
+    </div>
+
+    <!-- 33 -->
+    <div class="card">
+        <img src="pic/33.jpg" alt="">
+        <div class="name">33 吳恩珊</div>
+        <div class="desc">
+我是吳恩珊，
+我喜歡在網路上分享生活點滴，
+記錄每一個有趣的瞬間。
+        </div>
+    </div>
+
+    <!-- 34 -->
+    <div class="card">
+        <img src="pic/34.jpg" alt="">
+        <div class="name">34 沈筠蓁</div>
+        <div class="desc">
+我是沈筠蓁，我喜歡畫畫，
+尤其是素描，
+在一筆一畫中慢慢捕捉細節。
+        </div>
+    </div>
+
+    <!-- 35 -->
+    <div class="card">
+        <img src="pic/35.jpg" alt="">
+        <div class="name">35 林孟璇</div>
+        <div class="desc">
+我是林孟璇，我喜歡打羽毛球，
+在來回揮拍中感受速度與節奏。
+        </div>
+    </div>
+
+    <!-- 36 -->
+    <div class="card">
+        <img src="pic/36.jpg" alt="">
+        <div class="name">36 馬千又</div>
+        <div class="desc">
+我是馬千又，
+我喜歡用幽默讓身邊氣氛更輕鬆，
+常常成為大家的笑點來源。
+        </div>
+    </div>
+
+    <!-- 37 -->
+    <div class="card">
+        <img src="pic/37.jpg" alt="">
+        <div class="name">37 張雯鈞</div>
+        <div class="desc">
+我是張雯鈞，
+我喜歡和朋友一起出去玩，
+與朋友共度時光是最開心的事情。
+        </div>
+    </div>
+
+    <!-- 38 -->
+    <div class="card">
+        <img src="pic/38.jpg" alt="">
+        <div class="name">38 郭若情</div>
+        <div class="desc">
+我是郭若情，書籍是我的良伴。
+小說能讓我沉浸在文字的世界中，
+享受閱讀帶來的思考與啟發。
+        </div>
+    </div>
+
+    <!-- 42 -->
+    <div class="card">
+        <img src="pic/42.jpg" alt="">
+        <div class="name">42 劉恩希</div>
+        <div class="desc">
+我是劉恩希，
+我曾是深澳國小舞龍隊隊員，
+能展現團隊精神與傳統文化是我的榮耀。
+        </div>
+    </div>
+
+    <!-- 44 -->
+    <div class="card">
+        <img src="pic/44.jpg" alt="">
+        <div class="name">44 盧昱文</div>
+        <div class="desc">
+我非常喜歡唱歌，
+音樂讓我感到自由與快樂，
+也讓我更接近自己。
+        </div>
+    </div>
+
+    <!-- 45 -->
+    <div class="card">
+        <img src="pic/45.jpg" alt="">
+        <div class="name">45 林語暄</div>
+        <div class="desc">
+我是林語暄，
+我是個外向的人，
+總喜歡和朋友一起分享歡笑。
+        </div>
+    </div>
+
+    <!-- 46 -->
+    <div class="card">
+        <img src="pic/46.jpg" alt="">
+        <div class="name">46 高可凡</div>
+        <div class="desc">
+我是高可凡，
+常和朋友一起唱歌、跳舞、演戲，
+讓生活充滿歡笑與創意。
+        </div>
+    </div>
+
+    <!-- 47 -->
+    <div class="card">
+        <img src="pic/47.jpg" alt="">
+        <div class="name">47 陳妍姿</div>
+        <div class="desc">
+我是陳妍姿，
+喜歡挑戰自我、突破極限，
+希望自己能不斷成長進步！
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

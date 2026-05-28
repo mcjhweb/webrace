@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="styles.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>713班級網頁</title>
+	<style>
+    body, html {
+      margin: 0;
+      height: 100%;
+    }
+    header {
+      height: 10vh;
+      background-color: #4A90E2;
+    }
+    .layout {
+      display: flex;
+      height: 90vh;
+    }
+    aside {
+      width: 20%;
+      background-color: #f8f9fa;
+      border-right: 1px solid #ddd;
+    }
+    main {
+      flex-grow: 1;
+      height: 100%;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+	
+</head>
+<frameset frameborder="0" rows="10%,*">
+    <frame name="1" src="1.html" >
+    <frameset frameborder="0" cols="20%,*">
+        <frame src="2.html?v=1.0" noresize>
+        <frame name="3.html" src="3.html" noresize>
+    </frameset>
+</frameset>
+<noframes>
+    <body>
+        <p>您的瀏覽器不支援框架。</p>
+    </body>
+</noframes>
+</html>

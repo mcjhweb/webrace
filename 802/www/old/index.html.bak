@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta content="text/html; charset=big5" http-equiv="content-type">
+    <title>702</title>
+    <style>
+    body {
+      margin: 0;
+      font-family: "微軟正黑體", sans-serif;
+    }
+
+    header {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 1.5em;
+      font-size: 2em;
+      letter-spacing: 2px;
+    }
+     /* 讓 span 中的文字也顯示為白色 */
+      .poetry span {
+  color: white; 
+}
+
+    .season {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      flex-direction: column;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* 暗化效果的遮罩 */
+    .season::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4); /* 半透明黑 */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    /* 讓文字浮現 */
+    .season:hover::before {
+      opacity: 1;
+    }
+
+    .season .plant-name,
+    .season .poetry {
+      position: relative;
+      z-index: 2;
+      transition: opacity 0.3s;
+    }
+
+    .season .poetry {
+      opacity: 0;
+    }
+
+    .season:hover .poetry {
+      opacity: 1;
+    }
+
+    .spring {
+      background: linear-gradient(to bottom, #a8d5ba, #e6f4ea);
+      color: #2d4b3b;
+    }
+
+    .summer {
+      background: linear-gradient(to bottom, #fce96a, #fff5d6);
+      color: #7a5a00;
+    }
+
+    .autumn {
+      background: linear-gradient(to bottom, #f5a25d, #ffe5cc);
+      color: #6a3b00;
+    }
+
+    .winter {
+      background: linear-gradient(to bottom, #d45a6a, #f8f4f0);
+      color: #6a1a1a;
+    }
+
+    .plant-name {
+      font-size: 2em;
+      margin: 0.3em 0;
+    }
+
+    .poetry {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+    }
+    </style>
+  </head>
+  <body>
+    <header> our class-702 </header>
+    <h5> </h5>
+    <section class="season spring">
+      <div class="plant-name"><i><b>翠</b></i><br>
+        幸運初生，柔嫩而希望。</div>
+      <div class="poetry">&nbsp; <span><a target="_top" title="男生介紹" href="deputy/spring/boys/boys.html">春
+            芽</a>|<a href="deputy/spring/girls/girls.html">花 苞</a></span> </div>
+    </section>
+    <section class="season summer">
+      <div class="plant-name"><i><b>煦</b></i><br>
+        盛放無畏，光芒如詩。</div>
+      <div class="poetry"> <span><a href="deputy/summer/school%20pictures/school_picture.html">風
+            華</a>|<a href="file:///F:/www/deputy/summer/school%20life/school%20life.html">課
+            餘</a></span> </div>
+    </section>
+    <section class="season autumn">
+      <div class="plant-name"><i><b>蕭</b></i><br>
+        沉靜如畫，葉落知秋。</div>
+      <div class="poetry"> <span><a href="deputy/Autumn/teacher/teacher.html">皇
+            帝</a>|<a target="_top" title="老師介紹" href="deputy/Autumn/teachers/teaches.html">丞
+            相</a></span></div>
+    </section>
+    <section class="season winter">
+      <div class="plant-name"><i><b>凝</b></i><br>
+        寒中有香，傲雪紅妍。</div>
+      <div class="poetry"> <span><a target="_top" title="活動公告" href="deputy/winter/activity/activity.html">預
+            言</a>|<a href="deputy/winter/grade/grade.html">功名</a></span></div>
+    </section>
+    <footer>2025.5.2&nbsp; | 製作：702班網編輯小組</footer>
+    <title>702</title>
+    <style>
+    body {
+      margin: 0;
+      font-family: "微軟正黑體", sans-serif;
+    }
+
+    header {
+      background-color: #f2f2f2;
+      text-align: center;
+      padding: 1.5em;
+      font-size: 2em;
+      letter-spacing: 2px;
+    }
+     /* 讓 span 中的文字也顯示為白色 */
+      .poetry span {
+  color: white; 
+}
+
+    .season {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      flex-direction: column;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    /* 暗化效果的遮罩 */
+    .season::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4); /* 半透明黑 */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    /* 讓文字浮現 */
+    .season:hover::before {
+      opacity: 1;
+    }
+
+    .season .plant-name,
+    .season .poetry {
+      position: relative;
+      z-index: 2;
+      transition: opacity 0.3s;
+    }
+
+    .season .poetry {
+      opacity: 0;
+    }
+
+    .season:hover .poetry {
+      opacity: 1;
+    }
+
+    .spring {
+      background: linear-gradient(to bottom, #a8d5ba, #e6f4ea);
+      color: #2d4b3b;
+    }
+
+    .summer {
+      background: linear-gradient(to bottom, #fce96a, #fff5d6);
+      color: #7a5a00;
+    }
+
+    .autumn {
+      background: linear-gradient(to bottom, #f5a25d, #ffe5cc);
+      color: #6a3b00;
+    }
+
+    .winter {
+      background: linear-gradient(to bottom, #d45a6a, #f8f4f0);
+      color: #6a1a1a;
+    }
+
+    .plant-name {
+      font-size: 2em;
+      margin: 0.3em 0;
+    }
+
+    .poetry {
+      font-size: 1.2em;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      font-size: 0.9em;
+    }
+    </style>
+    <header> our class-702 </header>
+    <h5> </h5>
+    <section class="season spring">
+      <div class="plant-name"><i><b>翠</b></i><br>
+        幸運初生，柔嫩而希望。</div>
+      <div class="poetry">&nbsp; <span><a target="_top" title="男生介紹" href="deputy/spring/boys/boys.html">春
+            芽</a>|<a href="deputy/spring/girls/girls.html">花 苞</a></span> </div>
+    </section>
+    <section class="season summer">
+      <div class="plant-name"><i><b>煦</b></i><br>
+        盛放無畏，光芒如詩。</div>
+      <div class="poetry"> <span><a href="deputy/summer/school%20pictures/school_picture.html">風
+            華</a>|<a href="file:///F:/www/deputy/summer/school%20life/school%20life.html">課
+            餘</a></span> </div>
+    </section>
+    <section class="season autumn">
+      <div class="plant-name"><i><b>蕭</b></i><br>
+        沉靜如畫，葉落知秋。</div>
+      <div class="poetry"> <span><a href="deputy/Autumn/teacher/teacher.html">皇
+            帝</a>|<a target="_top" title="老師介紹" href="file:///F:/www/deputy/Autumn/teachers/teaches.html">丞
+            相</a></span></div>
+    </section>
+    <section class="season winter">
+      <div class="plant-name"><i><b>凝</b></i><br>
+        寒中有香，傲雪紅妍。</div>
+      <div class="poetry"> <span><a target="_top" title="活動公告" href="deputy/winter/activity/activity.html">預
+            言</a>|<a href="deputy/winter/grade/grade.html">功名</a></span></div>
+    </section>
+    <footer>2025.5.2&nbsp; | 製作：702班網編輯小組</footer>
+  </body>
+</html>

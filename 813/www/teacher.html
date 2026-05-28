@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>師長介紹 - 813 班級網頁</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #CCCCFF;
+            font-family: "微軟正黑體", sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            text-align: center; font-size: 32px; color: #444488;
+            margin-bottom: 40px; font-weight: bold;
+        }
+
+        #teacher-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .teacher-card {
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden;
+            text-align: center; 
+            padding-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 480px; 
+        }
+
+        /* 滑鼠移入效果 */
+        .teacher-card:hover { 
+            transform: translateY(-5px); 
+            height: 580px; 
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        /* 照片容器 */
+        .teacher-photo { 
+            width: 100%; 
+            height: 320px; 
+            flex-shrink: 0; 
+            overflow: hidden;
+            background-color: #f8f8ff; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .teacher-photo img { 
+            max-width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* 改為 cover 讓老師的照片看起來更整齊 */
+            transition: transform 0.4s ease;
+        }
+
+        .teacher-card:hover .teacher-photo img {
+            transform: scale(1.05);
+        }
+        
+        .teacher-name { font-size: 24px; font-weight: bold; color: #333366; margin: 15px 0 5px; }
+
+        .teacher-info { 
+            font-size: 15px; 
+            color: #666; 
+            padding: 0 20px; 
+            line-height: 1.6;
+            flex-grow: 1;
+            overflow: hidden;
+            transition: all 0.4s ease;
+			text-align: left; 
+        }
+
+        .teacher-card:hover .teacher-info {
+            overflow-y: auto;
+        }
+
+        .subject-tag {
+            display: inline-block; 
+            margin: 10px auto; 
+            background: #444488;
+            color: white; 
+            padding: 5px 18px; 
+            border-radius: 20px; 
+            font-size: 13px;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .teacher-info::-webkit-scrollbar { width: 5px; }
+        .teacher-info::-webkit-scrollbar-thumb { background: #CCCCFF; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1 class="page-title">813 師長介紹</h1>
+
+    <div id="teacher-container"></div>
+
+    <script>
+        // 老師資料設定區
+        const teacherData = [
+            { 
+                name: "陳0文", 
+                subject: "班導師 /英文/銘心繪", 
+                info: "我們班的班導是一位非常和藹可親的英文老師，上課時，總是面帶微笑，對我們耐心指導，讓我們感到輕鬆自在。她課業盯得不算緊，仍然給我們空間。她是一個幽默風趣的人，學生有時候會跟她開玩笑，她也會親切地回應我們。沒事的時候，她會播放英文歌曲，讓我們從中認識英文片語，增進英文學習。老師用她的愛心與智慧，讓我們在知識的海洋中遨遊，收穫滿滿。", 
+                img: "english.jpg" 
+            },
+            { 
+                name: "江0帥", 
+                subject: "公民", 
+                info: "老師不像一般的老師只是照本宣科，他總是會提出一些開放性問題，讓我們討論自己對某些社會議題的看法”然後讓我們發表意見，這樣的討論不僅讓我們學到知識，還能聽到不同同學的觀點，每次討論後，老師都會總結，並指出我們的討論中有趣的觀點，幫助我們更清楚地了解公民責任和權利。老師的課不僅教會了我們公民知識，更讓我們對自己作為一個公民的角色有了更深的理解。每次上這門課，我都能學到很多課本上學不到的東西，也讓我更加關心身邊的社會問題。",
+                img: "citizen.jpg" 
+            },
+			{ 
+                name: "莊0豪", 
+                subject: "數學", 
+                info: "這位老師教學風格沉穩且嚴肅，開放而不失規矩，課堂上面對在數學方面有疑惑的學生都會認真答疑解惑且富有耐心。",
+                img: "math.jpg" 
+            },
+			{ 
+                name: "陳0怡", 
+                subject: "國文", 
+                info: "國文老師個性溫和、友善並且常以微笑待人，教學方式細膩且深入淺出，教學時，常鼓勵同學們參與課堂上問題的討論並加分，讓大家對國文有更高的熱忱。",
+                img: "chinese.jpg" 
+            },
+			{ 
+                name: "姚0晴", 
+                subject: "歷史/社會", 
+                info: "歷史老師教學風格活潑有趣，在講述歷史事件時，她會讓我們了解前因後果而非死記硬背，讓我們能更容易的了解各個歷史事件的時間軸。",
+                img: "history.jpg" 
+            },
+			{ 
+                name: "蔡0宗", 
+                subject: "健教", 
+                info: "老師在課堂中常常使用影片、動畫、等工具來輔助教學，讓我們能夠更直觀地了解健康概念和技巧。教老師不僅是傳授我們健康知識，更是引導我們如何在日常生活中養成良好的習慣，保持身心的平衡。透過老師的教學，我們不僅學會了如何選擇健康的食物，還能掌握運動技巧和急救技能，這些都將陪伴我們一生。",
+                img: "healthy.jpg" 
+            },
+			{ 
+                name: "張0瑯", 
+                subject: "本土語", 
+                info: "我們的台語老師是一位非常用心的老師。每次上課，他總是因為擔心課文講不完，會加快速度，確保我們能在考試前學會所有的內容。他很關心我們的成績，對作業沒交的同學會反覆提醒，讓我們不會忘記。除了傳統的教學，他還會用影片輔助我們學習，讓我們更容易理解台語的魅力。他是一位既負責又貼心的老師。",
+                img: "native_language.jpg" 
+            },
+			{ 
+                name: "吳0鴻", 
+                subject: "資訊科技", 
+                info: "我們的資訊科技老師是一位認真且細心的男老師。上課時，他總是耐心地指導同學操作電腦，從基礎的程式設計到網頁製作，都能用清楚易懂的方式講解，讓同學們能一步一步學會資訊技能。",
+                img: "information.jpg" 
+            },
+			{ 
+                name: "萬0庭", 
+                subject: "音樂", 
+                info: "老師的教學風格非常幽默又有趣。每堂課，她都會鼓勵我們主動參與，無論是演奏技巧，還是表演練習，張老師總是能以輕鬆的方式讓我們對音樂更加投入。最棒的是，老師總是很有耐心，無論我們有什麼問題，她都會耐心地解答。有時候，老師也會讓我們看一些用各種方式來呈現音樂的影片，這讓我們覺得音樂真的很有趣，也激發了我們學習的熱情。",
+                img: "art.jpg" 
+            },
+			{ 
+                name: "游0毅", 
+                subject: "視藝", 
+                info: "本班的藝術老師是一位富有創意與熱情的男老師。上課時，他常引導同學觀察生活中的美感，透過繪畫與創作表達自己的想法，讓藝術課充滿想像力與樂趣。老師鼓勵同學自由發揮創意，不侷限於固定形式，並耐心給予建議與指導。在老師的帶領下，同學們逐漸培養美感素養，也學會欣賞藝術與勇敢表現自我。",
+                img: "art.jpg" 
+            },
+			{ 
+                name: "蔡0帆", 
+                subject: "生活科技", 
+                info: "我們班的生活科技老師是一位親切的女老師。上課時，她常帶領同學進行各種動手實作活動，從設計構想到實際製作，讓大家在操作中學習生活科技的知識與技巧。",
+                img: "life.jpg" 
+            },
+			{ 
+                name: "林0婉", 
+                subject: "自然", 
+                info: "本班的自然老師是一位有趣味且認真的女老師。上課時，她善於用生活中的例子說明科學原理，讓原本抽象的自然知識變得容易理解，也讓同學在學習中感受到探索科學的樂趣。老師鼓勵同學多觀察、多提問，並透過實驗與討論培養科學思考能力。在老師的引導下，同學們不僅學習到自然科學知識，也建立了主動探究與求真的學習態度。",
+                img: "science.jpg" 
+            },
+			{ 
+                name: "劉0綺", 
+                subject: "綜合", 
+                info: "我們的綜合老師是一位很有活力的女老師，每堂課都會安排一些有趣的團隊活動。老師分組時不會讓我們選擇自己喜歡的人，而是隨機分配，讓我們學會與不同的同學合作。雖然有時候會和不太熟悉的同學一起，但我們也因此學到了更多的合作技巧，課堂上總是充滿了挑戰和歡笑。",
+                img: "comprehensive.jpg" 
+            },
+			{ 
+                name: "余0觀", 
+                subject: "地理", 
+                info: "老師是一位非常有經驗的教師，擁有深厚的地理知識，無論是自然景觀、氣候變遷，還是人類活動如何影響地球，老師總是能夠以生動有趣的方式來講解，讓每一堂課都充滿挑戰與發現。老師的教學方式充滿活力和創新，成功地將地理學科的學習變得既生動又實用。老師不僅幫助我們深刻理解地理知識，還激發了我們對學習的熱情。這種教學方法不僅讓我們在課堂上獲得知識，還能夠在現實生活中運用所學，提升我們的批判性思維和解決問題的能力。",
+                img: "geography.jpg" 
+            },
+			{ 
+                name: "李0玲", 
+                subject: "體育", 
+                info: "老師是一位非常熱情且有耐心的老師，不僅在課堂上教我們運動技能，還鼓勵我們培養團隊合作和互相幫助的精神，除了運動技術的指導，老師也很注重我們的健康，會關心一些身體不適的同學，讓我們避免運動傷害。老師不僅教會了我們運動技巧，還讓我們懂得了團隊合作的重要性。我們很感謝老師的辛勤付出和關心!",
+                img: "healthy.jpg" 
+            },
+			{ 
+                name: "林0霖", 
+                subject: "表藝", 
+                info: "老師的課堂氛圍非常開放和包容。老師鼓勵學生勇於表達自己，無論是舞蹈還是戲劇，老師都提倡創意和自我表達在每堂課上，老師會設計各種討論和即興表演的活動，讓學生能夠從不同角度看待問題。老師的課堂注重情感的投入與身體的協調，常常在實踐中進行反思與創新。在老師的課堂上，學生們不僅學習到戲劇的技巧，還能感受到藝術對內心世界的觸動!",
+                img: "art.jpg" 
+            },
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ];
+
+        const container = document.getElementById('teacher-container');
+        teacherData.forEach(person => {
+            const cardHTML = `
+                <div class="teacher-card">
+                    <div class="teacher-photo">
+                        <img src="${person.img}" alt="${person.subject}">
+                    </div>
+                    <div class="teacher-name">${person.name} 老師</div>
+                    <div class="subject-tag">${person.subject}</div>
+                    <div class="teacher-info">${person.info}</div>
+                </div>
+            `;
+            container.innerHTML += cardHTML;
+        });
+    </script>
+</body>
+</html>

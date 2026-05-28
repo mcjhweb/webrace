@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>校園大人物採訪</title>
+    <style>
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #CCCCFF; 
+            color: #2D2D52; 
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 80px 20px;
+            background: #FFFFFF;
+            padding: 60px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            border-radius: 8px;
+        }
+
+        .profile-section {
+            text-align: center;
+            border-bottom: 1.5px solid #E0E0FF;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* 這裡將寬高從 140px 改為 240px */
+        .profile-photo {
+            width: 240px;
+            height: 240px;
+            background-color: #E6E6FA;
+            border: 3px solid #CCCCFF; /* 稍微加粗邊框以匹配尺寸 */
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            box-shadow: 0 8px 20px rgba(106, 90, 205, 0.2); /* 增加一點陰影讓大圖更有層次 */
+        }
+
+        h2 {
+            color: #483D8B;
+            letter-spacing: 2px;
+            margin: 15px 0;
+            font-size: 1.8rem;
+        }
+
+        .interview-meta {
+            font-size: 1rem;
+            color: #8A8ACD;
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        .q-and-a {
+            margin-top: 20px;
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #5D5DFF;
+            margin-top: 35px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .question::before {
+            content: "Q.";
+            margin-right: 12px;
+            color: #CCCCFF;
+            font-style: italic;
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .answer {
+            margin-top: 15px;
+            padding-left: 35px;
+            color: #444;
+            border-left: 3px solid #F0F0FF;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #6A5ACD;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="profile-section">
+        <img src="person.jpg" alt="受訪人合照" class="profile-photo">
+        <h2>受訪人：陳0文老師</h2>
+    </section>
+
+    <div class="interview-meta">
+        日期：2026/05/07 | 地點：學校 813教室
+    </div>
+
+    <article class="q-and-a">
+        <div class="question">當初走入教育界的契機是甚麼?</div>
+        <div class="answer">因為大學是唸師範大學，所學都是為當教師做準備，當實習老師的時候，覺得當老師這份工作很單純很適合我，所以就很認真準備教甄，最後考上基隆市，來到銘傳國中工作</div>
+
+        <div class="question">在這裡工作時最難忘的經歷?</div>
+        <div class="answer">有一屆導師班，男女生打排球都很厲害，七年級、八年級的排球班際比賽，兩次都男女得雙冠軍，印象深刻</div>
+
+        <div class="question">這個工作對生活的影響?</div>
+        <div class="answer">習慣了學校的作息，做事也是按部就班，照表操課，事情都會習慣安排好行程再執行，生活也都如學校作息早睡早起，很規律</div>
+		
+		<div class="question">工作後體驗到的高興的事?</div>
+        <div class="answer">寒暑假可以暫時不用帶班，不用趕早自習，可以睡晚一點，送完小孩去安親班後，再悠閒地自己一個人吃早餐，是我最開心的事</div>
+	</article>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=big5">
+    <title>導航選單</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* 配合標楷體或是微軟正黑體 */
+            font-family: "微軟正黑體", "Microsoft JhengHei", sans-serif;
+            background-color: #CCCCFF;
+            padding: 15px 10px;
+        }
+
+        nav {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        li {
+            flex: 1 1 45%;
+            min-width: 130px;
+        }
+
+        a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f5ff; /* 稍微亮一點的藍 */
+            color: #333;
+            text-decoration: none;
+            height: 55px;
+            border-radius: 12px;
+            font-weight: bold;
+            /* 增加陰影讓它更精美 */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* 滑鼠移上去的特效 */
+        a:hover {
+            background-color: #4A90E2;
+            color: white;
+            transform: translateY(-3px); /* 向上浮起 */
+            box-shadow: 0 6px 12px rgba(74,144,226,0.3);
+        }
+
+        /* 點擊時的特效：增加創新感 */
+        a:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 600px) {
+            li {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="3.html" target="contentFrame">首頁</a></li>
+        <li><a href="teacher.html?v=1.0" target="contentFrame">介紹老師</a></li>
+        <li><a href="students.html" target="contentFrame">同學介紹</a></li>
+        <li><a href="student_activities.html" target="contentFrame">活動照片</a></li>
+        <li><a href="school.html" target="contentFrame">校園景點探索</a></li>
+        <li><a href="contact.html" target="contentFrame">班級特色</a></li>
+        <li><a href="curriculum.html" target="contentFrame">校園大人物採訪介紹</a></li>
+        <li><a href="experience.html" target="contentFrame">心得</a></li>
+        <li><a href="link.html" target="contentFrame">教育網站介紹</a></li>
+        <li><a href="copyright.html" target="contentFrame">版權頁</a></li>
+    </ul>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+    margin: 0;
+    padding: 15px;
+    background-color: #fdf6e3;
+    font-family: "Microsoft JhengHei", sans-serif;
+}
+
+/* 左側光條 */
+.menu-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 6px;
+    height: 100%;
+
+    background: linear-gradient(
+        180deg,
+        #f59e0b,
+        #b45309
+    );
+
+    transition: 0.3s;
+}
+
+/* 側欄 */
+.side-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 標題 */
+.header {
+    position: relative;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+    color: #5b3a29;
+    padding: 12px 0;
+    margin-bottom: 15px;
+    letter-spacing: 4px;
+
+    /* 漸層文字 */
+    background: linear-gradient(90deg, #78350f, #d97706, #78350f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 左右裝飾線 */
+.header::before,
+.header::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 25%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #78350f);
+}
+
+.header::before {
+    left: 0;
+}
+
+.header::after {
+    right: 0;
+    background: linear-gradient(to left, transparent, #78350f);
+}
+
+/* ✨ 微微發光 */
+.header:hover {
+    text-shadow: 0 0 8px rgba(217, 119, 6, 0.6);
+    transition: 0.3s;
+}
+
+/* 🔥 全新按鈕 */
+.menu-link {
+    position: relative;
+    text-decoration: none;
+    color: #5b3a29;
+
+    padding: 14px;
+    border-radius: 12px;
+
+    font-size: 1.05rem;
+    text-align: center;
+    font-weight: bold;
+
+    /* 卡片感 */
+    background: linear-gradient(145deg, #ffffff, #f1e6d8);
+    box-shadow: 
+        6px 6px 12px rgba(0,0,0,0.15),
+        -4px -4px 8px rgba(255,255,255,0.7);
+
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* ✨ 滑動光效 */
+.menu-link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+    transform: skewX(-25deg);
+}
+
+/* Hover：浮起＋放大 */
+.menu-link:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        10px 10px 20px rgba(0,0,0,0.25),
+        -5px -5px 10px rgba(255,255,255,0.8);
+    color: #78350f;
+}
+
+/* 滑過觸發光效 */
+.menu-link:hover::after {
+    left: 120%;
+    transition: 0.6s;
+}
+
+/* 點擊：壓下去 */
+.menu-link:active {
+    transform: scale(0.96);
+    box-shadow: inset 3px 3px 8px rgba(0,0,0,0.2);
+}
+
+/* 底部資訊 */
+.info {
+    font-size: 0.75rem;
+    color: #a16207;
+    text-align: center;
+    margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="side-menu">
+    <div class="header">目 錄</div>
+
+    <a href="main.html" target="main" class="menu-link">首頁</a>
+    <a href="boys.html" target="main" class="menu-link">男員工們</a>
+    <a href="girls.html" target="main" class="menu-link">女員工們</a>
+    <a href="leader.html" target="main" class="menu-link">美術館館長</a>
+    <a href="teacher.html" target="main" class="menu-link">經理</a>
+	<a href="classes.html" target="main" class="menu-link">營業時間</a>
+	<a href="event2.html" target="main" class="menu-link">團康活動</a>
+    <a href="event.html" target="main" class="menu-link">工作照片</a>
+    <a href="school.html" target="main" class="menu-link">館內介紹</a>
+    <a href="map.html" target="main" class="menu-link">總經理</a>
+	<a href="cc.html" target="main" class="menu-link">版權頁</a>
+
+   
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="基隆市立 806 班級專屬網頁 - 展現班級活力、學習成果與師生情誼。">
+    <meta name="keywords" content="806, 班網, 學生, 老師, 課表, 專訪">
+    <title>806 班網 | Class 806 Directory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C5CE7;
+            --secondary: #00CEC9;
+            --bg-color: #0F172A;
+            --text-light: #F8FAFC;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-color);
+            background-image: radial-gradient(circle at top right, rgba(108, 92, 231, 0.2), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(0, 206, 201, 0.2), transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            z-index: 200;
+            transition: width 0.1s ease;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.2rem 2.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links button:hover,
+        .nav-links button.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.2);
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .view {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .staggered-card {
+            opacity: 0;
+            transform: translateY(40px) scale(0.9);
+            animation: cardEntrance 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card Design */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(108, 92, 231, 0.3);
+            border-color: var(--secondary);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(15, 23, 42, 1) 0%, rgba(15, 23, 42, 0.8) 50%, transparent 100%);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: all 0.3s ease;
+        }
+
+        .card-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 850px;
+            height: 520px; /* Reduced Height */
+            max-height: 80vh; /* Ensure space top/bottom */
+            display: flex;
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-img-container {
+            width: 45%; /* Unified Image Width */
+            height: 100%;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-info {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        .modal-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+        }
+
+        .modal-desc {
+            margin-top: 2rem; /* 兩格遠的間距 */
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #CBD5E1;
+            text-align: left;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .close-btn:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        /* Gallery Masonry */
+        .masonry {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .masonry-item:hover {
+            transform: scale(1.03);
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Marquee Styles */
+        .marquee-container {
+            width: 100%;
+            background: rgba(108, 92, 231, 0.1);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            position: relative;
+            z-index: 90;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .marquee-text {
+            background: linear-gradient(90deg, #00CEC9, #6C5CE7, #00CEC9, #6C5CE7);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+            text-shadow: 0 0 10px rgba(0, 206, 201, 0.2);
+            padding: 0 50px;
+        }
+
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Schedule Table */
+        .schedule-table-wrapper {
+            overflow-x: auto;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1rem 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-table thead th {
+            background: linear-gradient(135deg, var(--primary), #4834d4);
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: sticky;
+            top: 0;
+        }
+
+        .schedule-table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .schedule-table td:first-child {
+            font-weight: 700;
+            background: rgba(0, 206, 201, 0.1);
+            color: var(--secondary);
+            min-width: 60px;
+        }
+
+        .schedule-table .lunch-row td {
+            background: linear-gradient(90deg, rgba(0, 206, 201, 0.1), rgba(108, 92, 231, 0.1));
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(0, 206, 201, 0.3);
+        }
+
+        /* Visit / Copyright Sections */
+        .info-section {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #CBD5E1;
+            margin-bottom: 2rem;
+        }
+
+        .info-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
+            z-index: -1;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 0.5; }
+            to { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--secondary);
+        }
+
+        /* Home View Specific */
+        #home-view {
+            height: calc(100vh - 120px);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            display: none;
+        }
+
+        #home-view.active {
+            display: flex;
+        }
+
+        #antigravity-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #4285F4, #EA4335, #FBBC05, #34A853);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #CBD5E1;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { font-size: 1rem; }
+        }
+
+        .info-section .icon-big {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        @media (max-width: 900px) {
+            .modal-content {
+                flex-direction: column;
+                height: auto;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .modal-img-container {
+                width: 100%;
+                height: 300px;
+                flex-shrink: 0;
+            }
+
+            .modal-info {
+                padding: 2rem;
+                overflow-y: visible;
+            }
+
+            .modal-name {
+                font-size: 2rem;
+            }
+
+            .masonry {
+                column-count: 2;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+            @media (max-width: 600px) {
+                .nav-links {
+                    gap: 0.5rem;
+                }
+
+                .nav-links button {
+                    font-size: 0.85rem;
+                    padding: 0.4rem 0.7rem;
+                }
+            }
+
+            /* Visit View Styles */
+            .interview-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
+
+            .interview-card {
+                background: var(--card-bg);
+                border: 1px solid var(--glass-border);
+                border-radius: 24px;
+                padding: 2.5rem;
+                backdrop-filter: blur(15px);
+                transition: all 0.4s ease;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .interview-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: linear-gradient(to bottom, var(--secondary), var(--primary));
+            }
+
+            .interview-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 206, 201, 0.2);
+                border-color: var(--secondary);
+            }
+
+            .interviewee-info {
+                display: flex;
+                align-items: center;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--glass-border);
+                padding-bottom: 1.5rem;
+            }
+
+            .interviewee-icon {
+                font-size: 3rem;
+                background: rgba(255, 255, 255, 0.05);
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20px;
+            }
+
+            .interviewee-title {
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: var(--secondary);
+            }
+
+            .qa-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .qa-question {
+                font-weight: 700;
+                color: var(--text-light);
+                font-size: 1.05rem;
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .qa-question::before {
+                content: 'Q:';
+                color: var(--secondary);
+                font-weight: 900;
+            }
+
+            .qa-answer {
+                color: #CBD5E1;
+                line-height: 1.6;
+                padding-left: 1.6rem;
+                font-size: 1rem;
+            }
+
+            @media (max-width: 450px) {
+                .interview-grid {
+                    grid-template-columns: 1fr;
+                }
+                .interview-card {
+                    padding: 1.5rem;
+                }
+            }
+        </style>
+</head>
+
+<body>
+    <div id="scroll-progress"></div>
+    <nav>
+        <div class="logo">806 Directory</div>
+        <div class="nav-links">
+            <button class="active" onclick="switchView('home')">首頁</button>
+            <button onclick="switchView('students')">學生</button>
+            <button onclick="switchView('teachers')">老師</button>
+            <button onclick="switchView('gallery')">活動相簿</button>
+            <button onclick="switchView('schedule')">課表</button>
+            <button onclick="switchView('visit')">訪問大人物</button>
+            <button onclick="switchView('copyright')">版權頁</button>
+        </div>
+    </nav>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-text">✨ 歡迎來到806的班網 ✨ 歡迎來到806的班網 ✨ 歡迎來到806的班網 ✨ 歡迎來到806的班網 ✨</span>
+        </div>
+    </div>
+
+    <canvas id="antigravity-canvas"></canvas>
+    <main>
+        <!-- Home View -->
+        <div id="home-view" class="view active">
+            <div class="home-content">
+                <h1 class="hero-title">Class 806</h1>
+                <p class="hero-subtitle">Unity • Innovation • Excellence</p>
+            </div>
+        </div>
+
+        <!-- Students View -->
+        <div id="students-view" class="view">
+            <h1 class="section-title">Class 806 Students</h1>
+            <div class="grid" id="students-grid"></div>
+        </div>
+
+        <!-- Teachers View -->
+        <div id="teachers-view" class="view">
+            <h1 class="section-title">Our Teachers</h1>
+            <div class="grid" id="teachers-grid"></div>
+        </div>
+
+        <!-- Gallery View -->
+        <div id="gallery-view" class="view">
+            <h1 class="section-title">Gallery</h1>
+            <div class="masonry" id="gallery-grid"></div>
+        </div>
+
+        <!-- Schedule View -->
+        <div id="schedule-view" class="view">
+            <h1 class="section-title">806 課表</h1>
+            <div class="schedule-table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>節次</th>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>綜合</td>
+                            <td>健教</td>
+                            <td>電腦</td>
+                            <td>數學</td>
+                            <td>英文</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>綜合</td>
+                            <td>生科</td>
+                            <td>本土語</td>
+                            <td>體育</td>
+                            <td>科藝遊</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>英文</td>
+                            <td>自然</td>
+                            <td>銘心繪</td>
+                            <td>國文</td>
+                            <td>科藝遊</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>音樂</td>
+                            <td>班綜</td>
+                            <td>英文</td>
+                            <td>國文</td>
+                            <td>美術</td>
+                        </tr>
+                        <tr class="lunch-row">
+                            <td></td>
+                            <td colspan="5">🍱 午休</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>國文</td>
+                            <td>體育</td>
+                            <td>國文</td>
+                            <td>歷史</td>
+                            <td>班會</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>數學</td>
+                            <td>國文</td>
+                            <td>地理</td>
+                            <td>公民</td>
+                            <td>班會</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>自然</td>
+                            <td>數學</td>
+                            <td>自然</td>
+                            <td>表藝</td>
+                            <td>數學</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>自然</td>
+                            <td>英文</td>
+                            <td>公民</td>
+                            <td>數學</td>
+                            <td>國文</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Visit View -->
+        <div id="visit-view" class="view">
+            <h1 class="section-title">訪問大人物</h1>
+            <div class="interview-grid">
+                <!-- 警衛 -->
+                <div class="interview-card">
+                    <div class="interviewee-info">
+                        <div class="interviewee-icon">👮</div>
+                        <div class="interviewee-title">警衛</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">你做這個工作多久了？</div>
+                        <div class="qa-answer">8年</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">最想對同學說的話？</div>
+                        <div class="qa-answer">同學好！</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">做這個工作要有什麼特殊能力或證照？</div>
+                        <div class="qa-answer">不用什麼啦，阿貓、阿狗都可以做！</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">這個工作中最有趣或最快樂的事？</div>
+                        <div class="qa-answer">跟同學玩！</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">這個工作中最困難的事？</div>
+                        <div class="qa-answer">沒有，同學都很乖啊！</div>
+                    </div>
+                </div>
+
+                <!-- 班導 -->
+                <div class="interview-card">
+                    <div class="interviewee-info">
+                        <div class="interviewee-icon">👩‍🏫</div>
+                        <div class="interviewee-title">班導</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">你做這個工作多久了？</div>
+                        <div class="qa-answer">5年</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">最想對同學說的話？</div>
+                        <div class="qa-answer">好好讀書。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">做這個工作要有什麼特殊能力或證照？</div>
+                        <div class="qa-answer">要教師證，我有教師證可以教生物、物理、理化、地科、科藝這些科目。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">這個工作中最有趣或最快樂的事？</div>
+                        <div class="qa-answer">就是每天都有驚喜，學生都很好笑。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">這個工作中最困難的事？</div>
+                        <div class="qa-answer">學生聽不懂人話。</div>
+                    </div>
+                </div>
+
+                <!-- 校長 -->
+                <div class="interview-card">
+                    <div class="interviewee-info">
+                        <div class="interviewee-icon">🎓</div>
+                        <div class="interviewee-title">校長</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">你做這個工作多久了？</div>
+                        <div class="qa-answer">7年</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">最想對同學說的話？</div>
+                        <div class="qa-answer">認真讀書、身體健康、心情愉快！</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">做這個工作要有什麼特殊能力或證照？</div>
+                        <div class="qa-answer">要先考上候用校長資格參加校長遴選，遴選選上才能當校長。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">這個工作中最有趣或最快樂的事？</div>
+                        <div class="qa-answer">在路上遇到同學打招呼就很快樂。</div>
+                    </div>
+                    <div class="qa-item">
+                        <div class="qa-question">這個工作中最困難的事？</div>
+                        <div class="qa-answer">溝通，因為學校太多人，大家想法不同，所以要有良好的溝通。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright View -->
+        <div id="copyright-view" class="view">
+            <h1 class="section-title">版權與聲明</h1>
+            <div class="info-section copyright-card">
+                <div class="copyright-header">
+                    <span class="icon-big">⚖️</span>
+                    <h2>Class 806 Directory</h2>
+                </div>
+                
+                <div class="copyright-grid">
+                    <div class="copyright-item">
+                        <h3>教育用途聲明</h3>
+                        <p>本網站為基隆市立銘傳國中 806 班網。網站內容包含文字、影像及相關多媒體素材，僅供個人學習與班級內部展示使用。</p>
+                    </div>
+
+                    <div class="copyright-item">
+                        <h3>圖片來源說明</h3>
+                        <p>本站所使用之人物照片及活動影像皆由 806 班級師生提供。部分背景素材來源自網路上公共領域或開源素材庫。本網頁圖片僅供教學、教育目的之使用，如有侵權請告知移除。</p>
+                    </div>
+
+                    <div class="copyright-item">
+                        <h3>技術與資源</h3>
+                        <p>字體：Google Fonts - Outfit / Inter<br>
+                        技術：HTML5 / Modern CSS / Vanilla JavaScript<br>
+                        特效：Canvas 粒子系統 / 交錯式進場動畫 / 捲動進度偵測<br>
+                        優化：圖片延遲載入 (Lazy Loading) / 響應式排版</p>
+                    </div>
+
+                    <div class="copyright-item">
+                        <h3>製作團隊</h3>
+                        <p>基隆市立 806 班級全體師生<br>
+                        &copy; 2026 Class 806 Unity. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .copyright-card {
+                text-align: left !important;
+                max-width: 1000px !important;
+            }
+            .copyright-header {
+                text-align: center;
+                margin-bottom: 2rem;
+                padding-bottom: 2rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .copyright-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+                gap: 2rem;
+            }
+            .copyright-item h3 {
+                color: var(--secondary);
+                margin-bottom: 1rem;
+                font-size: 1.3rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .copyright-item h3::before {
+                content: '◈';
+                font-size: 0.8rem;
+            }
+            .copyright-item p {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 0 !important;
+            }
+            @media (max-width: 600px) {
+                .copyright-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </main>
+
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal(null, true)">&times;</button>
+            <div class="modal-img-container">
+                <img src="" alt="" class="modal-img" id="modal-img">
+            </div>
+            <div class="modal-info">
+                <h2 class="modal-name" id="modal-name"></h2>
+                <p class="modal-desc" id="modal-desc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const siteData = {
+            "teachers": [
+                {
+                    "description": "脾氣好時非常幽默,也很有趣,但只要我們玩得太過,他就會立即以嚴肅的態度糾正我們",
+                    "name": "表藝老師",
+                    "id": "act",
+                    "image": "act.jpg"
+                },
+                {
+                    "description": "老師上課方式生動有趣，常用PPT輔助教學，讓內容更清楚易懂。課堂中只要踴躍回答問題就能加分，提升大家參與感，也讓學習變得更輕鬆愉快。",
+                    "name": "國文老師",
+                    "id": "chinese",
+                    "image": "chinese.jpg"
+                },
+                {
+                    "description": "電腦老師上課內容豐富有趣， 常教我們各種有趣的程式碼與 實作技巧。透過動手操作，不 僅提升學習興趣，也培養解決 問題的能力。",
+                    "name": "電腦老師",
+                    "id": "computer",
+                    "image": "computer.jpg"
+                },
+                {
+                    "description": "平常上課氛圍輕鬆,雖為地理老師,但也會教導我們正確的價值觀,不過常常有認為我們班男生很可愛的錯覺",
+                    "name": "地理老師",
+                    "id": "di",
+                    "image": "di(1).png"
+                },
+                {
+                    "description": "老師上課生動有趣，雖然偶爾被我們惹到生氣，但仍用心教學。課程內容實用又貼近生活，讓我們在輕鬆氣氛中學習英文。",
+                    "name": "英文老師",
+                    "id": "english",
+                    "image": "english.jpg"
+                },
+                {
+                    "description": "平時上課方式非常清楚,有時幽默,只是有時候會不小心把我們給催眠,或被突如其來的抽籤嚇一跳",
+                    "name": "公民老師",
+                    "id": "gn",
+                    "image": "gn.PNG"
+                },
+                {
+                    "description": "上課的氛圍輕鬆,會毫不吝嗇地給我們加分和帶我們做各種線上測驗,很懂得當代年輕人的潮流",
+                    "name": "建教老師",
+                    "id": "health",
+                    "image": "health.jpeg"
+                },
+                {
+                    "description": "這次的老師雖然不是之前習慣的老師但教學依然認真內容清楚易懂也會補充許多背景知識讓我們逐漸培養對歷史的理解與興趣",
+                    "name": "歷史老師",
+                    "id": "lis",
+                    "image": "lis.jpg"
+                },
+                {
+                    "description": "老師上課生動有趣，常將生活 趣事融入教學，讓抽象概念變 得容易理解。課堂氣氛輕鬆活 潑，不僅提升學習興趣，也讓 同學更喜歡數學。",
+                    "name": "數學老師",
+                    "id": "math",
+                    "image": "math.jpeg"
+                },
+                {
+                    "description": "老師上課時常說我們班氣氛特別安靜大家都能專心投入課程在寧靜環境中培養美感與耐心讓報告更加細緻動人",
+                    "name": "銘心繪老師",
+                    "id": "mimn",
+                    "image": "mimn.jpg"
+                },
+                {
+                    "description": "上課方式輕鬆但常常被我們班某些人搞到很生氣,因此常給我們取各種有趣的綽號",
+                    "name": "音樂老師",
+                    "id": "music",
+                    "image": "muice.JPG"
+                },
+                {
+                    "description": "很喜歡和學生一起打球,平常總是笑笑地面對我們,但在太吵或不乖時會罰我們跑操場",
+                    "name": "體育老師",
+                    "id": "PE",
+                    "image": "PE.jpg"
+                },
+                {
+                    "description": "生日是3/10,目前已婚,育有一子一女,興趣是吃甜食,動漫,流行音樂,但最喜歡的還是折磨學生",
+                    "name": "自然老師",
+                    "id": "sec",
+                    "image": "Y ni gi.jpg"
+                },
+                {
+                    "description": "老師上課內容貼近生活常教我們製作各種實用 小物提升動手能力與創意思考課堂氣氛活潑有 趣讓學習變得更有成就感",
+                    "name": "生科老師",
+                    "id": "sn k",
+                    "image": "sn k.jpg"
+                },
+                {
+                    "description": "老師上課時雖常被我們搞到生氣但她 依然保持耐心細心指導讓我們在輕鬆 氣氛中學習本土語言逐漸培養興趣與 表達能力",
+                    "name": "台語老師",
+                    "id": "tie wi",
+                    "image": "tie wi(1).jpg"
+                },
+                {
+                    "description": "在我們太吵的時候會出聲制止，對我們不算太嚴厲，很喜歡機會教育我們",
+                    "name": "綜合老師",
+                    "id": "zn hn",
+                    "image": "zn hn.JPG"
+                },
+                {
+                    "description": "美術課是我們最放鬆的時候！老師上課不嚴肅，大家可以邊玩邊創作。在這種自由的環境下，我們反而更有動力，每次下課前都能不知不覺完成一件很有成就感的作品。",
+                    "name": "美術老師",
+                    "id": "art",
+                    "image": "art.jpeg"
+                }
+            ],
+            "gallery8p": [],
+            "gallery7p": [],
+            "students": [
+                {
+                    "description": "一位數理資優生,在家中排行老二,目前有擔任服務股長和公民小老師,國小就讀信義美術班,比賽有得過第一名!",
+                    "name": "80601",
+                    "id": "80601",
+                    "image": "80601pic.jpg"
+                },
+                {
+                    "description": "小名叫小胖,我最大的興趣是吃各種不同國家和地區的美食,為每一種不同的食物都有不同的烹飪方式,同一種食物用不同的煮法,味道會是天和地的差別",
+                    "name": "80602",
+                    "id": "80602",
+                    "image": "80602pic.jpg"
+                },
+                {
+                    "description": "在學校個性比較內向,興趣是烹飪,希望以後能當個廚師",
+                    "name": "80603",
+                    "id": "80603",
+                    "image": "80603pic.jpg"
+                },
+                {
+                    "description": "我平常喜歡在安靜的環境,也因此更多時候不會說話,當然,假日時,我喜歡熱鬧,每當放學時,會再與球場打羽球,我性格特殊有點像雙面人,上一秒笑嘻嘻,下一秒嚴肅,很搞怪,right?",
+                    "name": "80604",
+                    "id": "80604",
+                    "image": "80604pic.jpg"
+                },
+                {
+                    "description": "我曾就讀深美國小,我不高在班裡算矮,我最喜歡的食物是牛排和拉麵,雖然實際年齡不大,但外表卻與其截然相反,十分滄桑",
+                    "name": "80605",
+                    "id": "80605",
+                    "image": "80605pic.jpg"
+                },
+                {
+                    "description": "我的特色是矮又不壯,體育不強,但是有責任,學習也不差,我的興趣有關棒球的一切,只要是有關棒球的問題,我都可以回答",
+                    "name": "80606",
+                    "id": "80606",
+                    "image": "80606pic.jpg"
+                },
+                {
+                    "description": "我是大帥哥,我喜歡學習英文,偶爾會使用一些3C產品,我不喜歡使用3C類的,因為會影響到自己的成績,所以我覺得3C產品沒有什麼用處",
+                    "name": "80607",
+                    "id": "80607",
+                    "image": "80607.jpg"
+                },
+                {
+                    "description": "我是個害羞內向的人,我不喜歡上國文課,喜歡運動,吃東西,我非常幼稚,很喜歡聊天,常常不小心干擾到同學",
+                    "name": "80608",
+                    "id": "80608",
+                    "image": "80608pic.jpg"
+                },
+                {
+                    "description": "我感覺每天都是一樣的是上課,回家,看書,寫作業,所以呈現了偷懶,但我覺得不可以這樣下去,我既要認真也要過得更有趣",
+                    "name": "80609",
+                    "id": "80609",
+                    "image": "80609.2pic.jpg"
+                },
+                {
+                    "description": "小名是洋洋,畢業於仁愛國小,本人的興趣愛好是打羽球,會習慣式的說不好聽的話",
+                    "name": "80610",
+                    "id": "80610",
+                    "image": "80610pic.jpg"
+                },
+                {
+                    "description": "今年13歲，來自信義國小。我是I人，但參雜著一點E人的元素，本人喜歡看科幻小書、打電動等，吃喝拉撒樣樣精通。我的特質跟班上大部分人一模一樣...幼稚。拿衛生紙泡水，然後丟在牆上、上課偷吃東西等等的。小時候的[罪刑]真的很多.....",
+                    "name": "80611",
+                    "id": "80611",
+                    "image": "80611pic.jpg"
+                },
+                {
+                    "description": "我是個內向害羞的人類,並且嚴重偏科,除了國文其他都很爛,我的愛好是 打羽球和籃球",
+                    "name": "80612",
+                    "id": "80612",
+                    "image": "80612.jpg"
+                },
+                {
+                    "description": "內向靦腆害羞,I人非常社恐,喜歡畫畫,不喜歡運動,成績一般般,生物不擅長,最討厭生物課,最喜歡表藝課,天真無邪,全班最成熟",
+                    "name": "80613",
+                    "id": "80613",
+                    "image": "80613.2pic.jpg"
+                },
+                {
+                    "description": "我喜歡在別人的考卷上畫火柴人，金道勳好帥好可愛，反差萌真的很暈我，我的夢想是成為金道勳女友，我會努力的謝謝大家>&lt;",
+                    "name": "80631",
+                    "id": "80631",
+                    "image": "80631.jpg"
+                },
+                {
+                    "description": "從小我就在基隆長大,我的興趣是畫畫和逛街,最喜歡的動物是貓,所以我家養了三隻貓,放假在家裡都會和牠們一起玩",
+                    "name": "80632",
+                    "id": "80632",
+                    "image": "80632pic.jpg"
+                },
+                {
+                    "description": "我很內向喜歡看動漫和同人小說,而且我本人在同年級來說算是很矮的那一批人了,但我看著矮,其實在同年級來說,算是大的那群",
+                    "name": "80633",
+                    "id": "80633",
+                    "image": "80633pic.jpg"
+                },
+                {
+                    "description": "我的興趣是跳舞,個性活潑開朗很喜歡社交,我最喜歡上英文課,還有我不喜歡別人叫錯或寫錯我的名字喔!",
+                    "name": "80634",
+                    "id": "80634",
+                    "image": "80634.jpg"
+                },
+                {
+                    "description": "我十分的內向害羞,文靜,最愛學習,每節課我都認真聽講,抄寫筆記,很少和同學聊天,平時也熱心助人",
+                    "name": "80635",
+                    "id": "80635",
+                    "image": "80635pic.jpg"
+                },
+                {
+                    "description": "我喜歡在假日的時候和朋友一起出去玩,和打遊戲,有時候待在家看手機,我喜歡看一些恐怖刺激的小說",
+                    "name": "80636",
+                    "id": "80636",
+                    "image": "80636.2pic.jpg"
+                },
+                {
+                    "description": "我的小名是夏琪,因為我跟數字7這個字很有緣,所以是琪,也因為選的時候是夏天,所以是夏,我算外向,對熟人很瘋,不熟的很靜,我的專長和興趣是跳舞,畢業於仁愛國小舞蹈班,我學舞9年了,也曾代表學校參加不少比賽,市賽,國賽,個賽都有些經驗",
+                    "name": "80637",
+                    "id": "80637",
+                    "image": "80637.3pic.jpg"
+                },
+                {
+                    "description": "我是一個很善良的人,溫柔有禮,因為幫助同學是根本,所以同學們都受之良多,因為君子動口,不動手,所以看到幼稚的同學,也不會進行微血管修復實驗,我真是一個好同學",
+                    "name": "80638",
+                    "id": "80638",
+                    "image": "80638pic.jpg"
+                },
+                {
+                    "description": "我擅長搞怪,興趣是吃美食和吹竹笛,雖然吹得不好;我討厭英文和數學,喜歡音樂,我有一個綽號叫炸蝦兒,把我的名字念快一點就知道為什麼了,英文名字是Amber",
+                    "name": "80639",
+                    "id": "80639",
+                    "image": "80639.2pic.jpg"
+                },
+                {
+                    "description": "我的興趣和專長是繪畫,彈吉他和音樂,還曾參加過幾次演說比賽,因為之前在美術班,對藝術方面較感興趣,而我也喜歡創作文章,它總能抒發我的情緒;學業方面擅長語文&社會科,對數學十分厭惡也不擅長,平時在學校喜歡攬很多事給自己做,雖然有時會因壓力太大而發瘋",
+                    "name": "80640",
+                    "id": "80640",
+                    "image": "80640pic.jpg"
+                },
+                {
+                    "description": "我家有我爸,我媽,我妹和我,只有英文好,被害妄想症嚴重,唱歌很好聽,喜歡收集小卡,所以我沒錢,手肘上有胎記,很多人以為是瘀青[左手],很多人說我長的像日本人,大正妹,社恐，葉舒華是我老婆。",
+                    "name": "80641",
+                    "id": "80641",
+                    "image": "80641.2pic.jpg"
+                },
+                {
+                    "description": "我是全班最可愛的人,個性害羞內向靦腆,是班上最文靜的小女孩,平常對待同學也都是非常溫柔的[以上不接受反駁] 我已經偷偷跟許光漢幸福了!!!",
+                    "name": "80642",
+                    "id": "80642",
+                    "image": "80642.2pic.jpg"
+                },
+                {
+                    "description": "我是一個在家瘋瘋癲癲的人,但在學校是一位正常的國中生,是51%的 E人[還是很內向的]平常除了放飛自我外,有時間就會去打球,從小就開始學習音樂[中提琴]和游泳,希望能至少持續到高中,期許自己能夠自律,當個不拖拖拉拉的人,也期許自己不會後悔自己決定的所有事物",
+                    "name": "80643",
+                    "id": "80643",
+                    "image": "80643.2pic.jpg"
+                },
+                {
+                    "description": "不渣,很可愛,優點很多缺點較少,家裡有貓,兔子,有鳥,我們班導很可怕,請不要惹到他,我們班班長是校花,缺點:覺得自己是個大I人表面上,內心有夠E,我是內向的小女生",
+                    "name": "80644",
+                    "id": "80644",
+                    "image": "80644.2pic.jpg"
+                },
+                {
+                    "description": "我喜歡慢悠悠的日子和真誠的人,興趣是看小說和收集公仔,在朋友圈裡是個慢熱,穩重型的人,優點是自律,有責任感;缺點是太過衝動,暴躁,容易不耐煩!我很喜歡放寒暑假,因為這些日子裡沒有功課考試,可以放鬆看書或追劇,甚至在一些雲淡風輕的日子裡,還可以出遊舒展身心",
+                    "name": "80645",
+                    "id": "80645",
+                    "image": "80645.2pic.jpg"
+                }
+            ]
+        };
+
+        // Clean names
+        siteData.students.forEach(s => {
+            if (s.name.includes('"')) {
+                s.name = s.id;
+            }
+        });
+
+        function createCard(person, type) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            // fallback image if missing
+            const imgSrc = person.image ? `img/${person.image}` : 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==';
+
+            card.innerHTML = `
+                <img src="${imgSrc}" class="card-img" alt="${person.name}" loading="lazy" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzMzMyIvPjwvc3ZnPg=='">
+                <div class="card-content">
+                    <div class="card-name">${person.name}</div>
+                </div>
+            `;
+            card.onclick = () => openModal(person);
+            return card;
+        }
+
+        function renderGallery() {
+            // Since JSON gallery extraction had issues, we rely on students/teachers images + hardcoded or we can just fetch all images if injected
+            const gallery = document.getElementById('gallery-grid');
+            const allImages = [
+                "LINE_ALBUM_20241119個人照與中山英語村_260417_1.jpg",
+                "LINE_ALBUM_20241119個人照與中山英語村_260417_2.jpg",
+                "LINE_ALBUM_20241119個人照與中山英語村_260417_3.jpg",
+                "LINE_ALBUM_20241119個人照與中山英語村_260417_4.jpg",
+                "LINE_ALBUM_20241119個人照與中山英語村_260417_5.jpg",
+                "LINE_ALBUM_20241209運動會_260417_1.jpg",
+                "LINE_ALBUM_20241209運動會_260417_3.jpg",
+                "LINE_ALBUM_20241209運動會_260417_5.jpg",
+                "LINE_ALBUM_20241223交換禮物_260417_1.jpg",
+                "LINE_ALBUM_20241223交換禮物_260417_3.jpg",
+                "LINE_ALBUM_20241223交換禮物_260417_5.jpg",
+                "LINE_ALBUM_20250411校慶園遊會_260417_1.jpg",
+                "LINE_ALBUM_20250411校慶園遊會_260417_3.jpg",
+                "LINE_ALBUM_20250411校慶園遊會_260417_5.jpg",
+                "LINE_ALBUM_20250605-06隔宿露營_260417_1.jpg",
+                "LINE_ALBUM_20250605-06隔宿露營_260417_3.jpg",
+                "LINE_ALBUM_20250605-06隔宿露營_260417_5.jpg",
+                "LINE_ALBUM_20250617聖心高中參訪_260417_1.jpg",
+                "LINE_ALBUM_20250617聖心高中參訪_260417_5.jpg",
+                "LINE_ALBUM_20250617聖心高中參訪_260417_10.jpg",
+                "LINE_ALBUM_20251108 校慶運動會_260417_1.jpg",
+                "LINE_ALBUM_20251108 校慶運動會_260417_5.jpg",
+                "LINE_ALBUM_20251108 校慶運動會_260417_10.jpg",
+                "LINE_ALBUM_20251128 二信參訪_260417_1.jpg",
+                "LINE_ALBUM_20251128 二信參訪_260417_3.jpg",
+                "LINE_ALBUM_20251128 二信參訪_260417_5.jpg",
+                "LINE_ALBUM_20251215 暖中達文西科學營_260417_1.jpg",
+                "LINE_ALBUM_20251215 暖中達文西科學營_260417_3.jpg",
+                "LINE_ALBUM_20251215 暖中達文西科學營_260417_5.jpg",
+                "LINE_ALBUM_20251216 中山高中顯微鏡操作體驗班_260417_1.jpg",
+                "LINE_ALBUM_20251216 中山高中顯微鏡操作體驗班_260417_3.jpg",
+                "LINE_ALBUM_20251216 中山高中顯微鏡操作體驗班_260417_5.jpg",
+                "LINE_ALBUM_20251224 八年級校外教學（科教館、兒童新樂園）_260417_1.jpg",
+                "LINE_ALBUM_20251224 八年級校外教學（科教館、兒童新樂園）_260417_4.jpg",
+                "LINE_ALBUM_20251224 八年級校外教學（科教館、兒童新樂園）_260417_7.jpg",
+                "LINE_ALBUM_202547班際羽球盃🏸_260417_1.jpg",
+                "LINE_ALBUM_2025818鶯歌三峽職業試探_260417_1.jpg",
+                "LINE_ALBUM_2025818鶯歌三峽職業試探_260417_5.jpg",
+                "LINE_ALBUM_2025818鶯歌三峽職業試探_260417_10.jpg",
+                "LINE_ALBUM_20260306 科藝遊-顯微鏡_260417_1.jpg",
+                "LINE_ALBUM_20260313 科藝遊-紅淡山行前報告_260417_1.jpg",
+                "LINE_ALBUM_20260327 科藝遊-紅淡山採集_260417_1.jpg",
+                "LINE_ALBUM_20260327 科藝遊-紅淡山採集_260417_5.jpg",
+                "LINE_ALBUM_20260410 科藝遊-藍曬part1_巧克力葉拓_260417_1.jpg",
+                "LINE_ALBUM_20260410 科藝遊-藍曬part1_巧克力葉拓_260417_5.jpg"
+            ];
+
+            allImages.filter(img => img && !img.includes('go back')).forEach(img => {
+                const item = document.createElement('div');
+                item.className = 'masonry-item';
+                item.innerHTML = `<img src="img/${img}" loading="lazy" alt="Gallery Image">`;
+                gallery.appendChild(item);
+            });
+        }
+
+        // Antigravity Particle System
+        class ParticleSystem {
+            constructor(canvasId) {
+                this.canvas = document.getElementById(canvasId);
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.mouse = { x: -100, y: -100, radius: 150 };
+                this.colors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+                
+                window.addEventListener('resize', () => this.resize());
+                window.addEventListener('mousemove', (e) => {
+                    const rect = this.canvas.getBoundingClientRect();
+                    this.mouse.x = e.clientX - rect.left;
+                    this.mouse.y = e.clientY - rect.top;
+                });
+                
+                this.resize();
+                this.init();
+                this.animate();
+            }
+
+            resize() {
+                this.canvas.width = this.canvas.offsetWidth;
+                this.canvas.height = this.canvas.offsetHeight;
+                this.init();
+            }
+
+            init() {
+                this.particles = [];
+                const particleCount = (this.canvas.width * this.canvas.height) / 8000;
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        baseX: Math.random() * this.canvas.width,
+                        baseY: Math.random() * this.canvas.height,
+                        size: Math.random() * 3 + 1,
+                        color: this.colors[Math.floor(Math.random() * this.colors.length)],
+                        density: (Math.random() * 30) + 1
+                    });
+                }
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                for (let i = 0; i < this.particles.length; i++) {
+                    let p = this.particles[i];
+                    
+                    // Mouse interaction
+                    let dx = this.mouse.x - p.x;
+                    let dy = this.mouse.y - p.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = this.mouse.radius;
+                    let force = (maxDistance - distance) / maxDistance;
+                    let directionX = forceDirectionX * force * p.density;
+                    let directionY = forceDirectionY * force * p.density;
+
+                    if (distance < maxDistance) {
+                        p.x -= directionX;
+                        p.y -= directionY;
+                    } else {
+                        if (p.x !== p.baseX) {
+                            let dx = p.x - p.baseX;
+                            p.x -= dx / 10;
+                        }
+                        if (p.y !== p.baseY) {
+                            let dy = p.y - p.baseY;
+                            p.y -= dy / 10;
+                        }
+                    }
+
+                    this.ctx.fillStyle = p.color;
+                    this.ctx.beginPath();
+                    this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    this.ctx.fill();
+                }
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        function createCard(item, type) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${item.image ? 'img/' + item.image : 'https://via.placeholder.com/400x500/1E293B/F8FAFC?text=' + encodeURIComponent(item.name)}" 
+                     alt="${item.name}" class="card-img" loading="lazy">
+                <div class="card-content">
+                    <h3 class="card-name">${item.name}</h3>
+                </div>
+            `;
+            card.onclick = () => openModal(item);
+            return card;
+        }
+
+        function init() {
+            new ParticleSystem('antigravity-canvas');
+            const studentsGrid = document.getElementById('students-grid');
+            siteData.students.sort((a, b) => a.id.localeCompare(b.id)).forEach(student => {
+                studentsGrid.appendChild(createCard(student, 'student'));
+            });
+
+            const teachersGrid = document.getElementById('teachers-grid');
+            siteData.teachers.forEach(teacher => {
+                teachersGrid.appendChild(createCard(teacher, 'teacher'));
+            });
+
+            renderGallery();
+        }
+
+        function switchView(viewName) {
+            const views = document.querySelectorAll('.view');
+            const targetView = document.getElementById(viewName + '-view');
+            
+            views.forEach(el => el.classList.remove('active'));
+            targetView.classList.add('active');
+
+            // Staggered Animation for cards - Snappier Timing
+            const cards = targetView.querySelectorAll('.card, .interview-card, .masonry-item');
+            cards.forEach((card, index) => {
+                card.classList.remove('staggered-card');
+                void card.offsetWidth; // trigger reflow
+                card.style.animationDelay = `${index * 0.03}s`;
+                card.classList.add('staggered-card');
+            });
+
+            document.querySelectorAll('.nav-links button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(`'${viewName}'`)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            setTimeout(() => {
+                window.dispatchEvent(new Event('resize'));
+            }, 100);
+        }
+
+        function openModal(person) {
+            document.getElementById('modal-img').src = person.image ? `img/${person.image}` : '';
+            document.getElementById('modal-name').textContent = person.name;
+            document.getElementById('modal-desc').textContent = person.description || '暫無介紹';
+            document.getElementById('modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(e, force = false) {
+            if (force || (e && e.target.id === 'modal')) {
+                document.getElementById('modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            // Scroll Progress
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+
+            // Back to Top Button
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', init);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal(null, true);
+        });
+    </script>
+</body>
+
+</html>

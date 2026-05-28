@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>校園簡介</title>
+
+<style>
+body {
+    font-family: "Noto Sans TC", Arial, sans-serif;
+    margin: 0;
+    background: #f5f7fa;
+}
+
+/* Loading */
+#loading {
+    position: fixed;
+    inset: 0;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    z-index: 999;
+}
+
+/* 標題 */
+.header {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.header span {
+    color: orange;
+}
+
+/* 卡片 */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 10px;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    max-width: 400px;
+    object-fit: cover;
+}
+
+.card-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.blue { background: #cceeff; }
+.orange { background: #ffd699; }
+
+/* 手機版 */
+@media (max-width: 768px) {
+    .card {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loading">Loading 網頁載入中...</div>
+
+<div class="header">校<span>園</span>簡<span>介</span></div>
+
+<div class="container">
+
+    <div class="card blue">
+        <img src="pic/mcjh.jpg">
+        <div class="card-content">
+            銘傳國中位於仁愛區，生態豐富的紅淡山環繞著校園，
+            幽雅寧靜且遠離喧囂。學生們努力學習，朝夢想邁進。
+            <br><br>
+            圖片來源：
+            <a href="https://n.yam.com/Article/20240926757419" target="_blank">
+                連結
+            </a>
+        </div>
+    </div>
+
+    <div class="card orange">
+        <img src="pic/shangzhi.jpg">
+        <div class="card-content">
+            尚志樓為新大樓，共五層，主要為七、八年級教室，
+            包含學務處、保健室、體育組與訓練中心。
+        </div>
+    </div>
+
+    <div class="card blue">
+        <img src="pic/xingzheng.jpg">
+        <div class="card-content">
+            行政大樓為三層舊大樓，包含教務處、校長室、
+            會議室等，並有「禮義廉恥」標語。
+        </div>
+    </div>
+
+    <div class="card orange">
+        <img src="pic/rixin.jpg">
+        <div class="card-content">
+            日新樓為四層舊大樓，包含美術、音樂、
+            表演藝術等專科教室。
+        </div>
+    </div>
+
+    <div class="card blue">
+        <div class="card-content">
+            原生樓為體育班使用，包含多種特色教室。
+        </div>
+    </div>
+
+    <div class="card orange">
+        <img src="pic/gongyi.jpg">
+        <div class="card-content">
+            工藝大樓為技藝教室，包含創客、自造、
+            生活科技中心。
+        </div>
+    </div>
+
+</div>
+
+<script>
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+    }, 800);
+});
+</script>
+
+</body>
+</html>

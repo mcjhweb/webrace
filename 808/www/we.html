@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銘傳國中 808 動物園 | 關於我們</title>
+    <style>
+        :root { --zoo-green: #2d5a27; --zoo-brown: #8b4513; --zoo-light: #f0f4f0; }
+        html { scroll-behavior: smooth; background-color: var(--zoo-light); background-image: radial-gradient(#d1dbd1 1px, transparent 1px); background-size: 20px 20px; }
+        body { margin: 0; padding: 0; font-family: "Microsoft JhengHei", sans-serif; }
+        header { display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 20px; }
+        @media (min-width: 768px) { header { flex-direction: row; justify-content: flex-start; padding-left: 60px; } }
+        .hanging-sign { background: #fff; border: 5px solid var(--zoo-brown); border-radius: 15px; padding: 10px 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); position: relative; transform-origin: top center; animation: swing 3.5s ease-in-out infinite; }
+        .hanging-sign::before, .hanging-sign::after { content: ""; position: absolute; top: -60px; width: 4px; height: 60px; background: #333; z-index: -1; }
+        .hanging-sign::before { left: 20px; } .hanging-sign::after { right: 20px; }
+        .nav-btn { padding: 8px 16px; background: var(--zoo-green); color: white; text-decoration: none; border-radius: 20px; font-weight: bold; box-shadow: 0 4px 0px #1a3517; transition: 0.2s; border: none; cursor: pointer; display: inline-block; }
+        .nav-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0px #1a3517; }
+        .nav-item { position: relative; display: inline-block; }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--zoo-green); box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 100; border-radius: 0 0 10px 10px; overflow: hidden; }
+        .dropdown-content a { color: white; padding: 10px 12px; text-decoration: none; display: block; font-size: 0.9rem; transition: 0.3s; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .dropdown-content a:hover { background-color: #3e7a36; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .image-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 40px; max-width: 1000px; margin: 0 auto; }
+        .grid-item { flex: 1; min-width: 250px; max-width: 450px; background: white; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); cursor: pointer; transition: 0.3s; text-align: center; position: relative; }
+        .grid-item:hover { transform: translateY(-10px); border: 2px solid var(--zoo-green); }
+        .mini-carousel { width: 100%; height: 180px; border-radius: 10px; background: #f9f9f9; position: relative; overflow: hidden; }
+        .mini-track { display: flex; width: 600%; height: 100%; animation: miniSlide 12s infinite ease-in-out; transition: transform 0.5s ease; }
+        .mini-track img { width: 16.666%; height: 100%; object-fit: cover; }
+        .arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; z-index: 10; font-size: 14px; display: flex; align-items: center; justify-content: center; }
+        .arrow-btn:hover { background: var(--zoo-green); }
+        .prev { left: 5px; } .next { right: 5px; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background: white; width: 90%; max-width: 850px; display: flex; border-radius: 25px; overflow: hidden; position: relative; max-height: 90vh; }
+        #mImg { width: 45%; object-fit: contain; background: #f7f7f7; }
+        .modal-info { flex: 1; padding: 30px; overflow-y: auto; text-align: left; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #888; }
+        .tag { display: inline-block; background: #e8f5e9; color: var(--zoo-green); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin: 5px 5px 5px 0; }
+        .link-item { display: flex; align-items: center; gap: 10px; padding: 12px; margin-bottom: 8px; background: #f9f9f9; border-radius: 10px; color: var(--zoo-green); text-decoration: none; font-weight: bold; border-left: 5px solid var(--zoo-green); transition: 0.3s; }
+        @keyframes miniSlide { 0%, 15% { transform: translateX(0); } 16.6%, 31.6% { transform: translateX(-16.66%); } 33.3%, 48.3% { transform: translateX(-33.33%); } 50%, 65% { transform: translateX(-50%); } 66.6%, 81.6% { transform: translateX(-66.66%); } 83.3%, 98% { transform: translateX(-83.33%); } 100% { transform: translateX(0); } }
+        @keyframes swing { 0%, 100% { transform: rotate(3deg); } 50% { transform: rotate(-3deg); } }
+        @media (max-width: 700px) { .modal-content { flex-direction: column; } #mImg { width: 100%; max-height: 35vh; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hanging-sign">
+        <img src="logo_black.png" alt="Logo" style="width:50px;">
+        <div style="font-size: 1.5rem; color: #8b4513; font-weight: bold;">808<br>動物園</div>
+    </div>
+    <nav style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <div class="nav-item"><a href="index.html" class="nav-btn">🏠 回首頁</a></div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn">🐺 動物圖鑑</a>
+            <div class="dropdown-content">
+                <a href="boys.html">男生們</a>
+                <a href="girls.html">女生們</a>
+            </div>
+        </div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn">🐱 訓獸師們</a>
+            <div class="dropdown-content">
+                <a href="teachers.html">訓獸師簡介</a>
+                <a href="9m.html">園區大人物</a>
+            </div>
+        </div>
+        <div class="nav-item"><a href="schedule.html" class="nav-btn">📅 演出時程</a></div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn">🦁 園區介紹</a>
+            <div class="dropdown-content">
+                <a href="map.html">園區地圖</a>
+                <a href="goout.html">外出探索</a>
+                <a href="life.html">動物日常</a>
+            </div>
+        </div>
+        <div class="nav-item"><a href="we.html" class="nav-btn" style="background:var(--zoo-brown)">🐯 關於我們</a></div>
+    </nav>
+</header>
+
+<main style="text-align: center; padding: 40px 20px;">
+    <h2 style="color: var(--zoo-green); margin-bottom: 30px;">🦁 關於 808 動物園 🦁</h2>
+    
+    <div class="image-grid">
+        
+        <div class="grid-item" onclick="openModal('課程活動紀錄', '生命教育', '活動花絮', 'links-p', '106.png')">
+            <div class="mini-carousel">
+                <button class="arrow-btn prev" onclick="moveSlide('mini', -1, event)">❮</button>
+                <button class="arrow-btn next" onclick="moveSlide('mini', 1, event)">❯</button>
+                <div class="mini-track" id="miniTrack">
+                    <img src="101.jpg"><img src="102.jpg"><img src="103.png"><img src="104.png"><img src="105.png"><img src="101.jpg">
+                </div>
+            </div>
+            <p>📸 課程活動紀錄</p>
+        </div> 
+
+        <div class="grid-item" onclick="openModal('學習相關網站', '資源', '學習網站', 'links', '1288.png')">
+            <img src="1288.png" style="width: 100%; height: 180px; object-fit: contain;">
+            <p>🔗 學習相關網站</p>
+        </div>
+
+        <div class="grid-item" style="flex: 100%; max-width: 763px; margin: 0 auto;">
+        <div style="height: 700px; overflow-y: auto; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9;">
+        <img src="day.jpg" alt="重要行事曆" style="width: 100%; height: auto; display: block;">
+        </div>
+    <p style="text-align: center; margin-top: 10px;">📅 重要行事曆 (可上下滑動查看內容)</p>
+</div>
+
+    </div>
+</main>
+
+<div id="zooModal" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="mImg" src="">
+        <div class="modal-info">
+            <h2 id="mTitle" style="margin: 0; color: #8b4513;">名稱</h2>
+            <div style="margin: 15px 0;"><span id="mType" class="tag"></span><span id="mHabit" class="tag"></span></div>
+            <hr style="border: 0.5px solid #eee; margin: 20px 0;"><div id="mDescArea"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let miniIdx = 0, miniTimer;
+    function moveSlide(type, dir, event) {
+        if (event) event.stopPropagation();
+        const track = document.getElementById('miniTrack');
+        if (!track) return;
+        track.style.animation = 'none';
+        miniIdx = (miniIdx + dir + 6) % 6;
+        track.style.transform = `translateX(-${miniIdx * 16.666}%)`;
+        clearTimeout(miniTimer);
+        miniTimer = setTimeout(() => { track.style.animation = 'miniSlide 12s infinite ease-in-out'; track.style.transform = ''; }, 3000);
+    }
+    function openModal(name, type, habit, desc, img) {
+        document.getElementById('mTitle').innerText = name;
+        document.getElementById('mType').innerText = type;
+        document.getElementById('mHabit').innerText = habit;
+        document.getElementById('mImg').src = img;
+        const descArea = document.getElementById('mDescArea');
+        if (desc === 'links') {
+            descArea.innerHTML = 
+			    `<div style="margin-top:10px;">
+			        <a href="https://mcjh.kl.edu.tw/" target="_blank" class="link-item"><img src="logo_black.png" style="width:25px; height:25px; object-fit:cover;">銘傳國中官方網站</a>
+                    <a href="https://adl.edu.tw" target="_blank" class="link-item"><img src="logo1.png" style="width:25px; height:25px; object-fit:cover;">因材網</a>
+                    <a href="https://www.learnmode.net/home/" target="_blank" class="link-item"><img src="logo.png" style="width:25px; height:25px; object-fit:cover;">學習吧</a>
+                    <a href="https://classroom.google.com/" target="_blank" class="link-item"><img src="OIP.png" style="width:25px; height:25px; object-fit:cover;">Google Classroom</a>
+                </div>`;
+		} else if (desc === 'links-p') {
+            descArea.innerHTML = `<div style="display:flex; flex-direction:column; gap:15px;"><img src="101.jpg" style="width:100%; border-radius:10px;"><p>這裡是 808 的活動花絮紀錄。</p></div>`;
+        } else { descArea.innerHTML = `<p>${desc}</p>`; }
+        document.getElementById('zooModal').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('zooModal').style.display = 'none'; }
+    function closeModalOutside(event) { if (event.target.id === "zooModal") closeModal(); }
+</script>
+</body>
+</html>

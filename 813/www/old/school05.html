@@ -1,0 +1,98 @@
+<html lang="zh-tw">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> 
+  <title>行政大樓</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .border-container {
+      border: 5px solid #333;
+      width: 300px; /* 邊框寬度 */
+      height: 400px; /* 邊框高度 */
+      overflow: hidden;
+      position: relative;
+    }
+    .image-slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      animation: slide 4s infinite;
+    }
+    @keyframes slide {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .image1 {
+      background-image: url('school04.jpg'); 
+      background-size: cover;
+      background-position: center;
+      animation-delay: 0s;
+    }
+    .image2 {
+      background-image: url('school05.jpg'); 
+      background-size: cover;
+      background-position: center;
+      animation-delay: 2s; 
+    }
+    header {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    .back-link {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- 返回鏈接，位置設為左上角 -->
+  <a class="back-link" href="school02.html" target="3.html">←返回</a>
+
+  <!-- 尚志樓標題 -->
+  <header>行政大樓</header>
+
+  <div class="border-container">
+    <div class="image-slider image1"></div>
+    <div class="image-slider image2"></div>
+    <div class="image-slider image1"></div>
+  </div>
+
+  <ul>
+    <li>簡介</li>
+  </ul>
+
+  <table style="text-align: left; width: 875px; height: 145px;" border="1" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td>這棟樓是九年級的教室，經過那裏時都很安靜。</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

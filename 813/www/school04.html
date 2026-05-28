@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日新樓 - 銘傳國中</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: "Microsoft JhengHei", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* 改為從頂部開始排版，避免內容過長被切掉 */
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #CCCCFF;
+      padding-top: 60px; /* 留出左上角返回按鈕的空間 */
+    }
+
+    /* 返回連結：已移除 target 屬性 */
+    .back-link {
+      text-decoration: none;
+      font-size: 18px;
+      color: blue;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-weight: bold;
+    }
+
+    header {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .border-container {
+      border: 5px solid #333;
+      width: 300px;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+      background-image: url('school03.jpg'); /* 請確保圖片檔名正確 */
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 30px 0 10px;
+      font-size: 1.5em;
+      color: #333;
+      font-weight: bold;
+      width: 90%;
+      max-width: 800px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 90%; /* 改為百分比，適應各種螢幕 */
+      max-width: 800px;
+      background-color: rgba(255, 255, 255, 0.6); /* 加入一點透明白，讓文字更清楚 */
+      margin-bottom: 40px;
+    }
+
+    table td {
+      border: 1px solid #999;
+      padding: 15px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="back-link" href="school02.html">← 返回地圖</a>
+
+  <header>日新樓</header>
+
+  <div class="border-container"></div>
+
+  <ul>
+    <li>簡介</li>
+  </ul>
+
+  <table>
+    <tbody>
+      <tr>
+        <td>這是一棟具有歷史意義的建築，常用於各種教學與活動空間，見證了校園的成長與變遷。</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

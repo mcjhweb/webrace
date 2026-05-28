@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+   
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>813 班級網頁</title>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "Microsoft JhengHei", "標楷體", sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            height: 10vh;
+            background-color: #4A90E2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .main-layout {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        aside {
+            width: 20%;
+            min-width: 200px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #ddd;
+        }
+
+        main {
+            flex: 1;
+            background-color: #ffffff;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <iframe src="1.html" name="topFrame"></iframe>
+        </header>
+
+        <div class="main-layout">
+            <aside>
+                <iframe src="2.html?v=1.0" name="menuFrame"></iframe>
+            </aside>
+
+            <main>
+                <iframe src="3.html" name="contentFrame"></iframe>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

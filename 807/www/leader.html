@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&#29677;&#23566;&#20027;&#35282;&#38913;</title>
+
+
+  <style>
+:root{
+--main:#5b3a1b;
+--accent:#f59e0b;
+}
+body{
+margin:0;
+font-family:"Microsoft JhengHei", sans-serif;
+background:radial-gradient(circle at center,#1a1a1a,#000);
+color:white;
+overflow:hidden;
+font-size:20px;
+}
+/* &#31890;&#23376;&#32972;&#26223; */
+.star{
+position:fixed;
+color:#fbbf24;
+animation:float linear infinite;
+opacity:.7;
+}
+@keyframes float{
+to{
+transform:translateY(-110vh) rotate(360deg);
+opacity:0;
+}
+}
+/* &#20027;&#30059;&#38754; */
+.container{
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+gap:60px;
+padding:40px;
+}
+/* &#32769;&#24107;&#22294;&#29255; */
+.teacher-img{
+width:320px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(255,200,50,.6);
+transition:.4s;
+}
+.teacher-img:hover{
+transform:scale(1.05);
+}
+/* &#36039;&#35338;&#21312; */
+.info{
+max-width:500px;
+}
+.title{
+font-size:2.8rem;
+margin-bottom:10px;
+color:#fbbf24;
+}
+.subtitle{
+font-size:1.2rem;
+margin-bottom:20px;
+color:#ccc;
+}
+.desc{
+line-height:1.8;
+color:#ddd;
+}
+/* &#36820;&#22238;&#37749; */
+.back{
+position:fixed;
+top:20px;
+left:20px;
+background:white;
+color:black;
+border:none;
+padding:10px 16px;
+border-radius:12px;
+cursor:pointer;
+}
+/* &#20809;&#26248;&#25928;&#26524; */
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#f59e0b55,transparent);
+filter:blur(80px);
+z-index:-1;
+}
+  </style>
+</head>
+
+
+<body>
+
+<button class="back" onclick="goBack()">&larr;
+&#36820;&#22238;&#21205;&#29289;&#22290;</button>
+<div class="glow"></div>
+
+<div class="container">
+<img style="width: 400px; height: 534px;" alt="" src="teacher/%A6%D1%AEv%B7%D3/1745656054985.jpg" class="teacher-img">
+<div class="info">
+<div class="title">&#128081; &#29677;&#23566;&#32769;&#24107;</div>
+
+<div class="subtitle">&#26368;&#24375;&#21205;&#29289;&#22290;&#31649;&#29702;&#32773;</div>
+
+<div class="desc">
+&#36889;&#20301;&#32769;&#24107;&#19981;&#21482;&#26159;&#29677;&#23566;&#65292;&#26356;&#26159;&#25972;&#20491;&#29677;&#32026;&#30340;&#26680;&#24515;&#20154;&#29289;&#12290;<br>
+
+<br>
+
+&#22196;&#26684;&#20013;&#24118;&#33879;&#38364;&#24515;&#65292;&#25945;&#23416;&#20013;&#20805;&#28415;&#29105;&#24773;&#12290;<br>
+
+&#24118;&#38936;&#25105;&#20497;&#22312;&#23416;&#32722;&#33287;&#29983;&#27963;&#20013;&#19981;&#26039;&#25104;&#38263;&#12290;<br>
+
+<br>
+
+&#10024; &#30495;&#27491;&#30340;&#38936;&#34966; &#10024;
+</div>
+
+</div>
+
+</div>
+
+<script>
+// &#31890;&#23376;&#29983;&#25104;&#65288;&#21319;&#32026;&#29256;&#20320;&#21407;&#26412;&#30340; * &#39108;&#21205;&#65289;
+function createStar(){
+const star=document.createElement("div");
+star.className="star";
+star.innerHTML="&#10024;";
+star.style.left=Math.random()*window.innerWidth+"px";
+star.style.top=window.innerHeight+"px";
+star.style.fontSize=(10+Math.random()*20)+"px";
+star.style.animationDuration=(4+Math.random()*6)+"s";
+document.body.appendChild(star);
+setTimeout(()=>star.remove(),10000);
+}
+setInterval(createStar,200);
+// &#36820;&#22238;
+function goBack(){
+window.location.href="index.html";
+}
+</script>
+</body>
+</html>

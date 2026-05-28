@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>同學介紹 - 813</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #CCCCFF;
+            font-family: "微軟正黑體", sans-serif;
+            padding: 40px 20px;
+        }
+
+        .page-title {
+            text-align: center; font-size: 32px; color: #444488;
+            margin-bottom: 40px; font-weight: bold;
+        }
+
+        #student-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .student-card {
+            background: white; 
+            border-radius: 15px; 
+            overflow: hidden;
+            /* 修改點：將 text-align 從 center 改為 left */
+            text-align: left; 
+            padding-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 480px; 
+        }
+
+        .student-card:hover { 
+            transform: translateY(-5px); 
+            height: 580px; 
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .student-photo { 
+            width: 100%; 
+            height: 320px; 
+            flex-shrink: 0; 
+            overflow: hidden;
+            background-color: #f8f8ff; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .student-photo img { 
+            max-width: 100%; 
+            height: 100%; 
+            object-fit: contain; 
+            transition: transform 0.4s ease;
+        }
+
+        .student-card:hover .student-photo img {
+            transform: scale(1.05);
+        }
+        
+        /* 修改點：姓名加上左邊距對齊內文 */
+        .student-name { 
+            font-size: 22px; 
+            font-weight: bold; 
+            color: #333366; 
+            margin: 15px 0 5px; 
+            padding: 0 20px; 
+        }
+
+        .student-info { 
+            font-size: 15px; 
+            color: #666; 
+            padding: 0 20px; 
+            line-height: 1.6;
+            flex-grow: 1;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .student-card:hover .student-info {
+            overflow-y: auto;
+        }
+
+        /* 修改點：標籤改為靠左，並加上邊距 */
+        .motto-tag {
+            display: inline-block; 
+            margin: 10px 20px; 
+            background: #E0E0FF;
+            color: #5555BB; 
+            padding: 5px 18px; 
+            border-radius: 20px; 
+            font-size: 13px;
+            flex-shrink: 0;
+            align-self: flex-start; /* 確保在 flex 佈局中靠左 */
+        }
+
+        .student-info::-webkit-scrollbar { width: 5px; }
+        .student-info::-webkit-scrollbar-thumb { background: #CCCCFF; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1 class="page-title">813 自我介紹</h1>
+
+    <div id="student-container"></div>
+
+    <script>
+        const studentData = [
+            { name: "林0\u4e98", info: "個性外向,身高雖然較高,但不太喜歡球類活動,唯一擅長的運動是游泳,比較喜歡靜態活動,如看書彈琴等等。", motto: "81301", img: "81301.jpg" },
+            { name: "陳0亨", info: "喜歡打高爾夫球，喜歡研究近代歷史，我比較安靜。", motto: "81302", img: "81302.jpg" },
+            { name: "方0任", info: "興趣：象棋、武俠、修仙<br>擅長科目：數學<br>平時喜歡玩Minecraft床戰<br>我不愛接觸新事物 還有一到陌生的環境我會安靜的不像我（怕生）", motto: "81303", img: "81303.jpg" },
+            { name: "王0宇", info: "喜歡打棒球，討厭回家功課和不給打棒球的人，成績不錯，樂於助人。", motto: "81304", img: "81304.jpg" },
+            { name: "何0浩", info: "我個性活潑開朗我的興趣是運動我除了運動還喜歡打遊戲不管電腦遊戲或手機遊戲我都會玩。", motto: "81305", img: "81305.jpg" },
+            { name: "林0頡", info: "興趣是打籃球和與旁人交際，擅長跳街舞。", motto: "81306", img: "81306.jpg" },
+            { name: "張0鈞", info: "之前就讀信義國小，現在讀銘傳國中老師都很善良，然後我愛打球，例如:羽球、籃球，只是沒有很強。", motto: "81307", img: "81307.jpg" },
+            { name: "張0恩", info: "我喜歡打羽球、看電影和聽音樂，在外人面前很害羞，但熟了之後就不會。我喜歡打羽球、看電影和聽音樂，在外人面前很害羞，但熟了之後就不會。", motto: "81308", img: "81308.jpg" },
+            { name: "陳0旭", info: "我的興趣是打遊戲，我非常善良:)。", motto: "81309", img: "81309.jpg" },
+            { name: "陳0安", info: "我的興趣是運動，我的小名叫小雞腿", motto: "81310", img: "81310.jpg" },
+            { name: "游0淇", info: "此人個性害羞，沒有留下任何介紹。", motto: "81311", img: "81311.jpg" },
+            { name: "黃0", info: "我的愛好是學習、打遊戲，喜歡與人交際，是個道貌岸然的三好學生。", motto: "81312", img: "81312.jpg" },
+            { name: "羅0雄", info: "我喜歡打遊戲和交朋友，對心理學有興趣。不喜歡老實、安靜或社恐的人，不是社牛或社恐，歡迎認識。", motto: "81313", img: "81313.jpg" },
+            { name: "賴0瑢", info: "我是八年十三班的同學，以後會得諾貝爾獎。", motto: "81331", img: "81331.jpg" },
+            { name: "王0寧", info: "我的興趣是閱讀小說，喜歡參加各種競賽，挑戰自我。", motto: "81332", img: "81332.jpg" },
+            { name: "吳0臻", info: "興趣是做甜點，喜歡打球和做手工，缺點是成績不好。", motto: "81333", img: "81333.jpg" },
+            { name: "林0霏", info: "此人個性害羞，沒有留下任何介紹。", motto: "81334", img: "81334.jpg" },
+            { name: "林0蔆", info: "我是一個喜歡慢節奏生活的人，比起熱鬧的市區，我更喜歡待在安靜的地方思考或翻翻書。我對心理學和哲學很有興趣，覺得觀察人的行為和夢境是一件非常迷人的事。課餘時間，我最喜歡去海邊浮潛，在水下安靜的世界裡觀察海龜和魚群，會讓我感到徹底的放鬆。", motto: "81335", img: "81335.jpg" },
+            { name: "林0萌", info: "我是檸檬，我喜歡和朋友出去玩。", motto: "81336", img: "81336.jpg" },
+            { name: "張0珣", info: "我的英文名字是 Chloe，是 INED，我會書法或許會畫畫，目前沒有特長。我的缺點是偏科、不專心等等。", motto: "81337", img: "81337.jpg" },
+            { name: "莊0", info: "興趣愛好是唱歌跟追星。", motto: "81338", img: "81338.jpg" },
+            { name: "莊0歆", info: "興趣是追星，我最喜歡的是Cortis的趙雨凡和IVE的金秋天。", motto: "81339", img: "81339.jpg" },
+            { name: "郭0庭", info: "熱愛畫圖，用畫筆表達心情。紫色是我最喜歡的顏色，它讓我感到平靜又有創意。畫畫是我生活中最開心的事。", motto: "81340", img: "81340.jpg" },
+            { name: "郭0蓉", info: "我興趣讀書 專長畫畫", motto: "81341", img: "81341.jpg" },
+            { name: "陳0妤", info: "喜歡跳舞和繪畫，對言情或古裝小說也很有興趣，個性內斂，熱於助人。", motto: "81342", img: "81342.jpg" },
+            { name: "陳0卉", info: "我的興趣是跑步，假日的時候喜歡和朋友一起出去玩，我最喜歡的顏色是淡藍色。", motto: "81343", img: "81343.jpg" },
+            { name: "曾0彤", info: "大家好！我是曾0彤 興趣是畫畫、看小說，喜歡吃蛋跟豆腐料理。最喜愛的小說是《全知讀者視角》因為我喜歡描寫各類情感、互動的故事，這能讓我沉浸其中、感同身受，讓我彷彿身在書中的角色，與之共情。感謝看到這裡的你！", motto: "81344", img: "81344.jpg" },
+            { name: "黃0篪", info: "興趣是KPOP和彈吉他，最愛Boynextdoor的朴成淏，家裡有一隻橘貓叫catbbi。", motto: "81345", img: "81345.jpg" }
+        ];
+
+        const container = document.getElementById('student-container');
+        studentData.forEach(person => {
+            const cardHTML = `
+                <div class="student-card">
+                    <div class="student-photo">
+                        <img src="${person.img}" alt="${person.name}">
+                    </div>
+                    <div class="student-name">${person.name}</div>
+                    <div class="student-info">${person.info}</div>
+                    <div class="motto-tag">${person.motto}</div>
+                </div>
+            `;
+            container.innerHTML += cardHTML;
+        });
+    </script>
+</body>
+</html>

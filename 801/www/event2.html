@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>運動會</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Microsoft JhengHei", sans-serif;
+      background: #f5f5f5;
+    }
+
+   
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+
+<header>活動照片</header>
+
+<div class="gallery">
+  <img src="pic/DSC00209.jpg" alt="">
+  <img src="pic/DSC00213.jpg" alt="">
+  <img src="pic/DSC00214.jpg" alt="">
+  <img src="pic/DSC00218.jpg" alt="">
+  <img src="pic/DSC00219.jpg" alt="">
+  <img src="pic/DSC00222.jpg" alt="">
+</div>
+
+<script>
+  window.addEventListener("load", () => {
+    document.getElementById("loading").style.display = "none";
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銘傳國中 808 動物園 | 首頁</title>
+    <style>
+        :root { --zoo-green: #2d5a27; --zoo-brown: #8b4513; --zoo-light: #f0f4f0; }
+        html { scroll-behavior: smooth; background-color: var(--zoo-light); }
+        body { margin: 0; padding: 0; font-family: "Microsoft JhengHei", sans-serif; overflow-x: hidden; }
+
+        /* --- Header & Logo --- */
+        header { display: flex; flex-direction: column; align-items: center; padding: 40px 20px 20px 20px; gap: 20px; }
+        @media (min-width: 768px) { header { flex-direction: row; justify-content: flex-start; padding-left: 60px; } }
+        
+        .hanging-sign { 
+            background: #fff; border: 5px solid var(--zoo-brown); border-radius: 15px; padding: 10px 20px; 
+            display: flex; align-items: center; gap: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+            position: relative; transform-origin: top center; animation: swing 3.5s infinite ease-in-out; z-index: 10;
+        }
+        .hanging-sign::before, .hanging-sign::after { content: ""; position: absolute; top: -60px; width: 4px; height: 60px; background: #333; z-index: -1; }
+        .hanging-sign::before { left: 20px; } .hanging-sign::after { right: 20px; }
+        @keyframes swing { 0%, 100% { transform: rotate(3deg); } 50% { transform: rotate(-3deg); } }
+
+        /* --- 導覽列 (精準圓角修正) --- */
+        nav { display: flex; gap: 10px; flex-wrap: wrap; }
+        .nav-item { position: relative; display: inline-block; }
+        .nav-btn {
+            padding: 8px 16px; background: var(--zoo-green); color: white;
+            text-decoration: none; border-radius: 20px; font-weight: bold;
+            box-shadow: 0 4px 0px #1a3517; transition: 0.2s; border: none; cursor: pointer; display: block;
+        }
+        .nav-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0px #1a3517; }
+        
+        /* 只有在有下拉選單且 hover 時，下方才變直角 */
+        .nav-item.has-submenu:hover .nav-btn { border-radius: 20px 20px 0 0; }
+
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0; width: 100%; 
+            background-color: var(--zoo-green); z-index: 100; border-radius: 0 0 10px 10px; overflow: hidden;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        }
+        .dropdown-content a {
+            color: white; padding: 10px 12px; text-decoration: none; display: block;
+            font-size: 0.9rem; transition: 0.3s; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;
+        }
+        .dropdown-content a:hover { background-color: #3e7a36; }
+        .nav-item:hover .dropdown-content { display: block; }
+
+        /* --- 大輪播圖 --- */
+        .carousel-outer { position: relative; width: 90%; max-width: 800px; margin: 20px auto; border: 8px solid white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+        .carousel-track { display: flex; width: 500%; transition: transform 0.8s ease-in-out; }
+        .slide { width: 20%; }
+        .slide img { width: 100%; height: 400px; object-fit: cover; display: block; }
+
+        /* --- 小輪播公告 --- */
+        .announcement-section { text-align: center; padding: 40px 10px; }
+        .mini-carousel-container { position: relative; max-width: 800px; margin: 0 auto; padding: 0 50px; }
+        .mini-carousel-viewport { overflow: hidden; padding: 15px 0; }
+        .mini-track { display: flex; transition: transform 0.6s ease-in-out; gap: 30px; }
+        .mini-slide { flex: 0 0 220px; cursor: pointer; }
+        .slide-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #eee; transition: 0.3s; height: 210px; }
+        .slide-card img { width: 100%; height: 130px; object-fit: cover; }
+        .card-text { padding: 10px; text-align: left; }
+        .card-text h4 { margin: 0; color: var(--zoo-green); font-size: 1rem; }
+
+        /* --- 按鈕樣式 --- */
+        .arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--zoo-green); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; z-index: 10; opacity: 0.7; }
+        .arrow-btn:hover { opacity: 1; background: var(--zoo-brown); }
+        .prev { left: 10px; } .next { right: 10px; }
+
+        /* --- Modal --- */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+        .modal-content { background: white; width: 90%; max-width: 700px; display: flex; border-radius: 25px; overflow: hidden; position: relative; }
+        #mImg { width: 45%; object-fit: cover; background: #eee; }
+        .modal-info { flex: 1; padding: 30px; text-align: left; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hanging-sign">
+        <img src="logo_black.png" alt="Logo" style="width:50px;">
+        <div style="font-size: 1.5rem; color: #8b4513; font-weight: bold;">808<br>動物園</div>
+    </div>
+    <nav>
+        <div class="nav-item"><a href="index.html" class="nav-btn" style="background: var(--zoo-brown);">📢 最新消息</a></div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn">📖 動物圖鑑</a>
+            <div class="dropdown-content">
+                <a href="boys.html">男生們</a>
+                <a href="girls.html">女生們</a>
+            </div>
+        </div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn">🐱 訓獸師們</a>
+            <div class="dropdown-content">
+                <a href="teachers.html">訓獸師簡介</a>
+                <a href="9m.html">園區大人物</a>
+            </div>
+        </div>
+        <div class="nav-item"><a href="schedule.html" class="nav-btn">📅 演出時程</a></div>
+        <div class="nav-item has-submenu">
+            <a class="nav-btn">🦁 園區介紹</a>
+            <div class="dropdown-content">
+                <a href="map.html">園區地圖</a>
+                <a href="goout.html">外出探索</a>
+                <a href="life.html">動物日常</a>
+            </div>
+        </div>
+        <div class="nav-item"><a href="we.html" class="nav-btn">🐯關於我們</a></div>
+    </nav>
+</header>
+
+<div class="carousel-outer" id="mainOuter">
+    <button class="arrow-btn prev" id="mPrev">❮</button>
+    <button class="arrow-btn next" id="mNext">❯</button>
+    <div class="carousel-track" id="mTrack">
+        <div class="slide"><img src="01.jpg"></div>
+        <div class="slide"><img src="02.jpg"></div>
+        <div class="slide"><img src="03.jpg"></div>
+        <div class="slide"><img src="04.jpg"></div>
+        <div class="slide"><img src="05.jpg"></div>
+    </div>
+</div>
+
+<section class="announcement-section">
+    <h2 style="color: var(--zoo-green);">📢 園區最新消息 📢</h2>
+    <div class="mini-carousel-container" id="miniArea">
+        <button class="arrow-btn prev" id="btnPrev">❮</button>
+        <button class="arrow-btn next" id="idNext">❯</button>
+        <div class="mini-carousel-viewport">
+            <div class="mini-track" id="miniTrack"></div>
+        </div>
+    </div>
+</section>
+
+<div id="zooModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" id="closeX">&times;</span>
+        <img id="mImg" src="">
+        <div class="modal-info">
+            <h2 id="mTitle" style="color: var(--zoo-brown);">標題</h2>
+            <p id="mDesc">描述...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* --- 1. 你的最新消息資料 (內容完整保留) --- */
+const newsData = [
+    {title: "堅硬的黑板邊框竟被撞裂?幕後黑手原來是...", img: "class/777.png", desc: "經過數學老師的狂轟亂炸後，動物們躺的躺，趴地趴，眼神空洞的看向前方。此時，獨角獸心血來潮想模仿一下紀韋的英姿。  砰!一聲巨響，動物們從失神中回過來，只見黑板邊框被撞開了一條裂縫。(獨角獸表示:當下我推的很輕)"},
+    {title: "看似平平無奇的教室地板，竟能給班上帶來穩定的班費收入!?", img: "class/coin.webp", desc: "從七年級開學第一天開始，班上就有個好笑的規定:同學如果把錢弄掉在地板上，就會變成班費(50塊以內)。老師第二排抽屜最深處的角落裡硬幣已經堆成了小山，彰顯著老師不知道存了幾屆的豐功偉業。  天下哪有白吃的午餐? 別傻了那是同學的淚😭"},
+    {title: "最討厭的科目?最喜歡的老師?", img: "teachers/science.jpg", desc: "這裡是最新消息中為數不多不是講幹話的。大多數動物們認為自然的題目真的很複雜，所以都很討厭自然。而老師也很清楚"},
+    {title: "違禁物品大解密", img: "news4.jpg", desc: ""},
+    {title: "用熱水瓶讓冷氣達到28度?實測有效!!", img: "class/AC.jpg", desc: "此時動物園鄰近夏季，每次體育課結束教室都不斷衝擊著動物們的觸覺神經和嗅覺神經。同學們各施奇招，想要升高那台冷氣機的溫度，但那個數字27像是被釘死一樣紋絲不動。此時有個同學提議保溫瓶裡加熱水放在溫度計下方。最後確實是到28度了 但被老師臭罵了一頓。    (僅為陳述事實，請勿模仿)"}
+];
+
+/* --- 2. 大輪播圖邏輯 (新增按鈕控制) --- */
+let mIdx = 0;
+const mTrack = document.getElementById('mTrack');
+const mSlides = document.querySelectorAll('#mTrack .slide'); // 自動計算圖片數量
+let mTimer;
+
+function moveM(d) {
+    mIdx = (mIdx + d + mSlides.length) % mSlides.length;
+    mTrack.style.transform = `translateX(${-mIdx * (100 / mSlides.length)}%)`;
+}
+
+function startM() {
+    clearInterval(mTimer);
+    mTimer = setInterval(() => moveM(1), 5000);
+}
+
+// 綁定大輪播按鈕
+document.getElementById('mNext').onclick = () => { moveM(1); startM(); };
+document.getElementById('mPrev').onclick = () => { moveM(-1); startM(); };
+document.getElementById('mainOuter').onmouseenter = () => clearInterval(mTimer);
+document.getElementById('mainOuter').onmouseleave = startM;
+
+/* --- 3. 小公告輪播邏輯 --- */
+const miniTrack = document.getElementById('miniTrack');
+let miniIdx = 0;
+const cardWidth = 250; 
+let miniTimer;
+
+function initMini() {
+    const html = newsData.map((d, i) => `
+        <div class="mini-slide" onclick="showModal(${i})">
+            <div class="slide-card">
+                <img src="${d.img}" onerror="this.src='https://placeholder.com'">
+                <div class="card-text"><h4>${d.title}</h4></div>
+            </div>
+        </div>
+    `).join('');
+    miniTrack.innerHTML = html + html; // 複製兩份達成無縫
+    startMini();
+}
+
+function moveMini(d) {
+    miniIdx += d;
+    miniTrack.style.transition = "transform 0.6s ease-in-out";
+    miniTrack.style.transform = `translateX(${-miniIdx * cardWidth}px)`;
+
+    if (miniIdx >= newsData.length) {
+        setTimeout(() => {
+            miniTrack.style.transition = "none";
+            miniIdx = 0;
+            miniTrack.style.transform = "translateX(0)";
+        }, 600);
+    } else if (miniIdx < 0) {
+        setTimeout(() => {
+            miniTrack.style.transition = "none";
+            miniIdx = newsData.length - 1;
+            miniTrack.style.transform = `translateX(${-miniIdx * cardWidth}px)`;
+        }, 600);
+    }
+}
+
+function startMini() {
+    clearInterval(miniTimer);
+    miniTimer = setInterval(() => moveMini(1), 3000);
+}
+
+// 綁定小輪播按鈕
+document.getElementById('idNext').onclick = () => { moveMini(1); startMini(); };
+document.getElementById('btnPrev').onclick = () => { moveMini(-1); startMini(); };
+
+/* --- 4. 彈出視窗 (Modal) --- */
+function showModal(i) {
+    const data = newsData[i];
+    document.getElementById('mTitle').innerText = data.title;
+    document.getElementById('mImg').src = data.img;
+    document.getElementById('mDesc').innerText = data.desc;
+    document.getElementById('zooModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('closeX').onclick = () => {
+    document.getElementById('zooModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+};
+
+/* --- 5. 啟動 --- */
+window.onload = () => {
+    initMini();
+    startM();
+};
+
+</script>
+</body>
+</html>

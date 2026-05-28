@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head>
+
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>版權頁</title>
+
+
+  <style>
+:root{
+--main:#5b3a1b;
+--accent:#f59e0b;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+font-family:"Microsoft JhengHei",sans-serif;
+min-height:100vh;
+background:linear-gradient(-45deg,#fff7cc,#fde68a,#fff1b8,#fef3c7);
+background-size:400% 400%;
+animation:bgMove 15s ease infinite;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:30px;
+overflow:hidden;
+}
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+/* 光點 */
+.spark{
+position:fixed;
+pointer-events:none;
+animation:float linear forwards;
+opacity:.7;
+}
+@keyframes float{
+from{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+to{
+transform:translateY(-120vh) scale(.5);
+opacity:0;
+}
+}
+/* 卡片 */
+.card{
+width:100%;
+max-width:850px;
+background:rgba(255,255,255,.82);
+backdrop-filter:blur(18px);
+border-radius:30px;
+padding:50px;
+box-shadow:0 25px 60px rgba(0,0,0,.12);
+animation:show 1s ease;
+position:relative;
+z-index:2;
+}
+@keyframes show{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.title{
+font-size:3rem;
+color:var(--main);
+text-align:center;
+margin-bottom:15px;
+}
+.subtitle{
+text-align:center;
+color:#777;
+margin-bottom:40px;
+font-size:1.1rem;
+}
+/* 區塊 */
+.section{
+margin-bottom:35px;
+}
+.section h2{
+color:var(--main);
+margin-bottom:12px;
+font-size:1.4rem;
+border-left:6px solid var(--accent);
+padding-left:12px;
+}
+.section p{
+line-height:1.9;
+color:#555;
+font-size:1.05rem;
+}
+/* 名稱 */
+.credit{
+margin-top:20px;
+padding:18px;
+background:#fff8e7;
+border-radius:18px;
+line-height:1.9;
+}
+/* 返回鍵 */
+.back{
+position:fixed;
+top:20px;
+left:20px;
+border:none;
+background:white;
+padding:12px 18px;
+border-radius:14px;
+cursor:pointer;
+font-size:15px;
+box-shadow:0 10px 20px rgba(0,0,0,.12);
+transition:.3s;
+z-index:999;
+}
+.back:hover{
+transform:translateY(-3px);
+}
+/* Footer */
+.footer{
+margin-top:35px;
+text-align:center;
+color:#777;
+font-size:.95rem;
+}
+/* 手機 */
+@media(max-width:768px){
+.card{
+padding:35px 25px;
+}
+.title{
+font-size:2.2rem;
+}
+.section h2{
+font-size:1.2rem;
+}
+}
+  </style>
+</head>
+
+
+<body>
+
+<button class="back" onclick="goBack()">&larr;
+返回動物園</button>
+<div class="card">
+<div class="title">&#128220; 版權頁</div>
+
+<div class="subtitle">
+Class Zoo Project Copyright
+</div>
+
+<div class="section">
+<h2>&#10024; 關於本作品</h2>
+
+<p>
+本網站為「班級動物園」特別企劃， 使用 HTML、CSS 與 JavaScript 製作，
+內容包含班級介紹、活動紀錄、老師介紹與校園人物頁面。
+</p>
+
+</div>
+
+<div class="section">
+<h2>&#128218; 使用聲明</h2>
+
+<p>
+本作品僅供班級展示、學習交流與個人創作使用。 未經允許，請勿隨意轉載、修改或商業使用網站內容與圖片。
+</p>
+
+</div>
+
+<div class="section">
+<h2>&#128444; 圖片與素材</h2>
+
+<p>
+網站內照片與內容皆屬班級活動紀錄， 部分素材與圖示來源於免費網路資源與 emoji 系統。
+</p>
+
+</div>
+
+<div class="section">
+<h2>&#128104;&zwj;&#128187; 製作資訊</h2>
+
+<div class="credit">
+製作者：807 班<br>
+
+網站名稱：班級動物園<br>
+
+版本：Special Edition v1.0<br>
+
+製作年份：2026
+</div>
+
+</div>
+
+<div class="footer">
+&copy; 2026 Class Zoo Project. All Rights Reserved.
+</div>
+
+</div>
+
+<script>
+function goBack(){
+window.location.href='index.html';
+}
+// 漂浮光點
+function createSpark(){
+const spark=document.createElement('div');
+spark.className='spark';
+spark.innerHTML='&#10024;';
+spark.style.left=Math.random()*window.innerWidth+'px';
+spark.style.top=window.innerHeight+'px';
+spark.style.fontSize=(10+Math.random()*20)+'px';
+spark.style.animationDuration=(4+Math.random()*6)+'s';
+document.body.appendChild(spark);
+setTimeout(()=>{
+spark.remove();
+},10000);
+}
+setInterval(createSpark,250);
+</script>
+</body>
+</html>

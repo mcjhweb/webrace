@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>銘傳國中 808 訓獸師們</title>
+    <style>
+        :root {
+            --zoo-green: #2d5a27;
+            --zoo-brown: #8b4513;
+            --zoo-light: #f0f4f0;
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            background-color: var(--zoo-light);
+            background-image: radial-gradient(#d1dbd1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        body { margin: 0; padding: 0; font-family: "Microsoft JhengHei", sans-serif; }
+
+        header { display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 20px; }
+        @media (min-width: 768px) { header { flex-direction: row; justify-content: flex-start; padding-left: 60px; } }
+
+        .hanging-sign {
+            background: #fff; border: 5px solid var(--zoo-brown);
+            border-radius: 15px; padding: 10px 20px;
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            position: relative; transform-origin: top center;
+            animation: swing 3.5s ease-in-out infinite;
+        }
+        .hanging-sign::before, .hanging-sign::after { content: ""; position: absolute; top: -60px; width: 4px; height: 60px; background: #333; z-index: -1; }
+        .hanging-sign::before { left: 20px; } .hanging-sign::after { right: 20px; }
+
+        .nav-btn {
+            padding: 8px 16px; background: var(--zoo-green); color: white;
+            text-decoration: none; border-radius: 20px; font-weight: bold;
+            box-shadow: 0 4px 0px #1a3517; transition: 0.2s; border: none; cursor: pointer;
+        }
+        .nav-btn:hover { transform: translateY(2px); box-shadow: 0 2px 0px #1a3517; }
+
+        .page-banner {
+            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.8)), url('01.jpg');
+            background-size: cover; background-position: center;
+            height: 200px; display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center; margin-bottom: 40px;
+        }
+        
+		.page-banner {
+            background: linear-gradient(rgba(45, 90, 39, 0.8), rgba(45, 90, 39, 0.8)), url('106.png');
+            background-size: cover; background-position: center;
+            height: 200px; display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center;
+        }
+
+        .image-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 0 40px; }
+        .grid-item {
+            flex: 1; min-width: 250px; max-width: 300px;
+            background: white; padding: 20px; border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            cursor: pointer; transition: 0.3s; text-align: center;
+        }
+        .grid-item:hover { transform: translateY(-10px); border: 2px solid var(--zoo-brown); }
+        .grid-item img { width: 100%; height: 180px; object-fit: contain; background: #f9f9f9; border-radius: 10px; margin-bottom: 15px; }
+
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8);
+            z-index: 9999; justify-content: center; align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 850px;
+            display: flex; border-radius: 25px; overflow: hidden; position: relative; max-height: 90vh;
+        }
+        #mImg { width: 45%; object-fit: contain; background: #f7f7f7; }
+        .modal-info { flex: 1; padding: 30px; overflow-y: auto; text-align: left; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #888; }
+        .tag { display: inline-block; background: #fff3e0; color: var(--zoo-brown); padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin: 5px 5px 5px 0; }
+
+        @keyframes swing { 0%, 100% { transform: rotate(3deg); } 50% { transform: rotate(-3deg); } }
+        @media (max-width: 700px) { .modal-content { flex-direction: column; } #mImg { width: 100%; max-height: 35vh; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="hanging-sign">
+        <img src="logo_black.png" alt="Logo" style="width:50px;">
+        <div style="font-size: 1.5rem; color: var(--zoo-brown); font-weight: bold;">808<br>動物園</div>
+    </div>
+<nav style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <style>
+        /* 下拉選單基礎樣式 */
+        .nav-item { position: relative; display: inline-block; }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%; 
+            background-color: var(--zoo-green);
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 100;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 10px 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            text-align: center; /* 讓文字置中更有對齊感 */
+        }
+
+        .dropdown-content a:hover { background-color: #3e7a36; }
+        .nav-item:hover .dropdown-content { display: block; }
+
+        /* 只有擁有子選單的項目在移入時才會改變圓角 */
+        .nav-item.has-submenu:hover .nav-btn { 
+            border-radius: 20px 20px 0 0; 
+            width: 100%; /* 確保按鈕本身寬度不變 */
+        }
+    </style>
+    
+	<!-- 1. 最新消息 -->
+    <div class="nav-item">
+        <a href="index.html" class="nav-btn">🏠 回首頁</a>
+    </div>
+
+    <!-- 2. 動物圖鑑 -->
+    <div class="nav-item has-submenu">
+        <a class="nav-btn">📖 動物圖鑑</a>
+        <div class="dropdown-content">
+            <a href="boys.html">男生們</a>
+            <a href="girls.html">女生們</a>
+        </div>
+    </div>
+
+    <!-- 3. 訓獸師們 -->
+    <div class="nav-item has-submenu">
+        <a class="nav-btn" style="background: var(--zoo-brown);">🐱 訓獸師們</a>
+        <div class="dropdown-content">
+            <a href="teachers.html">訓獸師簡介</a>
+            <a href="9m.html">園區大人物</a>
+        </div>
+    </div>
+
+    <!-- 4. 演出時程 (課表) -->
+    <div class="nav-item">
+        <a href="schedule.html" class="nav-btn">📅 演出時程</a>
+    </div>
+
+    <!-- 5. 園區介紹 -->
+    <div class="nav-item has-submenu">
+        <a class="nav-btn">🦁 園區介紹</a>
+        <div class="dropdown-content">
+            <a href="map.html">園區地圖</a>
+            <a href="goout.html">外出探索</a>
+            <a href="life.html">動物日常</a>
+        </div>
+    </div>
+
+    <!-- 6. 關於我們 -->
+    <div class="nav-item">
+        <a href="we.html" class="nav-btn">🐯 關於我們</a>
+    </div>
+</nav>
+</header>
+
+<div class="page-banner">
+    <div>
+        <h1>🐱 808 頂級訓獸師</h1>
+        <p>帶領這群小動物們成長的最強導師與科任團隊</p>
+    </div>
+</div>
+
+<main style="padding-bottom: 60px;">
+    <div class="image-grid">
+        <div class="grid-item" onclick="openModal('洪敏純', '班導 兼 公民老師', '超絕Rap歌手', '絕對不要嘗試和她對嗆，中文不夠 英文來湊，隨便一句法條都是信手拈來，連珠炮般的射速保證讓你懷疑人生', 'teacher1.png')">
+            <img src="teacher1.png"><p>導師 洪敏純</p>
+        </div>
+        <div class="grid-item" onclick="openModal('蘇奕瑋', '國文老師 兼 生教', '看似最嚴肅的老師?', '在氣氛安靜嚴肅的教室內，冷不防叫你一句親愛的~光明燈沒有開~(講台前的電燈) 想想真讓人感到不寒而慄', 'teacher2.png')">
+            <img src="teacher2.png"><p>國文老師 蘇奕瑋</p>
+        </div>
+		<div class="grid-item" onclick="openModal('王郁珊', '英文老師', '最美麗溫柔善良的老師', '', 'teacher2.png')">
+            <img src="teacher2.png"><p>英文老師 王郁珊</p>
+        </div>
+		<div class="grid-item" onclick="openModal('jeosa', 'English Teacher', '最美麗溫柔善良的老師', '', 'teacher2.png')">
+            <img src="teacher2.png"><p>English Teacher jeosa</p>
+        </div>
+		<div class="grid-item" onclick="openModal('呂紀韋', '數學老師', '燃燒自己的聲帶，照亮同學的未來', '在一個學渣密集的班上硬生生砍出班平均70分以上 紀韋的用心 肅然起敬', 'teacher2.png')">
+            <img src="teacher2.png"><p>數學老師 呂紀韋</p>
+        </div>
+		<div class="grid-item" onclick="openModal('黃期榕', '歷史老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>歷史老師 黃期榕</p>
+        </div>
+		<div class="grid-item" onclick="openModal('余鈴觀', '地理老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>地理老師 余鈴觀</p>
+        </div>
+		<div class="grid-item" onclick="openModal('賴彥書', '自然老師', '自稱冗員但實際上很認真的老師', ' ', 'teachers/science.jpg')">
+            <img src="teachers/science.jpg"><p>自然老師 賴彥書</p>
+        </div>
+		<div class="grid-item" onclick="openModal('馬承潔', '生科老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>生科老師 馬承潔</p>
+        </div>
+		<div class="grid-item" onclick="openModal('吳慶鴻', '資訊老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>資訊老師 吳慶鴻</p>
+        </div>
+		<div class="grid-item" onclick="openModal('林佑霖', '表藝老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>表藝老師 林佑霖</p>
+        </div>
+		<div class="grid-item" onclick="openModal('萬怡庭', '音樂老師', '', ' ', 'teachers/music.png')">
+            <img src="teachers/music.png"><p>音樂老師 萬怡庭</p>
+        </div>
+		<div class="grid-item" onclick="openModal('游弘毅', '美術老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>美術老師 游弘毅</p>
+        </div>
+		<div class="grid-item" onclick="openModal('謝勝豐', '體育老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>體育老師 謝勝豐</p>
+        </div>
+		<div class="grid-item" onclick="openModal('吳靜純', '本土語老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>本土語老師 吳靜純</p>
+        </div>
+		<div class="grid-item" onclick="openModal('賴芸鋒', '健教老師', '喜徳', ' ', 'teachers/health.jpeg')">
+            <img src="teachers/health.jpeg"><p>健教老師 賴芸鋒</p>
+        </div>
+		<div class="grid-item" onclick="openModal('蔡淳昱', '地球村老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>地球村老師 蔡淳昱</p>
+        </div>
+		<div class="grid-item" onclick="openModal('莫為恩', '銘星繪老師', '', ' ', 'teacher2.png')">
+            <img src="teacher2.png"><p>銘星繪老師 莫為恩</p>
+        </div>
+    </div>
+</main>
+
+<div id="zooModal" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="mImg" src="">
+        <div class="modal-info">
+            <h2 id="mTitle" style="margin: 0; color: var(--zoo-brown);">名稱</h2>
+            <div style="margin: 15px 0;"><span id="mType" class="tag"></span><span id="mHabit" class="tag"></span></div>
+            <hr style="border: 0.5px solid #eee; margin: 20px 0;">
+            <div id="mDescArea" style="color:#555; line-height:1.8;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openModal(name, type, habit, desc, img) {
+        document.getElementById('mTitle').innerText = name;
+        document.getElementById('mType').innerText = type;
+        document.getElementById('mHabit').innerText = habit;
+        document.getElementById('mImg').src = img;
+        document.getElementById('mDescArea').innerText = desc;
+        document.getElementById('zooModal').style.display = 'flex';
+    }
+    function closeModal() { document.getElementById('zooModal').style.display = 'none'; }
+    function closeModalOutside(event) { if (event.target.id === "zooModal") closeModal(); }
+</script>
+</body>
+</html>
